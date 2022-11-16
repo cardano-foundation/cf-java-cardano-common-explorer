@@ -3,6 +3,11 @@ package com.sotatek.cardano.common.entity;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
@@ -11,11 +16,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "block", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_block", columnNames = {"hash"})
-})
+    @UniqueConstraint(name = "unique_block", columnNames = {"hash"})})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -40,18 +46,18 @@ public class Block extends BaseEntity {
   @Column(name = "block_no")
   private Long blockNo;
 
-//  @ManyToOne(fetch = FetchType.LAZY)
-//  @OnDelete(action = OnDeleteAction.CASCADE)
-//  @JoinColumn(name = "previous_id", foreignKey = @ForeignKey(name = "block_previous_id_fkey"))
-//  @EqualsAndHashCode.Exclude
-//  private Block previous;
+  @OneToOne(fetch = FetchType.LAZY)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  @JoinColumn(name = "previous_id")
+  @EqualsAndHashCode.Exclude
+  private Block previous;
 
-//  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//  @OnDelete(action = OnDeleteAction.CASCADE)
-//  @JoinColumn(name = "slot_leader_id", nullable = false,
-//      foreignKey = @ForeignKey(name = "block_slot_leader_id_fkey"))
-//  @EqualsAndHashCode.Exclude
-//  private SlotLeader slotLeader;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  @JoinColumn(name = "slot_leader_id", nullable = false,
+      foreignKey = @ForeignKey(name = "block_slot_leader_id_fkey"))
+  @EqualsAndHashCode.Exclude
+  private SlotLeader slotLeader;
 
   @Column(name = "size")
   private Integer size;

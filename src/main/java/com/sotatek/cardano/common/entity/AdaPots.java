@@ -42,7 +42,7 @@ public class AdaPots extends BaseEntity {
   @Word31Type
   private Integer epochNo;
 
-  @Column(name = "treasury", nullable = false)
+  @Column(name = "treasury", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
   private BigDecimal treasury;
