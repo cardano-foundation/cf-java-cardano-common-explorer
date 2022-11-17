@@ -1,12 +1,14 @@
 package com.sotatek.cardano.common.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -83,4 +85,6 @@ public class Block extends BaseEntity {
   @Column(name = "op_cert_counter")
   private Long opCertCounter;
 
+  @OneToMany(mappedBy = "block")
+  private List<Tx> txList;
 }
