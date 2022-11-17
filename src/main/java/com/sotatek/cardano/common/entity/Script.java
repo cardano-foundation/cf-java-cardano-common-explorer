@@ -51,10 +51,10 @@ public class Script extends BaseEntity {
   @Column(name = "json", length = 65535)
   private String json;
 
-  @Column(name = "bytes", nullable = false)
+  @Column(name = "bytes")
   private byte[] bytes;
 
-  @Column(name = "serialised_size", nullable = false)
+  @Column(name = "serialised_size")
   @Word31Type
   private Integer serialisedSize;
 

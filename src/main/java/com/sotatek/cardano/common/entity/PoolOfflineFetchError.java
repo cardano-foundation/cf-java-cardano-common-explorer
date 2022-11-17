@@ -49,7 +49,7 @@ public class PoolOfflineFetchError extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private PoolMetadataRef poolMetadataRef;
 
-  @Column(name = "fetch_error", nullable = false)
+  @Column(name = "fetch_error", nullable = false, length = 65535)
   private String fetchError;
 
   @Column(name = "retry_count", nullable = false)

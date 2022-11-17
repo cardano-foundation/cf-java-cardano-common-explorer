@@ -35,7 +35,7 @@ public class StakeAddress extends BaseEntity {
 
   @Column(name = "hash_raw", nullable = false)
   @Addr29Type
-  private byte[] hashRaw;
+  private String hashRaw;
 
   @Column(name = "view", nullable = false, length = 65535)
   private String view;
