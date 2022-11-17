@@ -5,12 +5,14 @@ import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word31Type;
 import com.sotatek.cardano.common.validation.Word64Type;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
@@ -47,6 +49,9 @@ public class Tx extends BaseEntity {
       foreignKey = @ForeignKey(name = "tx_block_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Block block;
+
+  @Column(name = "block_id", updatable = false, insertable = false)
+  private Long blockId;
 
   @Column(name = "block_index")
   @Word31Type
