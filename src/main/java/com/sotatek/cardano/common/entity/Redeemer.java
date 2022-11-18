@@ -8,8 +8,6 @@ import com.sotatek.cardano.common.validation.Word63Type;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
@@ -60,7 +58,6 @@ public class Redeemer extends BaseEntity {
   private BigDecimal announcedTxId;
 
   @Column(name = "purpose", nullable = false)
-  @Enumerated(EnumType.STRING)
   private ScriptPurposeType purpose;
 
   @Column(name = "index", nullable = false)

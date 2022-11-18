@@ -5,8 +5,6 @@ import com.sotatek.cardano.common.validation.Lovelace;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
@@ -44,7 +42,6 @@ public class Reward extends BaseEntity {
   private StakeAddress addr;
 
   @Column(name = "type", nullable = false)
-  @Enumerated(EnumType.STRING)
   private RewardType type;
 
   @Column(name = "amount", nullable = false, precision = 20)

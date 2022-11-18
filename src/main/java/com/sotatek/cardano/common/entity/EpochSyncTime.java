@@ -4,8 +4,6 @@ import com.sotatek.cardano.common.enumeration.SyncStateType;
 import com.sotatek.cardano.common.validation.Word63Type;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
@@ -36,7 +34,6 @@ public class EpochSyncTime extends BaseEntity {
   private Long seconds;
 
   @Column(name = "state", nullable = false)
-  @Enumerated(EnumType.STRING)
   private SyncStateType state;
 
 }

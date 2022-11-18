@@ -5,8 +5,6 @@ import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Word31Type;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
@@ -44,7 +42,6 @@ public class Script extends BaseEntity {
   private String hash;
 
   @Column(name = "type", nullable = false)
-  @Enumerated(EnumType.STRING)
   private ScriptType type;
 
   //wip
