@@ -46,6 +46,12 @@ public class TxIn extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Tx txOut;
 
+  @Column(name = "tx_in_id", updatable = false, insertable = false)
+  private Long txInputId;
+
+  @Column(name = "tx_out_id", updatable = false, insertable = false)
+  private Long txOutputId;
+
   @Column(name = "tx_out_index", nullable = false)
   @TxIndex
   private Short txOutIndex;
