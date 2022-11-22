@@ -48,7 +48,6 @@ public class PoolOfflineData extends BaseEntity {
   private String hash;
 
   @Column(name = "json", nullable = false, length = 65535)
-  @Type(type = "org.hibernate.type.TextType")
   @Lob
   private String json;
 
