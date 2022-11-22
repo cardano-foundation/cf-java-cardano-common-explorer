@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -17,6 +18,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "pool_offline_data", uniqueConstraints = {
@@ -46,6 +48,8 @@ public class PoolOfflineData extends BaseEntity {
   private String hash;
 
   @Column(name = "json", nullable = false, length = 65535)
+  @Type(type = "org.hibernate.type.TextType")
+  @Lob
   private String json;
 
   @Column(name = "bytes", nullable = false)
