@@ -48,7 +48,6 @@ public class PoolOfflineData extends BaseEntity {
   private String hash;
 
   @Column(name = "json", nullable = false, length = 65535)
-  @Lob
   private String json;
 
   @Column(name = "bytes", nullable = false)
