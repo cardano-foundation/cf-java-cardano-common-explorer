@@ -76,7 +76,7 @@ public class CollateralTxOut extends BaseEntity {
   @Hash32Type
   private String dataHash;
 
-  @Column(name = "multi_assets_descr", nullable = false)
+  @Column(name = "multi_assets_descr", nullable = false, length = 65535)
   private String multiAssetsDescr;
 
   @ManyToOne(fetch = FetchType.LAZY)
