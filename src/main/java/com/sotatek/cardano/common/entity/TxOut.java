@@ -48,7 +48,7 @@ public class TxOut extends BaseEntity {
   @TxIndex
   private Short index;
 
-  @Column(name = "address", nullable = false)
+  @Column(name = "address", nullable = false, length = 65535)
   private String address;
 
   @Column(name = "address_raw", nullable = false)
