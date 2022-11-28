@@ -56,7 +56,7 @@ public class Block extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "slot_leader_id", nullable = false,
+  @JoinColumn(name = "slot_leader_id", nullable = true,
       foreignKey = @ForeignKey(name = "block_slot_leader_id_fkey"))
   @EqualsAndHashCode.Exclude
   private SlotLeader slotLeader;

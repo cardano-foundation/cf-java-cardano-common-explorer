@@ -45,7 +45,7 @@ public class Datum extends BaseEntity {
   @Column(name = "value", length = 65535)
   private String value;
 
-  @Column(name = "bytes", nullable = false)
+  @Column(name = "bytes")
   private byte[] bytes;
 
 }

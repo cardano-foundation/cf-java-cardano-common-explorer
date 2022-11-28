@@ -42,7 +42,7 @@ public class TxMetadata extends BaseEntity {
   @Column(name = "json", length = 65535)
   private String json;
 
-  @Column(name = "bytes", nullable = false)
+  @Column(name = "bytes")
   private byte[] bytes;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
