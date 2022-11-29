@@ -5,12 +5,14 @@ import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word31Type;
 import com.sotatek.cardano.common.validation.Word64Type;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
@@ -88,5 +90,11 @@ public class Tx extends BaseEntity {
   @Column(name = "script_size")
   @Word31Type
   private Integer scriptSize;
+
+  @OneToMany(mappedBy = "tx")
+  private List<TxOut> txOutList;
+
+  @OneToMany(mappedBy = "txInput")
+  private List<TxIn> txInList;
 
 }
