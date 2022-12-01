@@ -55,9 +55,9 @@ public class Epoch extends BaseEntity {
   @Column(name = "start_time", nullable = false)
   private Timestamp startTime;
 
-  @Column(name = "end_time", nullable = false)
+  @Column(name = "end_time")
   private Timestamp endTime;
 
-  @Column(name="max_slot")
+  @Column(name="max_slot", nullable = false)
   private Integer maxSlot;
 }
