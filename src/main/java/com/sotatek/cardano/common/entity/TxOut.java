@@ -1,5 +1,6 @@
 package com.sotatek.cardano.common.entity;
 
+import com.sotatek.cardano.common.enumeration.TokenType;
 import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
@@ -7,6 +8,8 @@ import com.sotatek.cardano.common.validation.TxIndex;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
@@ -72,6 +75,13 @@ public class TxOut extends BaseEntity {
   @Lovelace
   @Digits(integer = 20, fraction = 0)
   private BigDecimal value;
+
+  @Column(name = "token_type")
+  @Enumerated(EnumType.STRING)
+  private TokenType tokenType;
+
+  @Column(name = "has_used")
+  private Boolean hasUsed;
 
   @Column(name = "data_hash", length = 64)
   @Hash32Type
