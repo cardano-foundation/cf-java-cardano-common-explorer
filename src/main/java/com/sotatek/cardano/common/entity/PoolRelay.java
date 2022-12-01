@@ -37,19 +37,19 @@ public class PoolRelay extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private PoolUpdate poolUpdate;
 
-  @Column(name = "ipv4", nullable = false)
+  @Column(name = "ipv4")
   private String ipv4;
 
-  @Column(name = "ipv6", nullable = false)
+  @Column(name = "ipv6")
   private String ipv6;
 
-  @Column(name = "dns_name", nullable = false)
+  @Column(name = "dns_name")
   private String dnsName;
 
-  @Column(name = "dns_srv_name", nullable = false)
+  @Column(name = "dns_srv_name")
   private String dnsSrvName;
 
-  @Column(name = "port", nullable = false)
+  @Column(name = "port")
   private Integer port;
 
 }
