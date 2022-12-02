@@ -2,10 +2,12 @@ package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Asset32Type;
 import com.sotatek.cardano.common.validation.Hash28Type;
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,7 +30,7 @@ public class MultiAsset extends BaseEntity {
 
   @Column(name = "policy", nullable = false, length = 56)
   @Hash28Type
-  private String hash;
+  private String policy;
 
   @Column(name = "name", nullable = false, length = 64)
   @Asset32Type
@@ -36,5 +38,12 @@ public class MultiAsset extends BaseEntity {
 
   @Column(name = "fingerprint", nullable = false)
   private String fingerprint;
+
+  @Column(name = "tx_count")
+  private Integer txCount;
+
+  @Column(name = "supply", precision = 23)
+  @Digits(integer = 23, fraction = 0)
+  private BigDecimal supply;
 
 }
