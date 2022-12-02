@@ -40,7 +40,7 @@ public class MultiAsset extends BaseEntity {
   private String fingerprint;
 
   @Column(name = "tx_count")
-  private Integer txCount;
+  private Long txCount;
 
   @Column(name = "supply", precision = 23)
   @Digits(integer = 23, fraction = 0)
