@@ -19,11 +19,11 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "tx_in", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_txin",
-        columnNames = {"tx_out_id", "tx_out_index"}
-    )
-})
+//@Table(name = "tx_in", uniqueConstraints = {
+//    @UniqueConstraint(name = "unique_txin",
+//        columnNames = {"tx_out_id", "tx_out_index"}
+//    )
+//})
 @Getter
 @Setter
 @NoArgsConstructor
