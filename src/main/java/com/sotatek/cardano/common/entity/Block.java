@@ -54,6 +54,16 @@ public class Block extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Block previous;
 
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  @JoinColumn(name = "slot_leader_id", nullable = true,
+      foreignKey = @ForeignKey(name = "block_slot_leader_id_fkey"))
+  @EqualsAndHashCode.Exclude
+  private SlotLeader slotLeader;
+
+  @Column(name = "slot_leader_id", updatable = false, insertable = false)
+  private Long slotLeaderId;
+
   @Column(name = "size")
   private Integer size;
 
@@ -80,4 +90,8 @@ public class Block extends BaseEntity {
 
   @OneToMany(mappedBy = "block")
   private List<Tx> txList;
+
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name="no", nullable=false)
+  private Epoch epoch;
 }
