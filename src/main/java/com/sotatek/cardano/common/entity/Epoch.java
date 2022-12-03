@@ -52,7 +52,7 @@ public class Epoch extends BaseEntity {
   @Word31Type
   private Integer no;
 
-  @Column(name = "start_time", nullable = false)
+  @Column(name = "start_time")
   private Timestamp startTime;
 
   @Column(name = "end_time")
