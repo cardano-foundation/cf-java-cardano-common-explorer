@@ -1,12 +1,14 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Hash28Type;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -33,6 +35,10 @@ public class PoolHash extends BaseEntity {
 
   @Column(name = "view", nullable = false)
   private String view;
+
+  @Digits(integer = 20, fraction = 0)
+  @Column(name = "pool_size", nullable = false)
+  private BigDecimal poolSize;
 
   @OneToMany(mappedBy = "poolHash")
   private List<Delegation> delegations;
