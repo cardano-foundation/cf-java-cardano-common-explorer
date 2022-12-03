@@ -21,15 +21,15 @@ xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
 
 	<profiles>
 	  <profile>
-		<id>github</id>
+		<id>cardano-common-explorer</id>
 		<repositories>
 		  <repository>
 			<id>central</id>
 			<url>https://repo1.maven.org/maven2</url>
 		  </repository>
 		  <repository>
-			<id>${github}</id>
-			<url>https://maven.pkg.github.com/{onwer}/{repository-name}</url>
+			<id>cardano-common-explorer</id>
+			<url>https://maven.pkg.github.com/sotatek-dev/cardano-common-explorer</url>
 			<snapshots>
 			  <enabled>true</enabled>
 			</snapshots>
@@ -40,7 +40,7 @@ xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
 
 	<servers>
 	  <server>
-		<id>${github}</id>
+		<id>cardano-common-explorer</id>
 		<username>${username}</username>
 		<password>${token}</password>
 	  </server>
@@ -54,7 +54,7 @@ In pom.xml
     <repository>
       <id>${github}</id>
       <name>GitHub sotatek-tiendo Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/{onwer}/{repository-name}</url>
+      <url>https://maven.pkg.github.com/sotatek-dev/cardano-common-explorer</url>
     </repository>
   </distributionManagement>
 ```

@@ -6,6 +6,7 @@ import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.TxIndex;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
@@ -100,5 +102,8 @@ public class TxOut extends BaseEntity {
       foreignKey = @ForeignKey(name = "tx_out_reference_script_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Script referenceScript;
+
+  @OneToMany(mappedBy = "txOut")
+  private List<MaTxOut> maTxOuts;
 
 }
