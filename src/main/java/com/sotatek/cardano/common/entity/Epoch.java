@@ -66,7 +66,7 @@ public class Epoch extends BaseEntity {
   private Integer maxSlot;
 
   @OneToMany(fetch = FetchType.LAZY)
-  @JoinColumn(name="epoch_no", nullable=false)
+  @JoinColumn(name="epoch_no", insertable=false, updatable=false )
   private Set<Block> blocks;
 
 
