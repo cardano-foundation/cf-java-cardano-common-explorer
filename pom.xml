@@ -44,6 +44,12 @@
 
     </dependency>
 
+    <dependency>
+      <groupId>com.bloxbean.cardano</groupId>
+      <artifactId>cardano-client-lib</artifactId>
+      <version>0.3.0-beta2</version>
+    </dependency>
+
   </dependencies>
 
   <build>

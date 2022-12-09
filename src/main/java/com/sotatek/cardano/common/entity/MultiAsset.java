@@ -1,9 +1,11 @@
 package com.sotatek.cardano.common.entity;
 
+import com.sotatek.cardano.common.enumeration.converter.ByteConverter;
 import com.sotatek.cardano.common.validation.Asset32Type;
 import com.sotatek.cardano.common.validation.Hash28Type;
 import java.math.BigDecimal;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -34,6 +36,7 @@ public class MultiAsset extends BaseEntity {
 
   @Column(name = "name", nullable = false, length = 64)
   @Asset32Type
+  @Convert(converter = ByteConverter.class)
   private String name;
 
   @Column(name = "fingerprint", nullable = false)

@@ -97,4 +97,8 @@ public class Tx extends BaseEntity {
   @OneToMany(mappedBy = "txInput")
   private List<TxIn> txInList;
 
+  public void addScriptSize(int size){
+    this.size += size;
+  }
+
 }
