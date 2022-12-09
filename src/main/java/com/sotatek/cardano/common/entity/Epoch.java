@@ -5,8 +5,12 @@ import com.sotatek.cardano.common.validation.Word128Type;
 import com.sotatek.cardano.common.validation.Word31Type;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
@@ -60,4 +64,10 @@ public class Epoch extends BaseEntity {
 
   @Column(name="max_slot", nullable = false)
   private Integer maxSlot;
+
+  @OneToMany(fetch = FetchType.LAZY)
+  @JoinColumn(name="epoch_no", nullable=false)
+  private Set<Block> blocks;
+
+
 }
