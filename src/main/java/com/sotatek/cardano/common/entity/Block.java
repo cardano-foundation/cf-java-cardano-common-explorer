@@ -54,7 +54,7 @@ public class Block extends BaseEntity {
   
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "slot_leader_id", nullable = true,
+  @JoinColumn(name = "slot_leader_id",
       foreignKey = @ForeignKey(name = "block_slot_leader_id_fkey"))
   @EqualsAndHashCode.Exclude
   private SlotLeader slotLeader;
@@ -90,6 +90,7 @@ public class Block extends BaseEntity {
   private List<Tx> txList;
 
   @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name="no", nullable=false)
+
+  @JoinColumn(name="epoch_no", nullable=false, insertable=false, updatable=false)
   private Epoch epoch;
 }
