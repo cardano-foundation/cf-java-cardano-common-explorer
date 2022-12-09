@@ -59,8 +59,8 @@ public class Block extends BaseEntity {
 //  @EqualsAndHashCode.Exclude
 //  private SlotLeader slotLeader;
 
-  @Column(name = "slot_leader_id", updatable = false, insertable = false)
-  private Long slotLeaderId;
+//  @Column(name = "slot_leader_id", updatable = false, insertable = false)
+//  private Long slotLeaderId;
 
   @Column(name = "size")
   private Integer size;
