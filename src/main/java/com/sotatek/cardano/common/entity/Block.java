@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -91,7 +92,7 @@ public class Block extends BaseEntity {
   @OneToMany(mappedBy = "block")
   private List<Tx> txList;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name="epoch_no", nullable=false, insertable=false, updatable=false)
+  @OneToOne
+  @JoinColumn(name = "epoch_no", referencedColumnName = "no", nullable=false, insertable=false, updatable=false)
   private Epoch epoch;
 }
