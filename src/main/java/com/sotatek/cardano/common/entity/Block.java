@@ -86,11 +86,11 @@ public class Block extends BaseEntity {
   @Column(name = "op_cert_counter")
   private Long opCertCounter;
 
+
   @OneToMany(mappedBy = "block")
   private List<Tx> txList;
 
-  @OneToOne(fetch = FetchType.LAZY)
-
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name="epoch_no", nullable=false, insertable=false, updatable=false)
   private Epoch epoch;
 }
