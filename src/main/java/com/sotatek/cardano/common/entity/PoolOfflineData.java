@@ -1,6 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Hash32Type;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -27,7 +29,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @SuperBuilder(toBuilder = true)
 public class PoolOfflineData extends BaseEntity {
 
@@ -58,4 +59,20 @@ public class PoolOfflineData extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private PoolMetadataRef poolMetadataRef;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
+      return false;
+    }
+    PoolOfflineData that = (PoolOfflineData) o;
+    return id != null && Objects.equals(id, that.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return getClass().hashCode();
+  }
 }
