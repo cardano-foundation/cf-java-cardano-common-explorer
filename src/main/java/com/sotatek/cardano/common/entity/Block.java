@@ -5,9 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -53,7 +51,7 @@ public class Block extends BaseEntity {
   @JoinColumn(name = "previous_id")
   @EqualsAndHashCode.Exclude
   private Block previous;
-
+  
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "slot_leader_id",
@@ -88,11 +86,11 @@ public class Block extends BaseEntity {
   @Column(name = "op_cert_counter")
   private Long opCertCounter;
 
-
   @OneToMany(mappedBy = "block")
   private List<Tx> txList;
 
   @OneToOne(fetch = FetchType.LAZY)
+
   @JoinColumn(name="epoch_no", nullable=false, insertable=false, updatable=false)
   private Epoch epoch;
 }
