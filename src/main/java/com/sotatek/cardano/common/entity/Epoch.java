@@ -67,5 +67,4 @@ public class Epoch extends BaseEntity {
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "epochNo")
   private Set<Block> blocks;
 
-
 }
