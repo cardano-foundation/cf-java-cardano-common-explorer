@@ -6,7 +6,7 @@
 
   <groupId>com.sotatek.cardano</groupId>
   <artifactId>cardano-common-explorer</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.3-SNAPSHOT</version>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -42,6 +42,12 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-jpamodelgen</artifactId>
 
+    </dependency>
+
+    <dependency>
+      <groupId>com.bloxbean.cardano</groupId>
+      <artifactId>cardano-client-lib</artifactId>
+      <version>0.3.0-beta2</version>
     </dependency>
 
   </dependencies>

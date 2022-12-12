@@ -22,10 +22,10 @@ public @interface Asset32Type {
   Class<? extends Payload>[] payload() default { };
 }
 
-class Asset32TypeValidator implements ConstraintValidator<Asset32Type, String> {
+class Asset32TypeValidator implements ConstraintValidator<Asset32Type, byte[]> {
 
   @Override
-  public boolean isValid(String bytes, ConstraintValidatorContext constraintValidatorContext) {
-    return bytes.length() <= 64;
+  public boolean isValid(byte[] data, ConstraintValidatorContext constraintValidatorContext) {
+    return data.length == 32;
   }
 }

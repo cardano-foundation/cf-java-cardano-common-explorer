@@ -37,6 +37,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @SuperBuilder(toBuilder = true)
 public class Tx extends BaseEntity {
 
@@ -114,4 +115,11 @@ public class Tx extends BaseEntity {
   public int hashCode() {
     return getClass().hashCode();
   }
+  public void addScriptSize(int size){
+    if(this.size == null){
+      this.size = 0;
+    }
+    this.size += size;
+  }
+
 }

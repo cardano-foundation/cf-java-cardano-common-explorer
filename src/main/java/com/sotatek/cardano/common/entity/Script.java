@@ -1,6 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.enumeration.ScriptType;
+import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Word31Type;
 import java.util.Objects;
@@ -39,7 +40,7 @@ public class Script extends BaseEntity {
   private Tx tx;
 
   @Column(name = "hash", nullable = false, length = 64)
-  @Hash32Type
+  @Hash28Type
   private String hash;
 
   @Column(name = "type", nullable = false)

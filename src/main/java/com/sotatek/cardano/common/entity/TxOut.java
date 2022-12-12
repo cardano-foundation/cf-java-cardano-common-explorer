@@ -1,6 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.enumeration.TokenType;
+import com.sotatek.cardano.common.enumeration.TxOutType;
 import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
@@ -106,6 +107,10 @@ public class TxOut extends BaseEntity {
 
   @OneToMany(mappedBy = "txOut")
   private List<MaTxOut> maTxOuts;
+
+  @Column(name = "tx_out_type")
+  @Enumerated(EnumType.STRING)
+  private TxOutType txOutType;
 
   @Override
   public boolean equals(Object o) {
