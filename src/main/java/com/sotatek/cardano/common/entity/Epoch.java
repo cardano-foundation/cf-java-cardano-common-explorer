@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -64,7 +65,8 @@ public class Epoch extends BaseEntity {
   @Column(name="max_slot", nullable = false)
   private Integer maxSlot;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "epochNo")
+  @OneToMany(fetch = FetchType.LAZY)
+  @JoinColumn(name = "epoch_no" ,insertable =false, updatable = false)
   private Set<Block> blocks;
 
   @Override

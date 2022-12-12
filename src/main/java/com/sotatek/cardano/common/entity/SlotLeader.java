@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
@@ -37,10 +38,9 @@ public class SlotLeader extends BaseEntity {
   @Hash28Type
   private String hash;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
   @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "pool_hash_id",
-      foreignKey = @ForeignKey(name = "slot_leader_pool_hash_id_fkey"))
+  @JoinColumn(name = "pool_hash_id")
   @EqualsAndHashCode.Exclude
   private PoolHash poolHash;
 
