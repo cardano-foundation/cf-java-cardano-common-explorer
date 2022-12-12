@@ -1,12 +1,14 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.enumeration.TokenType;
+import com.sotatek.cardano.common.enumeration.TxOutType;
 import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.TxIndex;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -25,6 +27,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -38,7 +41,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 @SuperBuilder(toBuilder = true)
 public class TxOut extends BaseEntity {
 
@@ -106,4 +108,24 @@ public class TxOut extends BaseEntity {
   @OneToMany(mappedBy = "txOut")
   private List<MaTxOut> maTxOuts;
 
+  @Column(name = "tx_out_type")
+  @Enumerated(EnumType.STRING)
+  private TxOutType txOutType;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
+      return false;
+    }
+    TxOut txOut = (TxOut) o;
+    return id != null && Objects.equals(id, txOut.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return getClass().hashCode();
+  }
 }
