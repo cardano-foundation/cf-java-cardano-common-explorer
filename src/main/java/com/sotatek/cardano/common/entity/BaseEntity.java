@@ -22,12 +22,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @NoArgsConstructor
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
+@EqualsAndHashCode(of = "id")
 public class BaseEntity implements Serializable {
 
   @Id
   @Column(name = "id", nullable = false, insertable = false, updatable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @EqualsAndHashCode.Include
   protected Long id;
 
 /*  @Column(name = "created_at")

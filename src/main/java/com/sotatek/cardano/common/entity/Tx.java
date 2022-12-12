@@ -6,6 +6,7 @@ import com.sotatek.cardano.common.validation.Word31Type;
 import com.sotatek.cardano.common.validation.Word64Type;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +23,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -96,5 +98,28 @@ public class Tx extends BaseEntity {
 
   @OneToMany(mappedBy = "txInput")
   private List<TxIn> txInList;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
+      return false;
+    }
+    Tx tx = (Tx) o;
+    return id != null && Objects.equals(id, tx.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return getClass().hashCode();
+  }
+  public void addScriptSize(int size){
+    if(this.size == null){
+      this.size = 0;
+    }
+    this.size += size;
+  }
 
 }
