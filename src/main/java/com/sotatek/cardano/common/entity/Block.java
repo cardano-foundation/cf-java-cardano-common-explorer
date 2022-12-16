@@ -91,9 +91,9 @@ public class Block extends BaseEntity {
   @OneToMany(mappedBy = "block")
   private List<Tx> txList;
 
-  @OneToOne
-  @JoinColumn(name = "epoch_no", referencedColumnName = "no", nullable=false, insertable=false, updatable=false)
-  private Epoch epoch;
+//  @OneToOne
+//  @JoinColumn(name = "epoch_no", referencedColumnName = "no", nullable=false, insertable=false, updatable=false)
+//  private Epoch epoch;
 
   @Override
   public boolean equals(Object o) {

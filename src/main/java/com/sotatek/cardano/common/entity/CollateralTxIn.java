@@ -1,5 +1,6 @@
 package com.sotatek.cardano.common.entity;
 
+import com.sotatek.cardano.common.enumeration.CollateralInType;
 import com.sotatek.cardano.common.validation.TxIndex;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -49,6 +50,9 @@ public class CollateralTxIn extends BaseEntity {
   @Column(name = "tx_out_index", nullable = false)
   @TxIndex
   private Short txOutIndex;
+
+  @Column(name = "type", nullable = false)
+  private CollateralInType collateralInType;
 
   @Override
   public boolean equals(Object o) {

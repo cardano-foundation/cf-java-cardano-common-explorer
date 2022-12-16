@@ -1,5 +1,6 @@
 package com.sotatek.cardano.common.entity;
 
+import com.sotatek.cardano.common.enumeration.TxInType;
 import com.sotatek.cardano.common.validation.TxIndex;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -8,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,11 +22,11 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-//@Table(name = "tx_in", uniqueConstraints = {
-//    @UniqueConstraint(name = "unique_txin",
-//        columnNames = {"tx_out_id", "tx_out_index"}
-//    )
-//})
+@Table(name = "tx_in", uniqueConstraints = {
+    @UniqueConstraint(name = "unique_txin",
+        columnNames = {"tx_out_id", "tx_out_index"}
+    )
+})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -61,6 +64,9 @@ public class TxIn extends BaseEntity {
       foreignKey = @ForeignKey(name = "tx_in_redeemer_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Redeemer redeemer;
+
+  @Column(name = "type", nullable = false)
+  private TxInType txInType;
 
   @Override
   public boolean equals(Object o) {

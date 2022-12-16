@@ -11,15 +11,11 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -32,11 +28,11 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "tx_out", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_txout",
-        columnNames = {"tx_id", "index"}
-    )
-})
+//@Table(name = "tx_out", uniqueConstraints = {
+//    @UniqueConstraint(name = "unique_txout",
+//        columnNames = {"tx_id", "index"}
+//    )
+//})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -80,8 +76,7 @@ public class TxOut extends BaseEntity {
   @Digits(integer = 20, fraction = 0)
   private BigDecimal value;
 
-  @Column(name = "token_type")
-  @Enumerated(EnumType.STRING)
+  @Column(name = "token_type", nullable = false)
   private TokenType tokenType;
 
   @Column(name = "has_used")
@@ -108,8 +103,7 @@ public class TxOut extends BaseEntity {
   @OneToMany(mappedBy = "txOut")
   private List<MaTxOut> maTxOuts;
 
-  @Column(name = "tx_out_type")
-  @Enumerated(EnumType.STRING)
+  @Column(name = "tx_out_type", nullable = false)
   private TxOutType txOutType;
 
   @Override

@@ -37,7 +37,7 @@ public class PoolHash extends BaseEntity {
   private String view;
 
   @Digits(integer = 20, fraction = 0)
-  @Column(name = "pool_size", nullable = false)
+  @Column(name = "pool_size", nullable = false, precision = 20)
   private BigDecimal poolSize;
 
   @OneToMany(mappedBy = "poolHash")

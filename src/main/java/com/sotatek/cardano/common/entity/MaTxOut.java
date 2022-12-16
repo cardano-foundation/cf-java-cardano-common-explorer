@@ -49,7 +49,7 @@ public class MaTxOut extends BaseEntity {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "tx_out_id", nullable = false,
-      foreignKey = @ForeignKey(name = "ma_tx_out_ident_fkey"))
+      foreignKey = @ForeignKey(name = "ma_tx_out_tx_out_id_fkey"))
   @EqualsAndHashCode.Exclude
   private TxOut txOut;
 

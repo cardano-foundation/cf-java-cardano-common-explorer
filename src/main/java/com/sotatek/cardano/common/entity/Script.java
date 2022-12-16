@@ -2,7 +2,6 @@ package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.enumeration.ScriptType;
 import com.sotatek.cardano.common.validation.Hash28Type;
-import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Word31Type;
 import java.util.Objects;
 import javax.persistence.Column;
