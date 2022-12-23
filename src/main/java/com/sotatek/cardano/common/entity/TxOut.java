@@ -1,7 +1,6 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.enumeration.TokenType;
-import com.sotatek.cardano.common.enumeration.TxOutType;
 import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
@@ -16,6 +15,8 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -28,11 +29,11 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-//@Table(name = "tx_out", uniqueConstraints = {
-//    @UniqueConstraint(name = "unique_txout",
-//        columnNames = {"tx_id", "index"}
-//    )
-//})
+@Table(name = "tx_out", uniqueConstraints = {
+    @UniqueConstraint(name = "unique_txout",
+        columnNames = {"tx_id", "index"}
+    )
+})
 @Getter
 @Setter
 @NoArgsConstructor
@@ -102,9 +103,6 @@ public class TxOut extends BaseEntity {
 
   @OneToMany(mappedBy = "txOut")
   private List<MaTxOut> maTxOuts;
-
-  @Column(name = "tx_out_type", nullable = false)
-  private TxOutType txOutType;
 
   @Override
   public boolean equals(Object o) {

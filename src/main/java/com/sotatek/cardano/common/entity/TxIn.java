@@ -1,6 +1,5 @@
 package com.sotatek.cardano.common.entity;
 
-import com.sotatek.cardano.common.enumeration.TxInType;
 import com.sotatek.cardano.common.validation.TxIndex;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -64,9 +63,6 @@ public class TxIn extends BaseEntity {
       foreignKey = @ForeignKey(name = "tx_in_redeemer_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Redeemer redeemer;
-
-  @Column(name = "type", nullable = false)
-  private TxInType txInType;
 
   @Override
   public boolean equals(Object o) {

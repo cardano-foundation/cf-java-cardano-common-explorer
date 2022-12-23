@@ -1,6 +1,6 @@
 package com.sotatek.cardano.common.entity;
 
-import com.sotatek.cardano.common.enumeration.CollateralInType;
+
 import com.sotatek.cardano.common.validation.TxIndex;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "collateral_tx_in", uniqueConstraints = {
+@Table(name = "unconsume_tx_in", uniqueConstraints = {
     @UniqueConstraint(name = "unique_col_txin",
         columnNames = {"tx_in_id","tx_out_id", "tx_out_index"})
 })
@@ -31,19 +31,19 @@ import org.hibernate.annotations.OnDeleteAction;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class CollateralTxIn extends BaseEntity {
+public class UnconsumeTxIn extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "tx_in_id", nullable = false,
-      foreignKey = @ForeignKey(name = "collateral_tx_in_tx_in_id_fkey"))
+      foreignKey = @ForeignKey(name = "unsconume_tx_in_tx_in_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Tx txIn;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "tx_out_id", nullable = false,
-      foreignKey = @ForeignKey(name = "collateral_tx_in_tx_out_id_fkey"))
+      foreignKey = @ForeignKey(name = "unsconume_tx_in_tx_out_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Tx txOut;
 
@@ -51,8 +51,6 @@ public class CollateralTxIn extends BaseEntity {
   @TxIndex
   private Short txOutIndex;
 
-  @Column(name = "type", nullable = false)
-  private CollateralInType collateralInType;
 
   @Override
   public boolean equals(Object o) {
@@ -62,7 +60,7 @@ public class CollateralTxIn extends BaseEntity {
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
       return false;
     }
-    CollateralTxIn that = (CollateralTxIn) o;
+    UnconsumeTxIn that = (UnconsumeTxIn) o;
     return id != null && Objects.equals(id, that.id);
   }
 

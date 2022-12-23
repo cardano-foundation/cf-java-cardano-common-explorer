@@ -26,8 +26,8 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "collateral_tx_out", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_col_txout",
+@Table(name = "failed_tx_out", uniqueConstraints = {
+    @UniqueConstraint(name = "unique_col_failed_txout",
         columnNames = {"tx_id", "index"})
 })
 @Getter
@@ -35,12 +35,12 @@ import org.hibernate.annotations.OnDeleteAction;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class CollateralTxOut extends BaseEntity {
+public class FailedTxOut extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "tx_id", nullable = false,
-      foreignKey = @ForeignKey(name = "collateral_tx_out_tx_id_fkey"))
+      foreignKey = @ForeignKey(name = "failed_tx_out_tx_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
@@ -102,7 +102,7 @@ public class CollateralTxOut extends BaseEntity {
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
       return false;
     }
-    CollateralTxOut that = (CollateralTxOut) o;
+    FailedTxOut that = (FailedTxOut) o;
     return id != null && Objects.equals(id, that.id);
   }
 
