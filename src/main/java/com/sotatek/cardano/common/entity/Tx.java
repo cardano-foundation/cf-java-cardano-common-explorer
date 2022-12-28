@@ -7,6 +7,7 @@ import com.sotatek.cardano.common.validation.Word64Type;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,6 +27,8 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "tx", uniqueConstraints = {
@@ -33,6 +36,8 @@ import org.hibernate.annotations.OnDeleteAction;
         columnNames = {"hash"}
     )
 })
+@Where(clause = "is_deleted is null or is_deleted = false")
+@SQLDelete(sql = "update tx set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -93,11 +98,73 @@ public class Tx extends BaseEntity {
   @Word31Type
   private Integer scriptSize;
 
-  @OneToMany(mappedBy = "tx")
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
   private List<TxOut> txOutList;
 
-  @OneToMany(mappedBy = "txInput")
+  @OneToMany(mappedBy = "txInput", cascade = CascadeType.REMOVE)
   private List<TxIn> txInList;
+
+  // For soft deletion -- start
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<StakeAddress> stakeAddressList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<FailedTxOut> failedTxOutList;
+
+  @OneToMany(mappedBy = "registeredTx", cascade = CascadeType.REMOVE)
+  private List<PoolMetadataRef> poolMetadataRefList;
+
+  @OneToMany(mappedBy = "registeredTx", cascade = CascadeType.REMOVE)
+  private List<PoolUpdate> poolUpdateList;
+
+  @OneToMany(mappedBy = "announcedTx", cascade = CascadeType.REMOVE)
+  private List<PoolRetire> poolRetireList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<StakeRegistration> stakeRegistrationList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<StakeDeregistration> stakeDeregistrationList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<Delegation> delegationList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<TxMetadata> txMetadataList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<Withdrawal> withdrawalList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<Treasury> treasuryList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<Reserve> reserveList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<PotTransfer> potTransferList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<MaTxMint> maTxMintList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<Redeemer> redeemerList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<RedeemerData> redeemerDataList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<Script> scriptList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<Datum> datumList;
+
+  @OneToMany(mappedBy = "tx", cascade = CascadeType.REMOVE)
+  private List<ExtraKeyWitness> extraKeyWitnessList;
+
+  @OneToMany(mappedBy = "txIn", cascade = CascadeType.REMOVE)
+  private List<ReferenceTxIn> referenceTxInList;
+  // For soft deletion -- end
 
   @Override
   public boolean equals(Object o) {

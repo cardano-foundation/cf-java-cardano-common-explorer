@@ -14,12 +14,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "pool_stake", uniqueConstraints = {
     @UniqueConstraint(name = "uni_pool_id",
         columnNames = {"pool_id"})
 })
+@Where(clause = "is_deleted is null or is_deleted = false")
 @Getter
 @Setter
 @NoArgsConstructor
