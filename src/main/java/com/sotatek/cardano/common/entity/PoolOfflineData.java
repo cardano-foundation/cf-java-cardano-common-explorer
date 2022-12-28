@@ -42,6 +42,9 @@ public class PoolOfflineData extends BaseEntity {
   @Column(name = "ticker_name", nullable = false)
   private String tickerName;
 
+  @Column(name = "pool_name", nullable = false)
+  private String poolName;
+
   @Column(name = "hash", nullable = false, length = 64)
   @Hash32Type
   private String hash;
