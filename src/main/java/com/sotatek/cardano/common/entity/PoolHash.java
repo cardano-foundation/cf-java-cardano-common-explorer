@@ -43,8 +43,8 @@ public class PoolHash extends BaseEntity {
   @OneToMany(mappedBy = "poolHash")
   private List<Delegation> delegations;
 
-  @Column(name = "epoch_no")
-  private Integer epochNo;
+//  @Column(name = "epoch_no")
+//  private Integer epochNo;
 
   @Override
   public boolean equals(Object o) {
