@@ -40,6 +40,9 @@ public class PoolHash extends BaseEntity {
   @Column(name = "pool_size", nullable = false, precision = 20)
   private BigDecimal poolSize;
 
+  @Column(name = "epoch_no")
+  private Integer epochNo;
+
   @OneToMany(mappedBy = "poolHash")
   private List<Delegation> delegations;
 
