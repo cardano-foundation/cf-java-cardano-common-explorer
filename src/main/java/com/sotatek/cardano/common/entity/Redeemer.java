@@ -56,7 +56,7 @@ public class Redeemer extends BaseEntity {
   @Column(name = "fee", precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal announcedTxId;
+  private BigDecimal fee;
 
   @Column(name = "purpose", nullable = false)
   private ScriptPurposeType purpose;
