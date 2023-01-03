@@ -17,12 +17,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "multi_asset", uniqueConstraints = {
     @UniqueConstraint(name = "unique_multi_asset",
         columnNames = {"policy", "name"})
 })
+@Where(clause = "is_deleted is null or is_deleted = false")
+@SQLDelete(sql = "update multi_asset set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor

@@ -8,6 +8,7 @@ import com.sotatek.cardano.common.validation.TxIndex;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,6 +28,8 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "tx_out", uniqueConstraints = {
@@ -34,6 +37,8 @@ import org.hibernate.annotations.OnDeleteAction;
         columnNames = {"tx_id", "index"}
     )
 })
+@Where(clause = "is_deleted is null or is_deleted = false")
+@SQLDelete(sql = "update tx_out set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -101,7 +106,7 @@ public class TxOut extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Script referenceScript;
 
-  @OneToMany(mappedBy = "txOut")
+  @OneToMany(mappedBy = "txOut", cascade = CascadeType.REMOVE)
   private List<MaTxOut> maTxOuts;
 
   @Override

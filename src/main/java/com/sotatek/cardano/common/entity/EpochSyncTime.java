@@ -13,12 +13,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "epoch_sync_time", uniqueConstraints = {
     @UniqueConstraint(name = "unique_epoch_sync_time",
         columnNames = {"no"})
 })
+@Where(clause = "is_deleted is null or is_deleted = false")
+@SQLDelete(sql = "update epoch_sync_time set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor

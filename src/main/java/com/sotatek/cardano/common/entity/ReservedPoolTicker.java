@@ -12,12 +12,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "reserved_pool_ticker", uniqueConstraints = {
     @UniqueConstraint(name = "unique_reserved_pool_ticker",
         columnNames = {"name"})
 })
+@Where(clause = "is_deleted is null or is_deleted = false")
+@SQLDelete(sql = "update reserved_pool_ticker set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
