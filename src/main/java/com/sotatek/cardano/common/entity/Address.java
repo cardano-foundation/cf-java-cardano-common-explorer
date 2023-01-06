@@ -1,7 +1,5 @@
 package com.sotatek.cardano.common.entity;
 
-import com.sotatek.cardano.common.validation.Addr29Type;
-import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Word128Type;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -12,10 +10,8 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,37 +19,36 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.Where;
 
 @Entity
-@Table(name = "stake_address", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_stake_address",
-        columnNames = {"hash_raw"}
-    )
-})
+@Table(name = "address")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class StakeAddress extends BaseEntity {
+@Where(clause = "is_deleted = false")
+public class Address extends BaseEntity{
+  @Column(name = "address", nullable = false, length = 65535)
+  private String address;
 
-  @Column(name = "hash_raw", nullable = false)
-  @Addr29Type
-  private String hashRaw;
+  @Column(name = "tx_count")
+  private Long txCount;
 
-  @Column(name = "view", nullable = false, length = 65535)
-  private String view;
+  @Column(name = "balance", nullable = false, precision = 39)
+  @Word128Type
+  @Digits(integer = 39, fraction = 0)
+  private BigDecimal balance;
 
-  @Column(name = "script_hash", length = 56)
-  @Hash28Type
-  private String scriptHash;
+  @Column(name = "address_has_script", nullable = false)
+  private Boolean addressHasScript;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(fetch = FetchType.LAZY)
   @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "tx_id", nullable = false,
-      foreignKey = @ForeignKey(name = "stake_address_tx_id_fkey"))
-  @EqualsAndHashCode.Exclude
-  private Tx tx;
+  @JoinColumn(name = "stake_address_id",
+      foreignKey = @ForeignKey(name = "address_stake_address_id_fkey"))
+  private StakeAddress stakeAddress;
 
   @Override
   public boolean equals(Object o) {
@@ -63,8 +58,8 @@ public class StakeAddress extends BaseEntity {
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
       return false;
     }
-    StakeAddress that = (StakeAddress) o;
-    return id != null && Objects.equals(id, that.id);
+    Address address = (Address) o;
+    return id != null && Objects.equals(id, address.id);
   }
 
   @Override

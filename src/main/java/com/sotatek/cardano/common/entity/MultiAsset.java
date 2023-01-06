@@ -4,10 +4,12 @@ import com.sotatek.cardano.common.enumeration.converter.ByteConverter;
 import com.sotatek.cardano.common.validation.Asset32Type;
 import com.sotatek.cardano.common.validation.Hash28Type;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
@@ -48,6 +50,12 @@ public class MultiAsset extends BaseEntity {
   @Column(name = "supply", precision = 23)
   @Digits(integer = 23, fraction = 0)
   private BigDecimal supply;
+
+  @Column(name = "time")
+  private Timestamp time;
+
+  @OneToOne( mappedBy = "multiAsset")
+  private AssetMetadata metadata;
 
   @Override
   public boolean equals(Object o) {
