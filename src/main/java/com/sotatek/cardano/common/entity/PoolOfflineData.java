@@ -1,6 +1,5 @@
 package com.sotatek.cardano.common.entity;
 
-import com.sotatek.cardano.common.validation.Hash32Type;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -50,7 +49,7 @@ public class PoolOfflineData extends BaseEntity {
   private String poolName;
 
   @Column(name = "hash", nullable = false, length = 64)
-  @Hash32Type
+  //@Hash32Type
   private String hash;
 
   @Column(name = "json", nullable = false, length = 65535)
@@ -58,6 +57,12 @@ public class PoolOfflineData extends BaseEntity {
 
   @Column(name = "bytes")
   private byte[] bytes;
+
+  @Column(name = "pmr_id", insertable = false, updatable = false)
+  private Long pmrId;
+
+  @Column(name = "pool_id", insertable = false, updatable = false)
+  private Long poolId;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
