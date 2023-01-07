@@ -25,16 +25,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "param_proposal", uniqueConstraints = {
     @UniqueConstraint(name = "unique_param_proposal",
         columnNames = {"key", "registered_tx_id"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update param_proposal set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
