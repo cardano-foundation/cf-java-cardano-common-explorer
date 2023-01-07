@@ -18,8 +18,6 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "slot_leader", uniqueConstraints = {
@@ -27,8 +25,6 @@ import org.hibernate.annotations.Where;
         columnNames = {"hash"}
     )
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update slot_leader set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
