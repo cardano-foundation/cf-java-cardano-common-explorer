@@ -3,7 +3,6 @@ package com.sotatek.cardano.common.entity;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,14 +21,10 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "block", uniqueConstraints = {
     @UniqueConstraint(name = "unique_block", columnNames = {"hash"})})
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update block set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -92,19 +87,9 @@ public class Block extends BaseEntity {
   @Column(name = "op_cert_counter")
   private Long opCertCounter;
 
-  // For soft deletion -- start
-  @OneToMany(mappedBy = "block", cascade = CascadeType.REMOVE)
+
+  @OneToMany(mappedBy = "block")
   private List<Tx> txList;
-
-  @OneToMany(mappedBy = "block", cascade = CascadeType.REMOVE)
-  private List<AdaPots> adaPotsList;
-
-  @OneToMany(mappedBy = "block", cascade = CascadeType.REMOVE)
-  private List<CostModel> costModelList;
-
-  @OneToMany(mappedBy = "block", cascade = CascadeType.REMOVE)
-  private List<EpochParam> epochParamList;
-  // For soft deletion -- end
 
 //  @OneToOne
 //  @JoinColumn(name = "epoch_no", referencedColumnName = "no", nullable=false, insertable=false, updatable=false)
