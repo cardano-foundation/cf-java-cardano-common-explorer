@@ -2,7 +2,7 @@ package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.enumeration.RewardType;
 import com.sotatek.cardano.common.validation.Lovelace;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,16 +22,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "reward", uniqueConstraints = {
     @UniqueConstraint(name = "unique_reward",
         columnNames = {"addr_id", "type", "earned_epoch", "pool_id"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update reward set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -46,19 +42,22 @@ public class Reward extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
 
+  @Column(name = "addr_id", updatable = false, insertable = false)
+  private Long stakeAddressId;
+
   @Column(name = "type", nullable = false)
   private RewardType type;
 
   @Column(name = "amount", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal amount;
+  private BigInteger amount;
 
   @Column(name = "earned_epoch", nullable = false)
-  private Long earnedEpoch;
+  private Integer earnedEpoch;
 
   @Column(name = "spendable_epoch", nullable = false)
-  private Long spendableEpoch;
+  private Integer spendableEpoch;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @OnDelete(action = OnDeleteAction.CASCADE)
@@ -66,6 +65,9 @@ public class Reward extends BaseEntity {
       foreignKey = @ForeignKey(name = "reward_pool_id_fkey"))
   @EqualsAndHashCode.Exclude
   private PoolHash pool;
+
+  @Column(name = "pool_id", updatable = false, insertable = false)
+  private Long poolId;
 
   @Override
   public boolean equals(Object o) {

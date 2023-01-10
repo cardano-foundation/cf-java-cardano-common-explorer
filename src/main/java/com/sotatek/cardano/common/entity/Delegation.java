@@ -19,16 +19,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "delegation", uniqueConstraints = {
     @UniqueConstraint(name = "unique_delegation",
         columnNames = {"tx_id", "cert_index"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update delegation set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -73,6 +69,9 @@ public class Delegation extends BaseEntity {
       foreignKey = @ForeignKey(name = "delegation_redeemer_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Redeemer redeemer;
+
+  @Column(name = "addr_id", updatable = false, insertable = false)
+  private Long stakeAddressId;
 
   @Override
   public boolean equals(Object o) {

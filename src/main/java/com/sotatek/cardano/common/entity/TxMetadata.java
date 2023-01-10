@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Word64Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,8 +21,6 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "tx_metadata", uniqueConstraints = {
@@ -30,8 +28,6 @@ import org.hibernate.annotations.Where;
         columnNames = {"key", "tx_id"}
     )
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update tx_metadata set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -42,7 +38,7 @@ public class TxMetadata extends BaseEntity {
   @Column(name = "key", nullable = false, precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal key;
+  private BigInteger key;
 
   @Column(name = "json", length = 65535)
   private String json;

@@ -1,9 +1,10 @@
 package com.sotatek.cardano.common.entity;
 
+import com.sotatek.cardano.common.enumeration.EraType;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word128Type;
 import com.sotatek.cardano.common.validation.Word31Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "epoch", uniqueConstraints = {
@@ -28,17 +30,18 @@ import org.hibernate.Hibernate;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
+@DynamicUpdate
 public class Epoch extends BaseEntity {
 
   @Column(name = "out_sum", nullable = false, precision = 39)
   @Word128Type
   @Digits(integer = 39, fraction = 0)
-  private BigDecimal outSum;
+  private BigInteger outSum;
 
   @Column(name = "fees", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal fees;
+  private BigInteger fees;
 
   @Column(name = "tx_count", nullable = false)
   @Word31Type
@@ -60,6 +63,14 @@ public class Epoch extends BaseEntity {
 
   @Column(name="max_slot", nullable = false)
   private Integer maxSlot;
+
+  @Column(name="era", nullable = false)
+  private EraType era;
+
+  @Column(name = "rewards_distributed")
+  @Digits(integer = 20, fraction = 0)
+  @Lovelace
+  private BigInteger rewardsDistributed;
 
 /*  @OneToMany(fetch = FetchType.LAZY)
   @JoinColumn(name = "epoch_no" ,insertable =false, updatable = false)

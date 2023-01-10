@@ -4,7 +4,7 @@ import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.TxIndex;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,16 +24,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "failed_tx_out", uniqueConstraints = {
     @UniqueConstraint(name = "unique_col_failed_txout",
         columnNames = {"tx_id", "index"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update failed_tx_out set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -75,7 +71,7 @@ public class FailedTxOut extends BaseEntity {
   @Column(name = "value", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal value;
+  private BigInteger value;
 
   @Column(name = "data_hash", length = 64)
   @Hash32Type

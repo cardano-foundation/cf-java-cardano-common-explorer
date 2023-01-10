@@ -3,7 +3,8 @@ package com.sotatek.cardano.common.entity;
 import com.sotatek.cardano.common.enumeration.converter.ByteConverter;
 import com.sotatek.cardano.common.validation.Asset32Type;
 import com.sotatek.cardano.common.validation.Hash28Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -17,16 +18,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "multi_asset", uniqueConstraints = {
     @UniqueConstraint(name = "unique_multi_asset",
         columnNames = {"policy", "name"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update multi_asset set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -51,7 +48,14 @@ public class MultiAsset extends BaseEntity {
 
   @Column(name = "supply", precision = 23)
   @Digits(integer = 23, fraction = 0)
-  private BigDecimal supply;
+  private BigInteger supply;
+
+  @Column(name = "total_volume", precision = 40)
+  @Digits(integer = 40, fraction = 0)
+  private BigInteger totalVolume;
+
+  @Column(name = "time")
+  private Timestamp time;
 
   @Override
   public boolean equals(Object o) {

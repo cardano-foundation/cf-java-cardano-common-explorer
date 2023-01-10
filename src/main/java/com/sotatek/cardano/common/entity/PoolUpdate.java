@@ -2,7 +2,7 @@ package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,16 +22,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "pool_update", uniqueConstraints = {
     @UniqueConstraint(name = "unique_pool_update",
         columnNames = {"registered_tx_id", "cert_index"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update pool_update set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -46,6 +42,9 @@ public class PoolUpdate extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private PoolHash poolHash;
 
+  @Column(name = "hash_id", updatable = false, insertable = false)
+  private Long poolHashId;
+
   @Column(name = "cert_index", nullable = false)
   private Integer certIndex;
 
@@ -56,7 +55,7 @@ public class PoolUpdate extends BaseEntity {
   @Column(name = "pledge", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal pledge;
+  private BigInteger pledge;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
@@ -65,8 +64,11 @@ public class PoolUpdate extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress rewardAddr;
 
+  @Column(name = "reward_addr_id", updatable = false, insertable = false)
+  private Long rewardAddrId;
+
   @Column(name = "active_epoch_no", nullable = false)
-  private Long activeEpochNo;
+  private Integer activeEpochNo;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @OnDelete(action = OnDeleteAction.CASCADE)
@@ -81,7 +83,7 @@ public class PoolUpdate extends BaseEntity {
   @Column(name = "fixed_cost", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal fixedCost;
+  private BigInteger fixedCost;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
@@ -89,6 +91,9 @@ public class PoolUpdate extends BaseEntity {
       foreignKey = @ForeignKey(name = "pool_update_registered_tx_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Tx registeredTx;
+
+  @Column(name = "registered_tx_id", updatable = false, insertable = false)
+  private Long registeredTxId;
 
   @Override
   public boolean equals(Object o) {

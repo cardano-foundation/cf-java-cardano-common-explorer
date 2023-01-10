@@ -12,16 +12,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "meta", uniqueConstraints = {
     @UniqueConstraint(name = "unique_meta",
         columnNames = {"start_time"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update meta set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor

@@ -18,16 +18,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "pool_retire", uniqueConstraints = {
     @UniqueConstraint(name = "unique_pool_retiring",
         columnNames = {"announced_tx_id", "cert_index"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update pool_retire set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -41,6 +37,9 @@ public class PoolRetire extends BaseEntity {
       foreignKey = @ForeignKey(name = "pool_retire_hash_id_fkey"))
   private PoolHash poolHash;
 
+  @Column(name = "hash_id", updatable = false, insertable = false)
+  private Long poolHashId;
+
   @Column(name = "cert_index", nullable = false)
   private Integer certIndex;
 
@@ -49,6 +48,9 @@ public class PoolRetire extends BaseEntity {
   @JoinColumn(name = "announced_tx_id", nullable = false,
       foreignKey = @ForeignKey(name = "pool_retire_announced_tx_id_fkey"))
   private Tx announcedTx;
+
+  @Column(name = "announced_tx_id", updatable = false, insertable = false)
+  private Long announcedTxId;
 
   @Column(name = "retiring_epoch", nullable = false)
   @Word31Type

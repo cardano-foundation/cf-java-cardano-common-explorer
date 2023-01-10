@@ -5,7 +5,7 @@ import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word31Type;
 import com.sotatek.cardano.common.validation.Word63Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,16 +25,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "redeemer", uniqueConstraints = {
     @UniqueConstraint(name = "unique_redeemer",
         columnNames = {"tx_id", "purpose", "index"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update redeemer set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -60,7 +56,7 @@ public class Redeemer extends BaseEntity {
   @Column(name = "fee", precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal fee;
+  private BigInteger fee;
 
   @Column(name = "purpose", nullable = false)
   private ScriptPurposeType purpose;

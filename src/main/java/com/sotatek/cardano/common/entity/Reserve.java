@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Int65Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,16 +21,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "reserve", uniqueConstraints = {
     @UniqueConstraint(name = "unique_reserves",
         columnNames = {"addr_id", "tx_id", "cert_index"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update reserve set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -58,7 +54,7 @@ public class Reserve extends BaseEntity {
   @Column(name = "amount", nullable = false, precision = 20)
   @Int65Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal amount;
+  private BigInteger amount;
 
   @Override
   public boolean equals(Object o) {

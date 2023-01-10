@@ -4,31 +4,20 @@ import com.sotatek.cardano.common.validation.Hash32Type;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "cost_model", uniqueConstraints = {
     @UniqueConstraint(name = "unique_cost_model",
         columnNames = {"hash"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update cost_model set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -39,12 +28,6 @@ public class CostModel extends BaseEntity {
   @Column(name = "costs", nullable = false, length = 65535)
   private String costs;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "block_id", nullable = false,
-      foreignKey = @ForeignKey(name = "cost_model_block_id_fkey"))
-  @EqualsAndHashCode.Exclude
-  private Block block;
 
   @Column(name = "hash", nullable = false, length = 64)
   @Hash32Type
@@ -59,6 +42,11 @@ public class CostModel extends BaseEntity {
       return false;
     }
     CostModel costModel = (CostModel) o;
+
+    if(Objects.isNull(id) && Objects.nonNull(hash)){
+      return hash.equals(costModel.getHash());
+    }
+
     return id != null && Objects.equals(id, costModel.id);
   }
 

@@ -4,7 +4,7 @@ import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word31Type;
 import com.sotatek.cardano.common.validation.Word64Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,16 +24,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "epoch_param", uniqueConstraints = {
     @UniqueConstraint(name = "unique_epoch_param",
         columnNames = {"epoch_no", "block_id"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update epoch_param set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -68,12 +64,12 @@ public class EpochParam extends BaseEntity {
   @Column(name = "key_deposit", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal keyDeposit;
+  private BigInteger keyDeposit;
 
   @Column(name = "pool_deposit", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal poolDeposit;
+  private BigInteger poolDeposit;
 
   @Column(name = "max_epoch", nullable = false)
   @Word31Type
@@ -110,12 +106,12 @@ public class EpochParam extends BaseEntity {
   @Column(name = "min_utxo_value", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal minUtxoValue;
+  private BigInteger minUtxoValue;
 
   @Column(name = "min_pool_cost", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal minPoolCost;
+  private BigInteger minPoolCost;
 
   @Column(name = "nonce", length = 64)
   @Hash32Type
@@ -124,7 +120,7 @@ public class EpochParam extends BaseEntity {
   @Column(name = "coins_per_utxo_size", precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal coinsPerUtxoSize;
+  private BigInteger coinsPerUtxoSize;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @OnDelete(action = OnDeleteAction.CASCADE)
@@ -142,27 +138,27 @@ public class EpochParam extends BaseEntity {
   @Column(name = "max_tx_ex_mem", precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal maxTxExMem;
+  private BigInteger maxTxExMem;
 
   @Column(name = "max_tx_ex_steps", precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal maxTxExSteps;
+  private BigInteger maxTxExSteps;
 
   @Column(name = "max_block_ex_mem", precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal maxBlockExMem;
+  private BigInteger maxBlockExMem;
 
   @Column(name = "max_block_ex_steps", precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal maxBlockExSteps;
+  private BigInteger maxBlockExSteps;
 
   @Column(name = "max_val_size", precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal maxValSize;
+  private BigInteger maxValSize;
 
   @Column(name = "collateral_percent")
   @Word31Type

@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Lovelace;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,8 +21,6 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "withdrawal", uniqueConstraints = {
@@ -30,8 +28,6 @@ import org.hibernate.annotations.Where;
         columnNames = {"addr_id", "tx_id"}
     )
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update withdrawal set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -46,10 +42,13 @@ public class Withdrawal extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
 
+  @Column(name = "addr_id", updatable = false, insertable = false)
+  private Long stakeAddressId;
+
   @Column(name = "amount", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal amount;
+  private BigInteger amount;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @OnDelete(action = OnDeleteAction.CASCADE)

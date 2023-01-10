@@ -6,8 +6,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 @Target({ ElementType.FIELD})
@@ -22,10 +20,3 @@ public @interface TxIndex {
   Class<? extends Payload>[] payload() default { };
 }
 
-class TxIndexValidator implements ConstraintValidator<TxIndex, Short> {
-
-  @Override
-  public boolean isValid(Short aShort, ConstraintValidatorContext constraintValidatorContext) {
-    return aShort >= 0;
-  }
-}

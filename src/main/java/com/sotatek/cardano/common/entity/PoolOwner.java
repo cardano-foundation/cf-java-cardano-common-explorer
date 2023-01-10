@@ -1,6 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -17,16 +18,12 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "pool_owner", uniqueConstraints = {
     @UniqueConstraint(name = "unique_pool_owner",
         columnNames = {"addr_id", "pool_update_id"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update pool_owner set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -47,6 +44,9 @@ public class PoolOwner extends BaseEntity {
       foreignKey = @ForeignKey(name = "pool_owner_pool_update_id_fkey"))
   @EqualsAndHashCode.Exclude
   private PoolUpdate poolUpdate;
+
+  @Column(name = "pool_update_id", updatable = false, insertable = false)
+  private Long poolUpdateId;
 
   @Override
   public boolean equals(Object o) {

@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Hash28Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -16,21 +16,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "pool_hash", uniqueConstraints = {
     @UniqueConstraint(name = "unique_pool_hash",
         columnNames = {"hash_raw"})
 })
-@Where(clause = "is_deleted is null or is_deleted = false")
-@SQLDelete(sql = "update pool_hash set is_deleted = true where id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
+@DynamicUpdate
 public class PoolHash extends BaseEntity {
 
   @Column(name = "hash_raw", nullable = false, length = 56)
@@ -42,13 +40,13 @@ public class PoolHash extends BaseEntity {
 
   @Digits(integer = 20, fraction = 0)
   @Column(name = "pool_size", nullable = false, precision = 20)
-  private BigDecimal poolSize;
+  private BigInteger poolSize;
 
   @OneToMany(mappedBy = "poolHash")
   private List<Delegation> delegations;
 
-//  @Column(name = "epoch_no")
-//  private Integer epochNo;
+  @Column(name = "epoch_no")
+  private Integer epochNo;
 
   @Override
   public boolean equals(Object o) {
