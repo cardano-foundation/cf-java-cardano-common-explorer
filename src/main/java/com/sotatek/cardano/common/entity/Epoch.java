@@ -17,6 +17,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "epoch", uniqueConstraints = {
@@ -28,6 +30,7 @@ import org.hibernate.Hibernate;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
+@DynamicUpdate
 public class Epoch extends BaseEntity {
 
   @Column(name = "out_sum", nullable = false, precision = 39)
