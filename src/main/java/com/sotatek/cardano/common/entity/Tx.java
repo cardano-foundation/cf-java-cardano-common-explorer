@@ -94,11 +94,10 @@ public class Tx extends BaseEntity {
   private Integer scriptSize;
 
   @OneToMany(mappedBy = "tx")
-  private List<TxOut> txOutList;
+  private List<AddressTxBalance> addressTxBalances;
 
-  @OneToMany(mappedBy = "txInput")
-  private List<TxIn> txInList;
-
+  @OneToMany(mappedBy = "tx")
+  private List<AddressToken> addressTokens;
   @Override
   public boolean equals(Object o) {
     if (this == o) {
