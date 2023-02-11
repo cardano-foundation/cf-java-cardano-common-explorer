@@ -53,6 +53,9 @@ public class MaTxOut extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private TxOut txOut;
 
+  @Column(name = "tx_out_id", insertable = false, updatable = false)
+  private Long txOutId;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
