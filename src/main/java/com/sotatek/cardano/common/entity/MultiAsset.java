@@ -9,7 +9,6 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
@@ -53,9 +52,6 @@ public class MultiAsset extends BaseEntity {
 
   @Column(name = "time")
   private Timestamp time;
-
-  @OneToOne( mappedBy = "multiAsset")
-  private AssetMetadata metadata;
 
   @Override
   public boolean equals(Object o) {

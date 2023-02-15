@@ -3,10 +3,6 @@ package com.sotatek.cardano.common.entity;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
@@ -15,8 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "asset_metadata", uniqueConstraints = {
@@ -29,12 +23,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
 public class AssetMetadata extends BaseEntity {
-
-  @OneToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "ident", nullable = false,
-      foreignKey = @ForeignKey(name = "asset_metadata_ident_fkey"))
-  private MultiAsset multiAsset;
 
   @Column(name = "subject", nullable = false)
   private String subject;
