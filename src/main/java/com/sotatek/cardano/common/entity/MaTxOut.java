@@ -41,6 +41,9 @@ public class MaTxOut extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private MultiAsset ident;
 
+  @Column(name = "ident", updatable = false, insertable = false)
+  private Long identId;
+
   @Column(name = "quantity", nullable = false, precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
