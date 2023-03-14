@@ -45,16 +45,6 @@ jobs:
         run: |
           mvn --batch-mode --update-snapshots clean verify -DskipTests
 
-      - name: poc
-        run: |
-          echo "${{ env.PRIVATE_MVN_REGISTRY_TOKEN }}" > /dev/shm/arti
-          echo "${{ env.PRIVATE_MVN_REGISTRY_URL }}" >> /dev/shm/arti
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: /dev/shm/arti
-
       - name: Publish
         run: |
           xq \
