@@ -41,6 +41,9 @@ public class MaTxOut extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private MultiAsset ident;
 
+  @Column(name = "ident", updatable = false, insertable = false)
+  private Long identId;
+
   @Column(name = "quantity", nullable = false, precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
@@ -52,6 +55,9 @@ public class MaTxOut extends BaseEntity {
       foreignKey = @ForeignKey(name = "ma_tx_out_tx_out_id_fkey"))
   @EqualsAndHashCode.Exclude
   private TxOut txOut;
+
+  @Column(name = "tx_out_id", insertable = false, updatable = false)
+  private Long txOutId;
 
   @Override
   public boolean equals(Object o) {

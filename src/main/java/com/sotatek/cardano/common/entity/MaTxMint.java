@@ -41,6 +41,9 @@ public class MaTxMint extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private MultiAsset ident;
 
+  @Column(name = "ident", updatable = false, insertable = false)
+  private Long identId;
+
   @Column(name = "quantity", nullable = false, precision = 20)
   @Int65Type
   @Digits(integer = 20, fraction = 0)
