@@ -83,9 +83,6 @@ public class TxOut extends BaseEntity {
   @Column(name = "token_type", nullable = false)
   private TokenType tokenType;
 
-  @Column(name = "has_used")
-  private Boolean hasUsed;
-
   @Column(name = "data_hash", length = 64)
   @Hash32Type
   private String dataHash;
