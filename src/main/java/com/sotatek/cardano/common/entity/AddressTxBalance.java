@@ -29,10 +29,14 @@ import org.hibernate.annotations.OnDeleteAction;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class AddressTxBalance extends BaseEntity{
+public class AddressTxBalance extends BaseEntity {
 
-  @Column(name = "address", nullable = false, length = 65535)
-  private String address;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  @JoinColumn(name = "address_id", nullable = false,
+      foreignKey = @ForeignKey(name = "address_token_address_id_fkey"))
+  @EqualsAndHashCode.Exclude
+  private Address address;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
