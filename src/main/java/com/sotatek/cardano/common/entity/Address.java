@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Word128Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,7 +39,7 @@ public class Address extends BaseEntity{
   @Column(name = "balance", nullable = false, precision = 39)
   @Word128Type
   @Digits(integer = 39, fraction = 0)
-  private BigDecimal balance;
+  private BigInteger balance;
 
   @Column(name = "address_has_script", nullable = false)
   private Boolean addressHasScript;

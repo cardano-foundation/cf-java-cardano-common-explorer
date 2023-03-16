@@ -5,7 +5,7 @@ import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word31Type;
 import com.sotatek.cardano.common.validation.Word63Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,7 +56,7 @@ public class Redeemer extends BaseEntity {
   @Column(name = "fee", precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal fee;
+  private BigInteger fee;
 
   @Column(name = "purpose", nullable = false)
   private ScriptPurposeType purpose;

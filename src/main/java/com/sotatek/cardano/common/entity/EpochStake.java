@@ -2,7 +2,7 @@ package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word31Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,7 +52,7 @@ public class EpochStake extends BaseEntity {
   @Column(name = "amount", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal amount;
+  private BigInteger amount;
 
   @Column(name = "epoch_no", nullable = false)
   @Word31Type

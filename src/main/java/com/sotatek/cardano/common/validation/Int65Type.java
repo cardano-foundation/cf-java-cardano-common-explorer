@@ -5,7 +5,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -22,11 +22,11 @@ public @interface Int65Type {
 
   Class<? extends Payload>[] payload() default { };
 }
-class Int65TypeValidator implements ConstraintValidator<Int65Type, BigDecimal> {
+class Int65TypeValidator implements ConstraintValidator<Int65Type, BigInteger> {
 
   @Override
-  public boolean isValid(BigDecimal decimal, ConstraintValidatorContext constraintValidatorContext) {
-    return decimal.compareTo(new BigDecimal("-18446744073709551615")) >= 0
-        && decimal.compareTo(new BigDecimal("18446744073709551615")) <= 0;
+  public boolean isValid(BigInteger number, ConstraintValidatorContext constraintValidatorContext) {
+    return number.compareTo(new BigInteger("-18446744073709551615")) >= 0
+        && number.compareTo(new BigInteger("18446744073709551615")) <= 0;
   }
 }

@@ -4,7 +4,7 @@ import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.TxIndex;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -71,7 +71,7 @@ public class FailedTxOut extends BaseEntity {
   @Column(name = "value", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal value;
+  private BigInteger value;
 
   @Column(name = "data_hash", length = 64)
   @Hash32Type

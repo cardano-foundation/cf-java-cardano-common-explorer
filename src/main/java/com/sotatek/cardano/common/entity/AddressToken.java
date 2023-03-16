@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Word128Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -54,7 +54,7 @@ public class AddressToken extends BaseEntity {
   @Column(name = "balance", nullable = false, precision = 39)
   @Word128Type
   @Digits(integer = 39, fraction = 0)
-  private BigDecimal balance;
+  private BigInteger balance;
 
   @Override
   public boolean equals(Object o) {

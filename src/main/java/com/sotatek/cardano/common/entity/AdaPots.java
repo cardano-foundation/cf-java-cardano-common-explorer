@@ -3,7 +3,7 @@ package com.sotatek.cardano.common.entity;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word31Type;
 import com.sotatek.cardano.common.validation.Word63Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,32 +46,32 @@ public class AdaPots extends BaseEntity {
   @Column(name = "treasury", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal treasury;
+  private BigInteger treasury;
 
   @Column(name = "reserves", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal reserves;
+  private BigInteger reserves;
 
   @Column(name = "rewards", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal rewards;
+  private BigInteger rewards;
 
   @Column(name = "utxo", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal utxo;
+  private BigInteger utxo;
 
   @Column(name = "deposits", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal deposits;
+  private BigInteger deposits;
 
   @Column(name = "fees", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal fees;
+  private BigInteger fees;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)

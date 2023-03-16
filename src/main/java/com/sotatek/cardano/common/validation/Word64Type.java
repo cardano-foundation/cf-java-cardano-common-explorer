@@ -5,7 +5,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -23,11 +23,11 @@ public @interface Word64Type {
   Class<? extends Payload>[] payload() default { };
 }
 
-class Word64TypeValidator implements ConstraintValidator<Word64Type, BigDecimal> {
+class Word64TypeValidator implements ConstraintValidator<Word64Type, BigInteger> {
 
   @Override
-  public boolean isValid(BigDecimal decimal, ConstraintValidatorContext constraintValidatorContext) {
-    return decimal.compareTo(new BigDecimal("0")) >= 0
-        && decimal.compareTo(new BigDecimal("18446744073709551615")) <= 0;
+  public boolean isValid(BigInteger number, ConstraintValidatorContext constraintValidatorContext) {
+    return number.compareTo(new BigInteger("0")) >= 0
+        && number.compareTo(new BigInteger("18446744073709551615")) <= 0;
   }
 }
