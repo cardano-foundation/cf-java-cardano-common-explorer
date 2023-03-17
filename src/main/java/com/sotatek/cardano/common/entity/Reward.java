@@ -2,7 +2,7 @@ package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.enumeration.RewardType;
 import com.sotatek.cardano.common.validation.Lovelace;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +48,7 @@ public class Reward extends BaseEntity {
   @Column(name = "amount", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal amount;
+  private BigInteger amount;
 
   @Column(name = "earned_epoch", nullable = false)
   private Long earnedEpoch;

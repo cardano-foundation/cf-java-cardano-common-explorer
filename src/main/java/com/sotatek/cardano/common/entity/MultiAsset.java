@@ -3,7 +3,7 @@ package com.sotatek.cardano.common.entity;
 import com.sotatek.cardano.common.enumeration.converter.ByteConverter;
 import com.sotatek.cardano.common.validation.Asset32Type;
 import com.sotatek.cardano.common.validation.Hash28Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -48,7 +48,7 @@ public class MultiAsset extends BaseEntity {
 
   @Column(name = "supply", precision = 23)
   @Digits(integer = 23, fraction = 0)
-  private BigDecimal supply;
+  private BigInteger supply;
 
   @Column(name = "time")
   private Timestamp time;

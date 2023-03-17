@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Int65Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +48,7 @@ public class Treasury extends BaseEntity {
   @Column(name = "amount", nullable = false, precision = 20)
   @Int65Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal amount;
+  private BigInteger amount;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)

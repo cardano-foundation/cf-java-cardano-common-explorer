@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Word64Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +38,7 @@ public class TxMetadata extends BaseEntity {
   @Column(name = "key", nullable = false, precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal key;
+  private BigInteger key;
 
   @Column(name = "json", length = 65535)
   private String json;

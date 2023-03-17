@@ -3,7 +3,7 @@ package com.sotatek.cardano.common.entity;
 import com.sotatek.cardano.common.validation.Addr29Type;
 import com.sotatek.cardano.common.validation.Hash28Type;
 import com.sotatek.cardano.common.validation.Word128Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -4,7 +4,7 @@ import com.sotatek.cardano.common.validation.Hash32Type;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word31Type;
 import com.sotatek.cardano.common.validation.Word64Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -62,12 +62,12 @@ public class Tx extends BaseEntity {
   @Column(name = "out_sum", precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal outSum;
+  private BigInteger outSum;
 
   @Column(name = "fee", precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal fee;
+  private BigInteger fee;
 
   @Column(name = "deposit")
   private Long deposit;
@@ -79,12 +79,12 @@ public class Tx extends BaseEntity {
   @Column(name = "invalid_before", precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal invalidBefore;
+  private BigInteger invalidBefore;
 
   @Column(name = "invalid_hereafter", precision = 20)
   @Word64Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal invalidHereafter;
+  private BigInteger invalidHereafter;
 
   @Column(name = "valid_contract")
   private Boolean validContract;

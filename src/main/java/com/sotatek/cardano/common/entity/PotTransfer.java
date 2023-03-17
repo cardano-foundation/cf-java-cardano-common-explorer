@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Int65Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,12 +40,12 @@ public class PotTransfer extends BaseEntity {
   @Column(name = "treasury", nullable = false, precision = 20)
   @Int65Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal treasury;
+  private BigInteger treasury;
 
   @Column(name = "reserves", nullable = false, precision = 20)
   @Int65Type
   @Digits(integer = 20, fraction = 0)
-  private BigDecimal reserves;
+  private BigInteger reserves;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)

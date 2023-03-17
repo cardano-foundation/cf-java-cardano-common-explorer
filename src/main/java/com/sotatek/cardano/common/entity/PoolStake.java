@@ -1,6 +1,6 @@
 package com.sotatek.cardano.common.entity;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +32,7 @@ public class PoolStake extends BaseEntity {
   private PoolHash pool;
 
   @Column(name = "amount")
-  private BigDecimal amount;
+  private BigInteger amount;
 
   @Override
   public boolean equals(Object o) {

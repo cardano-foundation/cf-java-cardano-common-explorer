@@ -1,7 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import com.sotatek.cardano.common.validation.Hash28Type;
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -38,7 +38,7 @@ public class PoolHash extends BaseEntity {
 
   @Digits(integer = 20, fraction = 0)
   @Column(name = "pool_size", nullable = false, precision = 20)
-  private BigDecimal poolSize;
+  private BigInteger poolSize;
 
   @OneToMany(mappedBy = "poolHash")
   private List<Delegation> delegations;
