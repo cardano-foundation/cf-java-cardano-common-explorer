@@ -42,6 +42,9 @@ public class Reward extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
 
+  @Column(name = "addr_id", updatable = false, insertable = false)
+  private Long stakeAddressId;
+
   @Column(name = "type", nullable = false)
   private RewardType type;
 
