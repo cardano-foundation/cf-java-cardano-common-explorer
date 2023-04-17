@@ -22,18 +22,18 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "address_token")
+@Table(name = "address_token_balance")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class AddressToken extends BaseEntity {
+public class AddressTokenBalance extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "address_id", nullable = false,
-      foreignKey = @ForeignKey(name = "address_token_address_id_fkey"))
+      foreignKey = @ForeignKey(name = "address_token_balance_address_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Address address;
 
@@ -42,15 +42,8 @@ public class AddressToken extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "tx_id", nullable = false,
-      foreignKey = @ForeignKey(name = "address_token_tx_id_fkey"))
-  @EqualsAndHashCode.Exclude
-  private Tx tx;
-
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "ident", nullable = false,
-      foreignKey = @ForeignKey(name = "address_token_ident_fkey"))
+      foreignKey = @ForeignKey(name = "address_token_balance_ident_fkey"))
   @EqualsAndHashCode.Exclude
   private MultiAsset multiAsset;
 
@@ -70,7 +63,7 @@ public class AddressToken extends BaseEntity {
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
       return false;
     }
-    AddressToken that = (AddressToken) o;
+    AddressTokenBalance that = (AddressTokenBalance) o;
     return id != null && Objects.equals(id, that.id);
   }
 
