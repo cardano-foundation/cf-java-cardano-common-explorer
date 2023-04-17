@@ -29,7 +29,8 @@ import org.hibernate.annotations.Where;
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
 @Where(clause = "is_deleted = false")
-public class Address extends BaseEntity{
+public class Address extends BaseEntity {
+
   @Column(name = "address", nullable = false, length = 65535)
   private String address;
 
@@ -49,6 +50,9 @@ public class Address extends BaseEntity{
   @JoinColumn(name = "stake_address_id",
       foreignKey = @ForeignKey(name = "address_stake_address_id_fkey"))
   private StakeAddress stakeAddress;
+
+  @Column(name = "stake_address_id", updatable = false, insertable = false)
+  private Long stakeAddressId;
 
   @Override
   public boolean equals(Object o) {
