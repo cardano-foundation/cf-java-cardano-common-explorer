@@ -1,5 +1,6 @@
 package com.sotatek.cardano.common.entity;
 
+import com.sotatek.cardano.common.enumeration.EraType;
 import com.sotatek.cardano.common.validation.Lovelace;
 import com.sotatek.cardano.common.validation.Word128Type;
 import com.sotatek.cardano.common.validation.Word31Type;
@@ -63,6 +64,9 @@ public class Epoch extends BaseEntity {
 
   @Column(name="max_slot", nullable = false)
   private Integer maxSlot;
+
+  @Column(name="era", nullable = false)
+  private EraType era;
 
 /*  @OneToMany(fetch = FetchType.LAZY)
   @JoinColumn(name = "epoch_no" ,insertable =false, updatable = false)
