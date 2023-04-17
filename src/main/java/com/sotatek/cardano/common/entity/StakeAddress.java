@@ -55,6 +55,16 @@ public class StakeAddress extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
+  @Column(name = "balance", nullable = false, precision = 39)
+  @Word128Type
+  @Digits(integer = 39, fraction = 0)
+  private BigInteger balance;
+
+  @Column(name = "available_reward", nullable = false, precision = 39)
+  @Word128Type
+  @Digits(integer = 39, fraction = 0)
+  private BigInteger availableReward;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
