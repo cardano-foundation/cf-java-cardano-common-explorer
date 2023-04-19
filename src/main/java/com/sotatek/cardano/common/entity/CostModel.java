@@ -55,6 +55,11 @@ public class CostModel extends BaseEntity {
       return false;
     }
     CostModel costModel = (CostModel) o;
+
+    if(Objects.isNull(id) && Objects.nonNull(hash)){
+      return hash.equals(costModel.getHash());
+    }
+
     return id != null && Objects.equals(id, costModel.id);
   }
 
