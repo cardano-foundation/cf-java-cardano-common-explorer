@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
@@ -67,6 +66,11 @@ public class Epoch extends BaseEntity {
 
   @Column(name="era", nullable = false)
   private EraType era;
+
+  @Column(name = "rewards_distributed", nullable = false)
+  @Digits(integer = 20, fraction = 0)
+  @Lovelace
+  private BigInteger rewardsDistributed;
 
 /*  @OneToMany(fetch = FetchType.LAZY)
   @JoinColumn(name = "epoch_no" ,insertable =false, updatable = false)
