@@ -62,7 +62,7 @@ public class PoolUpdate extends BaseEntity {
   private StakeAddress rewardAddr;
 
   @Column(name = "active_epoch_no", nullable = false)
-  private Long activeEpochNo;
+  private Integer activeEpochNo;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @OnDelete(action = OnDeleteAction.CASCADE)

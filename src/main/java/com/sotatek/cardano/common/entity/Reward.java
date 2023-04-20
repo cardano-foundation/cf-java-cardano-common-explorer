@@ -54,10 +54,10 @@ public class Reward extends BaseEntity {
   private BigInteger amount;
 
   @Column(name = "earned_epoch", nullable = false)
-  private Long earnedEpoch;
+  private Integer earnedEpoch;
 
   @Column(name = "spendable_epoch", nullable = false)
-  private Long spendableEpoch;
+  private Integer spendableEpoch;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @OnDelete(action = OnDeleteAction.CASCADE)
