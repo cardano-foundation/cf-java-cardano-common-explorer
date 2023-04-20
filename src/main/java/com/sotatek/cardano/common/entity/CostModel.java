@@ -28,6 +28,7 @@ public class CostModel extends BaseEntity {
   @Column(name = "costs", nullable = false, length = 65535)
   private String costs;
 
+
   @Column(name = "hash", nullable = false, length = 64)
   @Hash32Type
   private String hash;
