@@ -192,11 +192,26 @@ public class ParamProposal extends BaseEntity {
       return false;
     }
     ParamProposal that = (ParamProposal) o;
+
+    if (this.hashCode() == that.hashCode()) {
+      return true;
+    }
+
     return id != null && Objects.equals(id, that.id);
   }
 
   @Override
   public int hashCode() {
-    return getClass().hashCode();
+    return  minFeeA.hashCode() + minFeeB.hashCode()
+        + maxBlockSize.hashCode() + maxTxSize.hashCode() + maxBhSize.hashCode()
+        + keyDeposit.hashCode() + poolDeposit.hashCode() + maxEpoch.hashCode()
+        + optimalPoolCount.hashCode() + influence.hashCode() + monetaryExpandRate.hashCode()
+        + treasuryGrowthRate.hashCode() + decentralisation.hashCode() + entropy.hashCode()
+        + protocolMajor.hashCode() + protocolMinor.hashCode() + minUtxoValue.hashCode()
+        + minPoolCost.hashCode() + costModel.hashCode() + priceMem.hashCode() + priceStep.hashCode()
+        + maxTxExMem.hashCode() + maxTxExSteps.hashCode() + maxBlockExMem.hashCode()
+        + maxBlockExSteps.hashCode() + maxValSize.hashCode() + collateralPercent.hashCode()
+        + maxCollateralInputs.hashCode() + registeredTx.hashCode() + coinsPerUtxoSize.hashCode();
   }
+
 }
