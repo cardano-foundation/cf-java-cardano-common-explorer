@@ -202,16 +202,24 @@ public class ParamProposal extends BaseEntity {
 
   @Override
   public int hashCode() {
-    return  minFeeA.hashCode() + minFeeB.hashCode()
-        + maxBlockSize.hashCode() + maxTxSize.hashCode() + maxBhSize.hashCode()
-        + keyDeposit.hashCode() + poolDeposit.hashCode() + maxEpoch.hashCode()
-        + optimalPoolCount.hashCode() + influence.hashCode() + monetaryExpandRate.hashCode()
-        + treasuryGrowthRate.hashCode() + decentralisation.hashCode() + entropy.hashCode()
-        + protocolMajor.hashCode() + protocolMinor.hashCode() + minUtxoValue.hashCode()
-        + minPoolCost.hashCode() + costModel.hashCode() + priceMem.hashCode() + priceStep.hashCode()
-        + maxTxExMem.hashCode() + maxTxExSteps.hashCode() + maxBlockExMem.hashCode()
-        + maxBlockExSteps.hashCode() + maxValSize.hashCode() + collateralPercent.hashCode()
-        + maxCollateralInputs.hashCode() + registeredTx.hashCode() + coinsPerUtxoSize.hashCode();
+    return getHashCode(minFeeA) + getHashCode(minFeeB) + getHashCode(maxBlockSize) +
+        getHashCode(maxTxSize) + getHashCode(maxBhSize) + getHashCode(keyDeposit) +
+        getHashCode(poolDeposit) + getHashCode(maxEpoch) + getHashCode(optimalPoolCount) +
+        getHashCode(influence) + getHashCode(monetaryExpandRate) + getHashCode(treasuryGrowthRate) +
+        getHashCode(decentralisation) + getHashCode(entropy) + getHashCode(protocolMajor) +
+        getHashCode(protocolMinor) + getHashCode(minUtxoValue) + getHashCode(minPoolCost) +
+        getHashCode(costModel) + getHashCode(priceMem) + getHashCode(priceStep) +
+        getHashCode(maxTxExMem) + getHashCode(maxTxExSteps) + getHashCode(maxBlockExMem) +
+        getHashCode(maxBlockExSteps) + getHashCode(maxValSize) + getHashCode(collateralPercent) +
+        getHashCode(maxCollateralInputs) + getHashCode(registeredTx) + getHashCode(coinsPerUtxoSize);
+  }
+
+  private int getHashCode(Object o) {
+    if (Objects.isNull(o)) {
+      return BigInteger.ZERO.intValue();
+    }
+
+    return o.hashCode();
   }
 
 }
