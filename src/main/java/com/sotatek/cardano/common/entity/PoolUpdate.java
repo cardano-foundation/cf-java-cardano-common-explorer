@@ -42,6 +42,9 @@ public class PoolUpdate extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private PoolHash poolHash;
 
+  @Column(name = "hash_id", updatable = false, insertable = false)
+  private Long poolHashId;
+
   @Column(name = "cert_index", nullable = false)
   private Integer certIndex;
 
@@ -60,6 +63,9 @@ public class PoolUpdate extends BaseEntity {
       foreignKey = @ForeignKey(name = "pool_update_reward_addr_id_fkey"))
   @EqualsAndHashCode.Exclude
   private StakeAddress rewardAddr;
+
+  @Column(name = "reward_addr_id", updatable = false, insertable = false)
+  private Long rewardAddrId;
 
   @Column(name = "active_epoch_no", nullable = false)
   private Integer activeEpochNo;
@@ -85,6 +91,9 @@ public class PoolUpdate extends BaseEntity {
       foreignKey = @ForeignKey(name = "pool_update_registered_tx_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Tx registeredTx;
+
+  @Column(name = "registered_tx_id", updatable = false, insertable = false)
+  private Long registeredTxId;
 
   @Override
   public boolean equals(Object o) {

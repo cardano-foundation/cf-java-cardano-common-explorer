@@ -66,6 +66,9 @@ public class Reward extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private PoolHash pool;
 
+  @Column(name = "pool_id", updatable = false, insertable = false)
+  private Long poolId;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
