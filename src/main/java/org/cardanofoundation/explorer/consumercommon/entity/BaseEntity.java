@@ -29,14 +29,14 @@ public class BaseEntity implements Serializable {
       name = "seq_generator",
       strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
       parameters = {
-        // no longer supported by Hibernate 6.2
-        //@Parameter(name = SequenceStyleGenerator.CONFIG_PREFER_SEGMENT_PER_ENTITY, value = "true"),
-        @Parameter(name = SequenceStyleGenerator.CONFIG_SEQUENCE_PER_ENTITY_SUFFIX, value = "_ID_SEQ"),
-        @Parameter(name = SequenceStyleGenerator.INCREMENT_PARAM, value = "1")
+          // no longer supported by Hibernate 6.2
+          //@Parameter(name = SequenceStyleGenerator.CONFIG_PREFER_SEGMENT_PER_ENTITY, value = "true"),
+          @Parameter(name = SequenceStyleGenerator.CONFIG_SEQUENCE_PER_ENTITY_SUFFIX, value = "_ID_SEQ"),
+          @Parameter(name = SequenceStyleGenerator.INCREMENT_PARAM, value = "1")
       })
   protected Long id;
 
-  /*  @Column(name = "created_at")
+ /*  @Column(name = "created_at")
   @CreatedDate
   protected Timestamp createdAt;
 
