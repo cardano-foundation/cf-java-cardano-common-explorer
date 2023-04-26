@@ -49,7 +49,7 @@ public class Script extends BaseEntity {
   @Column(name = "json", length = 65535)
   private String json;
 
-  @Column(name = "bytes")
+  @Column(name = "bytes", length = Integer.MAX_VALUE)
   private byte[] bytes;
 
   @Column(name = "serialised_size")
