@@ -6,8 +6,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 @Target({ ElementType.FIELD})
@@ -22,10 +20,3 @@ public @interface Asset32Type {
   Class<? extends Payload>[] payload() default { };
 }
 
-class Asset32TypeValidator implements ConstraintValidator<Asset32Type, byte[]> {
-
-  @Override
-  public boolean isValid(byte[] data, ConstraintValidatorContext constraintValidatorContext) {
-    return data.length == 32;
-  }
-}

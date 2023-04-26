@@ -44,9 +44,9 @@ public class BaseEntity implements Serializable {
   @LastModifiedDate
   protected Timestamp updatedAt;*/
 
-  @Column(name = "is_deleted")
-  @ColumnDefault("false")
-  protected Boolean isDeleted = false;
+//  @Column(name = "is_deleted")
+//  @ColumnDefault("false")
+//  protected Boolean isDeleted = false;
 
   @Override
   public boolean equals(Object o) {

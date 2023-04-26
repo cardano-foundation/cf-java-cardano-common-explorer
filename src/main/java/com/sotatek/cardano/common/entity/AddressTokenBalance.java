@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,40 +20,40 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.Where;
 
 @Entity
-@Table(name = "address")
+@Table(name = "address_token_balance")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-@Where(clause = "is_deleted = false")
-public class Address extends BaseEntity {
+public class AddressTokenBalance extends BaseEntity {
 
-  @Column(name = "address", nullable = false, length = 65535)
-  private String address;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  @JoinColumn(name = "address_id", nullable = false,
+      foreignKey = @ForeignKey(name = "address_token_balance_address_id_fkey"))
+  @EqualsAndHashCode.Exclude
+  private Address address;
 
-  @Column(name = "tx_count")
-  private Long txCount;
+  @Column(name = "address_id", updatable = false, insertable = false)
+  private Long addressId;
+
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  @JoinColumn(name = "ident", nullable = false,
+      foreignKey = @ForeignKey(name = "address_token_balance_ident_fkey"))
+  @EqualsAndHashCode.Exclude
+  private MultiAsset multiAsset;
+
+  @Column(name = "ident", updatable = false, insertable = false)
+  private Long multiAssetId;
 
   @Column(name = "balance", nullable = false, precision = 39)
   @Word128Type
   @Digits(integer = 39, fraction = 0)
   private BigInteger balance;
-
-  @Column(name = "address_has_script", nullable = false)
-  private Boolean addressHasScript;
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "stake_address_id",
-      foreignKey = @ForeignKey(name = "address_stake_address_id_fkey"))
-  private StakeAddress stakeAddress;
-
-  @Column(name = "stake_address_id", updatable = false, insertable = false)
-  private Long stakeAddressId;
 
   @Override
   public boolean equals(Object o) {
@@ -62,8 +63,8 @@ public class Address extends BaseEntity {
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
       return false;
     }
-    Address address = (Address) o;
-    return id != null && Objects.equals(id, address.id);
+    AddressTokenBalance that = (AddressTokenBalance) o;
+    return id != null && Objects.equals(id, that.id);
   }
 
   @Override

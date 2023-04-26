@@ -5,10 +5,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.math.BigInteger;
 import javax.validation.Constraint;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 @Target({ ElementType.FIELD})
@@ -23,11 +20,3 @@ public @interface Word128Type {
   Class<? extends Payload>[] payload() default { };
 }
 
-class Word128TypeValidator implements ConstraintValidator<Word128Type, BigInteger> {
-
-  @Override
-  public boolean isValid(BigInteger number, ConstraintValidatorContext constraintValidatorContext) {
-    return number.compareTo(new BigInteger("0")) < 0
-        || number.compareTo(new BigInteger("340282366920938463463374607431768211455")) > 0;
-  }
-}

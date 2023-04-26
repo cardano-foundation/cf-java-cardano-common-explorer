@@ -38,12 +38,18 @@ public class AddressTxBalance extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Address address;
 
+  @Column(name = "address_id", updatable = false, insertable = false)
+  private Long addressId;
+
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "tx_id", nullable = false,
       foreignKey = @ForeignKey(name = "address_tx_balance_tx_id_fkey"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
+
+  @Column(name = "tx_id", updatable = false, insertable = false)
+  private Long txId;
 
   @Column(name = "balance", nullable = false, precision = 39)
   @Word128Type
