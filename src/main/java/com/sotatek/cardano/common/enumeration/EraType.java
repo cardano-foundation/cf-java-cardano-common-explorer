@@ -35,7 +35,8 @@ public enum EraType {
       case 0:
         return BYRON;
       default:
-        throw new RuntimeException("Un support");
+        throw new RuntimeException(
+            String.format("Era %d is not supported. Please pick a value between 0 and 6.", era));
     }
   }
 }

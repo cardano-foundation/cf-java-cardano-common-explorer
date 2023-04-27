@@ -1,14 +1,25 @@
 package com.sotatek.cardano.common.validation;
 
+import com.sotatek.cardano.common.constanst.ValidationConstant;
 import java.math.BigInteger;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 public class LovelaceValidator implements ConstraintValidator<Lovelace, BigInteger> {
 
+  private static final BigInteger MAX_64_BYTES = ValidationConstant.getMaxLoveLace();
+
+  /**
+   * Checking if input lovelace is out of range 2^64 or not
+   *
+   * @param number                     lovelace
+   * @param constraintValidatorContext
+   * @return boolean
+   */
   @Override
   public boolean isValid(BigInteger number, ConstraintValidatorContext constraintValidatorContext) {
-    return number.compareTo(BigInteger.valueOf(0L)) >= 0
-        && number.compareTo(new BigInteger("18446744073709551615")) <= 0;
+    return number.compareTo(BigInteger.valueOf(BigInteger.ZERO.longValue()))
+        >= BigInteger.ZERO.longValue()
+        && number.compareTo(MAX_64_BYTES) <= BigInteger.ZERO.longValue();
   }
 }
