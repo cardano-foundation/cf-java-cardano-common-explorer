@@ -28,7 +28,6 @@ import org.hibernate.annotations.Where;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-@Where(clause = "is_deleted = false")
 public class Address extends BaseEntity {
 
   @Column(name = "address", nullable = false, length = 65535)
