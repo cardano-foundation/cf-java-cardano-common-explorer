@@ -1,110 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.sotatek.cardano</groupId>
-  <artifactId>cardano-common-explorer</artifactId>
-  <version>1.0.6-SNAPSHOT</version>
+    <groupId>org.cardanofoundation.explorer</groupId>
+    <artifactId>consumer-common</artifactId>
+    <version>1.0.6-SNAPSHOT</version>
+    <description>Cardano shared functions for explorer specific LedgerSync crawler and api module</description>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.4</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
+    <scm>
+        <connection>scm:git:git://github.com/cardano-foundation/cf-java-cardano-common-explorer.git</connection>
+        <url>https://github.com/cardano-foundation/cf-java-cardano-common-explorer</url>
+        <developerConnection>scm:git:git://github.com/cardano-foundation/cf-java-cardano-common-explorer.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
-  <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  <dependencies>
+    <issueManagement>
+        <url>https://github.com/cardano-foundation/cf-java-cardano-common-explorer/issues</url>
+        <system>GitHub issues</system>
+    </issueManagement>
 
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <optional>true</optional>
-    </dependency>
+    <licenses>
+        <license>
+            <name>MPL 2.0</name>
+            <url>https://www.mozilla.org/en-US/MPL/2.0/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-validation</artifactId>
-    </dependency>
+    <developers>
+        <developer>
+            <organization>Cardano Foundation</organization>
+            <organizationUrl>https://cardanofoundation.org</organizationUrl>
+        </developer>
+    </developers>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
+    <organization>
+        <name>Cardano Foundation</name>
+        <url>https://cardanofoundation.org</url>
+    </organization>
 
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-jpamodelgen</artifactId>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.java>11</version.java>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <version.maven-compiler-plugin>3.10.0</version.maven-compiler-plugin>
+        <version.maven-site-plugin>3.12.1</version.maven-site-plugin>
+        <version.github-maven-site-plugin>0.12</version.github-maven-site-plugin>
+        <version.spring-boot>3.0.5</version.spring-boot>
+        <version.bloxbean>0.4.3</version.bloxbean>
+        <version.lombok>1.18.26</version.lombok>
+        <version.hibernate-orm>6.1.7.Final</version.hibernate-orm>
+    </properties>
 
-    </dependency>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <type>pom</type>
+                <version>${version.spring-boot}</version>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-    <dependency>
-      <groupId>com.bloxbean.cardano</groupId>
-      <artifactId>cardano-client-lib</artifactId>
-      <version>0.3.0-beta2</version>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>${version.hibernate-orm}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${version.lombok}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.bloxbean.cardano</groupId>
+            <artifactId>cardano-client-lib</artifactId>
+            <version>${version.bloxbean}</version>
+        </dependency>
+    </dependencies>
 
-  </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${version.maven-compiler-plugin}</version>
+                <configuration>
+                    <source>${version.java}</source>
+                    <target>${version.java}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${version.lombok}</version>
+                        </path>
+                        <path>
+                            <groupId>org.hibernate.orm</groupId>
+                            <artifactId>hibernate-jpamodelgen</artifactId>
+                            <version>${version.hibernate-orm}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${version.maven-site-plugin}</version>
+                <configuration>
+                    <locales>en</locales>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>${version.github-maven-site-plugin}</version>
+            </plugin>
+        </plugins>
+    </build>
 
-  <build>
-    <testSourceDirectory>${project.basedir}/src/test/java
-    </testSourceDirectory>
-
-    <plugins>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.2.1</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>3.9.0</version>
-        <configuration>
-          <locales>en</locales>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>com.github.github</groupId>
-        <artifactId>site-maven-plugin</artifactId>
-        <version>0.12</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-      </plugin>
-
-
-
-    </plugins>
-  </build>
-
-  <distributionManagement>
-    <repository>
-      <id>cardano-common-explorer</id>
-      <name>GitHub sotatek-tiendo Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/sotatek-dev/cardano-common-explorer</url>
-    </repository>
-  </distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>cardano-common-explorer</id>
+            <name>GitHub sotatek-tiendo Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/sotatek-dev/cardano-common-explorer</url>
+        </repository>
+    </distributionManagement>
 
 </project>
