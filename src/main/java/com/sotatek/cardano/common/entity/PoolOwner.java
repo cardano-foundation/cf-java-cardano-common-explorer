@@ -1,6 +1,7 @@
 package com.sotatek.cardano.common.entity;
 
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -43,6 +44,9 @@ public class PoolOwner extends BaseEntity {
       foreignKey = @ForeignKey(name = "pool_owner_pool_update_id_fkey"))
   @EqualsAndHashCode.Exclude
   private PoolUpdate poolUpdate;
+
+  @Column(name = "pool_update_id", updatable = false, insertable = false)
+  private Long poolUpdateId;
 
   @Override
   public boolean equals(Object o) {

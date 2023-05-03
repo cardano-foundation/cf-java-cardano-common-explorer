@@ -6,8 +6,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 @Target({ ElementType.FIELD})
@@ -22,10 +20,3 @@ public @interface Word31Type {
   Class<? extends Payload>[] payload() default { };
 }
 
-class Word31TypeValidator implements ConstraintValidator<Word31Type, Integer> {
-
-  @Override
-  public boolean isValid(Integer integer, ConstraintValidatorContext constraintValidatorContext) {
-    return integer >= 0;
-  }
-}

@@ -4,7 +4,6 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,10 +12,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "asset_metadata", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_multi_asset",
-        columnNames = {"policy", "name"})
-})
+@Table(name = "asset_metadata")
 @Getter
 @Setter
 @NoArgsConstructor

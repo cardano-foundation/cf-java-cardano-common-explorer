@@ -6,8 +6,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 @Target({ ElementType.FIELD})
@@ -20,11 +18,4 @@ public @interface Word63Type {
   Class<?>[] groups() default { };
 
   Class<? extends Payload>[] payload() default { };
-}
-class Word63TypeValidator implements ConstraintValidator<Word63Type, Long> {
-
-  @Override
-  public boolean isValid(Long aLong, ConstraintValidatorContext constraintValidatorContext) {
-    return aLong >= 0;
-  }
 }

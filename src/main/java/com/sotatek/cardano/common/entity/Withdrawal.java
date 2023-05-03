@@ -42,6 +42,9 @@ public class Withdrawal extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
 
+  @Column(name = "addr_id", updatable = false, insertable = false)
+  private Long stakeAddressId;
+
   @Column(name = "amount", nullable = false, precision = 20)
   @Lovelace
   @Digits(integer = 20, fraction = 0)
