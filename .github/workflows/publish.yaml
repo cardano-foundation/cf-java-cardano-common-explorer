@@ -3,7 +3,7 @@ name: Publish artifacts to (internal) Gitlab Packages
 on:
   push:
     branches: 
-      - develop
+      - main
   workflow_dispatch:
 
 env:
@@ -17,6 +17,7 @@ jobs:
       contents: read
       packages: write
     runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, 'release-please--branches--main')"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -56,3 +57,4 @@ jobs:
             --xml-output > pom.xml.mod && mv pom.xml.mod pom.xml
           
           mvn --batch-mode --update-snapshots deploy -DskipTests
+
