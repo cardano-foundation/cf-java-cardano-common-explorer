@@ -1,7 +1,3 @@
-def hostSonarqube
-def projectKeyCommonExplorer
-def loginCommonExplorer
-
 def COLOR_MAP = [
     'SUCCESS': 'good',
     'FAILURE': 'danger',
@@ -25,25 +21,7 @@ pipeline {
                 echo 'Test successfully!!!'
             }
         }
-        stage('Sonarqube Scan') {
-		    when {
-                branch 'develop'
-            }
-            steps {
-                script {
-                    def envFile
-                    if (env.BRANCH_NAME == 'develop') {
-                        envFile = readProperties file: '/tmp/env-dev.properties'
-                    }
-                    hostSonarqube = envFile.hostSonarqube
-                    projectKeyCommonExplorer = envFile.projectKeyCommonExplorer
-                    loginCommonExplorer = envFile.loginCommonExplorer
-                }
-                echo 'Sonarqube scanning...'
-                sh "mvn sonar:sonar -Dsonar.projectKey=${projectKeyCommonExplorer} -Dsonar.analysisCache.enabled=false -Dsonar.host.url=${hostSonarqube} -Dsonar.login=${loginCommonExplorer} -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes"
-                echo 'Sonarqube scan successfully!!!'
-            }
-        }
+      
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
