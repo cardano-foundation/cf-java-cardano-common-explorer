@@ -37,6 +37,9 @@ public class AddressToken extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Address address;
 
+  @Column(name = "address_id", updatable = false, insertable = false)
+  private Long addressId;
+
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "tx_id", nullable = false,
@@ -50,6 +53,9 @@ public class AddressToken extends BaseEntity {
       foreignKey = @ForeignKey(name = "address_token_ident_fkey"))
   @EqualsAndHashCode.Exclude
   private MultiAsset multiAsset;
+
+  @Column(name = "ident", updatable = false, insertable = false)
+  private Long multiAssetId;
 
   @Column(name = "balance", nullable = false, precision = 39)
   @Word128Type

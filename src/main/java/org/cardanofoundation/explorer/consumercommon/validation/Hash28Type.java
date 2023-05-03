@@ -6,8 +6,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import jakarta.validation.Constraint;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 import jakarta.validation.Payload;
 
 @Target({ ElementType.FIELD})
@@ -22,10 +20,3 @@ public @interface Hash28Type {
   Class<? extends Payload>[] payload() default { };
 }
 
-class Hash28TypeValidator implements ConstraintValidator<Hash28Type, String> {
-
-  @Override
-  public boolean isValid(String bytes, ConstraintValidatorContext constraintValidatorContext) {
-    return bytes.length() == 56;
-  }
-}

@@ -192,11 +192,34 @@ public class ParamProposal extends BaseEntity {
       return false;
     }
     ParamProposal that = (ParamProposal) o;
+
+    if (this.hashCode() == that.hashCode()) {
+      return true;
+    }
+
     return id != null && Objects.equals(id, that.id);
   }
 
   @Override
   public int hashCode() {
-    return getClass().hashCode();
+    return getHashCode(minFeeA) + getHashCode(minFeeB) + getHashCode(maxBlockSize) +
+        getHashCode(maxTxSize) + getHashCode(maxBhSize) + getHashCode(keyDeposit) +
+        getHashCode(poolDeposit) + getHashCode(maxEpoch) + getHashCode(optimalPoolCount) +
+        getHashCode(influence) + getHashCode(monetaryExpandRate) + getHashCode(treasuryGrowthRate) +
+        getHashCode(decentralisation) + getHashCode(entropy) + getHashCode(protocolMajor) +
+        getHashCode(protocolMinor) + getHashCode(minUtxoValue) + getHashCode(minPoolCost) +
+        getHashCode(costModel) + getHashCode(priceMem) + getHashCode(priceStep) +
+        getHashCode(maxTxExMem) + getHashCode(maxTxExSteps) + getHashCode(maxBlockExMem) +
+        getHashCode(maxBlockExSteps) + getHashCode(maxValSize) + getHashCode(collateralPercent) +
+        getHashCode(maxCollateralInputs) + getHashCode(registeredTx) + getHashCode(coinsPerUtxoSize);
   }
+
+  private int getHashCode(Object o) {
+    if (Objects.isNull(o)) {
+      return BigInteger.ZERO.intValue();
+    }
+
+    return o.hashCode();
+  }
+
 }

@@ -70,6 +70,9 @@ public class Delegation extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Redeemer redeemer;
 
+  @Column(name = "addr_id", updatable = false, insertable = false)
+  private Long stakeAddressId;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {

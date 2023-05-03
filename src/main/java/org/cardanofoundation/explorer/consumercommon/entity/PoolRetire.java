@@ -37,6 +37,9 @@ public class PoolRetire extends BaseEntity {
       foreignKey = @ForeignKey(name = "pool_retire_hash_id_fkey"))
   private PoolHash poolHash;
 
+  @Column(name = "hash_id", updatable = false, insertable = false)
+  private Long poolHashId;
+
   @Column(name = "cert_index", nullable = false)
   private Integer certIndex;
 
@@ -45,6 +48,9 @@ public class PoolRetire extends BaseEntity {
   @JoinColumn(name = "announced_tx_id", nullable = false,
       foreignKey = @ForeignKey(name = "pool_retire_announced_tx_id_fkey"))
   private Tx announcedTx;
+
+  @Column(name = "announced_tx_id", updatable = false, insertable = false)
+  private Long announcedTxId;
 
   @Column(name = "retiring_epoch", nullable = false)
   @Word31Type

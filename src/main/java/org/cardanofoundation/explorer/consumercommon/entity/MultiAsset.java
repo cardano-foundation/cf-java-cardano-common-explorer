@@ -50,6 +50,10 @@ public class MultiAsset extends BaseEntity {
   @Digits(integer = 23, fraction = 0)
   private BigInteger supply;
 
+  @Column(name = "total_volume", precision = 40)
+  @Digits(integer = 40, fraction = 0)
+  private BigInteger totalVolume;
+
   @Column(name = "time")
   private Timestamp time;
 

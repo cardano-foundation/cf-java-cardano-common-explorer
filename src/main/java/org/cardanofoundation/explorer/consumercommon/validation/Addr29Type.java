@@ -6,8 +6,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import jakarta.validation.Constraint;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 import jakarta.validation.Payload;
 
 @Target({ ElementType.FIELD})
@@ -20,12 +18,5 @@ public @interface Addr29Type {
   Class<?>[] groups() default { };
 
   Class<? extends Payload>[] payload() default { };
-}
-
-class Addr29TypeValidator  implements ConstraintValidator<Addr29Type, String> {
-  @Override
-  public boolean isValid(String bytes, ConstraintValidatorContext constraintValidatorContext) {
-    return bytes.length() == 58;
-  }
 }
 

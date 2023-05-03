@@ -3,25 +3,20 @@ package org.cardanofoundation.explorer.consumercommon.entity;
 import org.cardanofoundation.explorer.consumercommon.validation.Addr29Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
 
+import java.math.BigInteger;
 import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-
+import jakarta.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "stake_address", uniqueConstraints = {
@@ -47,12 +42,15 @@ public class StakeAddress extends BaseEntity {
   @Hash28Type
   private String scriptHash;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "tx_id", nullable = false,
-      foreignKey = @ForeignKey(name = "stake_address_tx_id_fkey"))
-  @EqualsAndHashCode.Exclude
-  private Tx tx;
+  @Column(name = "balance", nullable = false, precision = 39)
+  @Word128Type
+  @Digits(integer = 39, fraction = 0)
+  private BigInteger balance;
+
+  @Column(name = "available_reward", nullable = false, precision = 39)
+  @Word128Type
+  @Digits(integer = 39, fraction = 0)
+  private BigInteger availableReward;
 
   @Override
   public boolean equals(Object o) {

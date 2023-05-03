@@ -42,6 +42,9 @@ public class Reward extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
 
+  @Column(name = "addr_id", updatable = false, insertable = false)
+  private Long stakeAddressId;
+
   @Column(name = "type", nullable = false)
   private RewardType type;
 
@@ -51,10 +54,10 @@ public class Reward extends BaseEntity {
   private BigInteger amount;
 
   @Column(name = "earned_epoch", nullable = false)
-  private Long earnedEpoch;
+  private Integer earnedEpoch;
 
   @Column(name = "spendable_epoch", nullable = false)
-  private Long spendableEpoch;
+  private Integer spendableEpoch;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @OnDelete(action = OnDeleteAction.CASCADE)
@@ -62,6 +65,9 @@ public class Reward extends BaseEntity {
       foreignKey = @ForeignKey(name = "reward_pool_id_fkey"))
   @EqualsAndHashCode.Exclude
   private PoolHash pool;
+
+  @Column(name = "pool_id", updatable = false, insertable = false)
+  private Long poolId;
 
   @Override
   public boolean equals(Object o) {

@@ -1,5 +1,6 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
+import org.cardanofoundation.explorer.consumercommon.enumeration.EraType;
 import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
 import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
@@ -17,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "epoch", uniqueConstraints = {
@@ -28,6 +30,7 @@ import org.hibernate.Hibernate;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
+@DynamicUpdate
 public class Epoch extends BaseEntity {
 
   @Column(name = "out_sum", nullable = false, precision = 39)
@@ -60,6 +63,14 @@ public class Epoch extends BaseEntity {
 
   @Column(name="max_slot", nullable = false)
   private Integer maxSlot;
+
+  @Column(name="era", nullable = false)
+  private EraType era;
+
+  @Column(name = "rewards_distributed")
+  @Digits(integer = 20, fraction = 0)
+  @Lovelace
+  private BigInteger rewardsDistributed;
 
 /*  @OneToMany(fetch = FetchType.LAZY)
   @JoinColumn(name = "epoch_no" ,insertable =false, updatable = false)

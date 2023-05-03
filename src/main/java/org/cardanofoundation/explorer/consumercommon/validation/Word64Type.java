@@ -5,10 +5,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.math.BigInteger;
 import jakarta.validation.Constraint;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 import jakarta.validation.Payload;
 
 @Target({ ElementType.FIELD})
@@ -23,11 +20,3 @@ public @interface Word64Type {
   Class<? extends Payload>[] payload() default { };
 }
 
-class Word64TypeValidator implements ConstraintValidator<Word64Type, BigInteger> {
-
-  @Override
-  public boolean isValid(BigInteger number, ConstraintValidatorContext constraintValidatorContext) {
-    return number.compareTo(new BigInteger("0")) >= 0
-        && number.compareTo(new BigInteger("18446744073709551615")) <= 0;
-  }
-}

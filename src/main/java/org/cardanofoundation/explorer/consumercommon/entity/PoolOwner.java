@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -43,6 +44,9 @@ public class PoolOwner extends BaseEntity {
       foreignKey = @ForeignKey(name = "pool_owner_pool_update_id_fkey"))
   @EqualsAndHashCode.Exclude
   private PoolUpdate poolUpdate;
+
+  @Column(name = "pool_update_id", updatable = false, insertable = false)
+  private Long poolUpdateId;
 
   @Override
   public boolean equals(Object o) {
