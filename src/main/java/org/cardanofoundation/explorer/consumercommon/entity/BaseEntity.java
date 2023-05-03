@@ -1,19 +1,14 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-
 import java.io.Serializable;
 import java.util.Objects;
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.id.enhanced.SequenceStyleGenerator;
@@ -30,13 +25,18 @@ public class BaseEntity implements Serializable {
   @Id
   @Column(name = "id", nullable = false, insertable = false, updatable = false)
   @GeneratedValue(generator = "seq_generator")
-  @GenericGenerator(name = "seq_generator", strategy = "sequence", parameters = {
-      // no longer supported by Hibernate 6.2 @Parameter(name = SequenceStyleGenerator.CONFIG_PREFER_SEGMENT_PER_ENTITY, value = "true"),
-      @Parameter(name = SequenceStyleGenerator.CONFIG_SEQUENCE_PER_ENTITY_SUFFIX, value = "_ID_SEQ")
-  })
+  @GenericGenerator(
+      name = "seq_generator",
+      strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+      parameters = {
+        // no longer supported by Hibernate 6.2
+        //@Parameter(name = SequenceStyleGenerator.CONFIG_PREFER_SEGMENT_PER_ENTITY, value = "true"),
+        @Parameter(name = SequenceStyleGenerator.CONFIG_SEQUENCE_PER_ENTITY_SUFFIX, value = "_ID_SEQ"),
+        @Parameter(name = SequenceStyleGenerator.INCREMENT_PARAM, value = "1")
+      })
   protected Long id;
 
-/*  @Column(name = "created_at")
+  /*  @Column(name = "created_at")
   @CreatedDate
   protected Timestamp createdAt;
 
@@ -44,9 +44,9 @@ public class BaseEntity implements Serializable {
   @LastModifiedDate
   protected Timestamp updatedAt;*/
 
-//  @Column(name = "is_deleted")
-//  @ColumnDefault("false")
-//  protected Boolean isDeleted = false;
+  //  @Column(name = "is_deleted")
+  //  @ColumnDefault("false")
+  //  protected Boolean isDeleted = false;
 
   @Override
   public boolean equals(Object o) {
