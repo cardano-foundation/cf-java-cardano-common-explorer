@@ -61,10 +61,10 @@ public class Epoch extends BaseEntity {
   @Column(name = "end_time")
   private Timestamp endTime;
 
-  @Column(name="max_slot", nullable = false)
+  @Column(name = "max_slot", nullable = false)
   private Integer maxSlot;
 
-  @Column(name="era", nullable = false)
+  @Column(name = "era", nullable = false)
   private EraType era;
 
   @Column(name = "rewards_distributed")
@@ -84,8 +84,26 @@ public class Epoch extends BaseEntity {
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
       return false;
     }
+
     Epoch epoch = (Epoch) o;
-    return id != null && Objects.equals(id, epoch.id);
+
+    if (Objects.nonNull(id)) {
+      if (Objects.equals(id, epoch.id)) {
+        return Objects.equals(outSum, epoch.getOutSum()) &&
+            Objects.equals(fees, epoch.getFees()) &&
+            Objects.equals(txCount, epoch.getTxCount()) &&
+            Objects.equals(blkCount, epoch.getBlkCount()) &&
+            Objects.equals(no, epoch.getNo()) &&
+            Objects.equals(startTime, epoch.getStartTime()) &&
+            Objects.equals(endTime, epoch.getEndTime()) &&
+            Objects.equals(maxSlot, epoch.getMaxSlot()) &&
+            Objects.equals(era, epoch.getEra()) &&
+            Objects.equals(rewardsDistributed, epoch.getRewardsDistributed());
+      }
+      return Boolean.FALSE;
+    }
+
+    return Boolean.FALSE;
   }
 
   @Override
