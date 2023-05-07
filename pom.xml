@@ -6,7 +6,7 @@
 
     <groupId>org.cardanofoundation.explorer</groupId>
     <artifactId>consumer-common</artifactId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>0.2.0-SNAPSHOT</version>
     <description>Cardano shared functions for explorer specific LedgerSync crawler and api module</description>
 
     <scm>
@@ -43,7 +43,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.java>11</version.java>
+        <version.java>17</version.java>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
         <version.maven-compiler-plugin>3.10.0</version.maven-compiler-plugin>
         <version.maven-site-plugin>3.12.1</version.maven-site-plugin>
