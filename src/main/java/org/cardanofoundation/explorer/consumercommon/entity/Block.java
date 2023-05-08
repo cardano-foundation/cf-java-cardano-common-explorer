@@ -4,8 +4,10 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 import jakarta.persistence.Column;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -18,9 +20,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "block", uniqueConstraints = {
@@ -49,14 +51,14 @@ public class Block extends BaseEntity {
   private Long blockNo;
 
   @OneToOne(fetch = FetchType.LAZY)
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "previous_id")
+  @JoinColumn(name = "previous_id",
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Block previous;
-  
+
   @ManyToOne(fetch = FetchType.LAZY)
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "slot_leader_id")
+  @JoinColumn(name = "slot_leader_id",
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private SlotLeader slotLeader;
 
@@ -66,6 +68,7 @@ public class Block extends BaseEntity {
   @Column(name = "size")
   private Integer size;
 
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
   @Column(name = "time")
   private Timestamp time;
 
@@ -90,10 +93,6 @@ public class Block extends BaseEntity {
 
   @OneToMany(mappedBy = "block")
   private List<Tx> txList;
-
-//  @OneToOne
-//  @JoinColumn(name = "epoch_no", referencedColumnName = "no", nullable=false, insertable=false, updatable=false)
-//  private Epoch epoch;
 
   @Override
   public boolean equals(Object o) {

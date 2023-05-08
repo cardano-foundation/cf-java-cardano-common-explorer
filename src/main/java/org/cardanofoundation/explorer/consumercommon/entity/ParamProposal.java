@@ -1,13 +1,9 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
-import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
 import java.math.BigInteger;
 import java.util.Objects;
 import jakarta.persistence.Column;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
@@ -22,9 +18,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
+import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "param_proposal", uniqueConstraints = {
@@ -126,9 +125,8 @@ public class ParamProposal extends BaseEntity {
   private BigInteger minPoolCost;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "cost_model_id",
-      foreignKey = @ForeignKey(name = "param_proposal_cost_model_id_fkey"))
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private CostModel costModel;
 
@@ -172,9 +170,8 @@ public class ParamProposal extends BaseEntity {
   private Integer maxCollateralInputs;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "registered_tx_id", nullable = false,
-      foreignKey = @ForeignKey(name = "param_proposal_registered_tx_id_fkey"))
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx registeredTx;
 

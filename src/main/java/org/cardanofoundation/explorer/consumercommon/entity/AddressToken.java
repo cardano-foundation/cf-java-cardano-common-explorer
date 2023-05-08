@@ -4,6 +4,7 @@ import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 import java.math.BigInteger;
 import java.util.Objects;
 import jakarta.persistence.Column;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
@@ -18,8 +19,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "address_token")
@@ -31,31 +30,31 @@ import org.hibernate.annotations.OnDeleteAction;
 public class AddressToken extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "address_id", nullable = false,
-      foreignKey = @ForeignKey(name = "address_token_address_id_fkey"))
+      foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
   @EqualsAndHashCode.Exclude
   private Address address;
 
-  @Column(name = "address_id", updatable = false, insertable = false)
-  private Long addressId;
-
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "tx_id", nullable = false,
-      foreignKey = @ForeignKey(name = "address_token_tx_id_fkey"))
+      foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "ident", nullable = false,
-      foreignKey = @ForeignKey(name = "address_token_ident_fkey"))
+      foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
   @EqualsAndHashCode.Exclude
   private MultiAsset multiAsset;
 
   @Column(name = "ident", updatable = false, insertable = false)
   private Long multiAssetId;
+
+  @Column(name = "tx_id", updatable = false, insertable = false)
+  private Long txId;
+
+  @Column(name = "address_id", updatable = false, insertable = false)
+  private Long addressId;
 
   @Column(name = "balance", nullable = false, precision = 39)
   @Word128Type

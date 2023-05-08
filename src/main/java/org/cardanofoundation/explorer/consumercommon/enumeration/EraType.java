@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public enum EraType {
+  BYRON_EBB(0),
   BYRON(1),
   SHELLEY(2),
   ALLEGRA(3),

@@ -3,6 +3,7 @@ package org.cardanofoundation.explorer.consumercommon.entity;
 import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
 import java.util.Objects;
 import jakarta.persistence.Column;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
@@ -16,8 +17,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "pool_retire", uniqueConstraints = {
@@ -32,9 +31,8 @@ import org.hibernate.annotations.OnDeleteAction;
 public class PoolRetire extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "hash_id", nullable = false,
-      foreignKey = @ForeignKey(name = "pool_retire_hash_id_fkey"))
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   private PoolHash poolHash;
 
   @Column(name = "hash_id", updatable = false, insertable = false)
@@ -44,9 +42,8 @@ public class PoolRetire extends BaseEntity {
   private Integer certIndex;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "announced_tx_id", nullable = false,
-      foreignKey = @ForeignKey(name = "pool_retire_announced_tx_id_fkey"))
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   private Tx announcedTx;
 
   @Column(name = "announced_tx_id", updatable = false, insertable = false)

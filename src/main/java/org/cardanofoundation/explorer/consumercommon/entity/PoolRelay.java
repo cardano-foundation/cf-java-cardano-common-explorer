@@ -2,6 +2,7 @@ package org.cardanofoundation.explorer.consumercommon.entity;
 
 import java.util.Objects;
 import jakarta.persistence.Column;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
@@ -16,8 +17,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "pool_relay", uniqueConstraints = {
@@ -32,9 +31,8 @@ import org.hibernate.annotations.OnDeleteAction;
 public class PoolRelay extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "update_id", nullable = false,
-      foreignKey = @ForeignKey(name = "pool_relay_update_id_fkey"))
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private PoolUpdate poolUpdate;
 

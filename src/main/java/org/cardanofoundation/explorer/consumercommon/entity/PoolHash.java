@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "pool_hash", uniqueConstraints = {
@@ -28,7 +27,6 @@ import org.hibernate.annotations.DynamicUpdate;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-@DynamicUpdate
 public class PoolHash extends BaseEntity {
 
   @Column(name = "hash_raw", nullable = false, length = 56)
