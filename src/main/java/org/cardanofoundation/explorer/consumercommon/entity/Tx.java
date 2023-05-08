@@ -4,10 +4,13 @@ import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
 import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
+
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
@@ -17,15 +20,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "tx", uniqueConstraints = {
@@ -46,9 +49,8 @@ public class Tx extends BaseEntity {
   private String hash;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  @JoinColumn(name = "block_id", nullable = false,
-      foreignKey = @ForeignKey(name = "tx_block_id_fkey"))
+  @JoinColumn(nullable = false,
+      foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
   @EqualsAndHashCode.Exclude
   private Block block;
 
@@ -98,6 +100,7 @@ public class Tx extends BaseEntity {
 
   @OneToMany(mappedBy = "tx")
   private List<AddressToken> addressTokens;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -114,8 +117,9 @@ public class Tx extends BaseEntity {
   public int hashCode() {
     return getClass().hashCode();
   }
-  public void addScriptSize(int size){
-    if(this.size == null){
+
+  public void addScriptSize(int size) {
+    if (this.size == null) {
       this.size = 0;
     }
     this.size += size;

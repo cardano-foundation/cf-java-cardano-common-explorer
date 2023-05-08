@@ -7,6 +7,7 @@ import org.cardanofoundation.explorer.consumercommon.validation.TxIndex;
 import java.math.BigInteger;
 import java.util.Objects;
 import jakarta.persistence.Column;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
@@ -22,8 +23,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "failed_tx_out", uniqueConstraints = {
@@ -38,9 +37,8 @@ import org.hibernate.annotations.OnDeleteAction;
 public class FailedTxOut extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "tx_id", nullable = false,
-      foreignKey = @ForeignKey(name = "failed_tx_out_tx_id_fkey"))
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
@@ -62,9 +60,8 @@ public class FailedTxOut extends BaseEntity {
   private String paymentCred;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "stake_address_id",
-      foreignKey = @ForeignKey(name = "collateral_tx_out_stake_address_id_fkey"))
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private StakeAddress stakeAddress;
 
@@ -81,16 +78,14 @@ public class FailedTxOut extends BaseEntity {
   private String multiAssetsDescr;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "inline_datum_id",
-      foreignKey = @ForeignKey(name = "collateral_tx_out_inline_datum_id_fkey"))
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Datum inlineDatum;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "reference_script_id",
-      foreignKey = @ForeignKey(name = "collateral_tx_out_reference_script_id_fkey"))
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Script referenceScript;
 

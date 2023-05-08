@@ -5,10 +5,13 @@ import org.cardanofoundation.explorer.consumercommon.validation.Asset32Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
 import java.math.BigInteger;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
@@ -56,6 +59,10 @@ public class MultiAsset extends BaseEntity {
 
   @Column(name = "time")
   private Timestamp time;
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "multiAsset")
+  private List<AddressToken> addressToken;
+
 
   @Override
   public boolean equals(Object o) {
