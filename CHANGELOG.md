@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.0...v0.1.1) (2023-05-11)
+
+
+### Features
+
+* MET-918 redesign rollback history table for more precise information ([82c0a33](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/82c0a3365a79d6b0c9b72ab5504d55b149ab0684))
+
 ## 0.1.0-SNAPSHOT (2023-05-03)
 
 
