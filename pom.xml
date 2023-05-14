@@ -133,7 +133,7 @@
     <distributionManagement>
         <repository>
             <id>cardano-common-explorer</id>
-            <name>GitHub sotatek-tiendo Apache Maven Packages</name>
+            <name>Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/sotatek-dev/cardano-common-explorer</url>
         </repository>
     </distributionManagement>
