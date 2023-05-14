@@ -22,11 +22,6 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "withdrawal", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_slot_leader",
-        columnNames = {"addr_id", "tx_id"}
-    )
-})
 @Getter
 @Setter
 @NoArgsConstructor
