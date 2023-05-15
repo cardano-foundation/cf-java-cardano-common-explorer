@@ -2,6 +2,7 @@ package org.cardanofoundation.explorer.consumercommon.entity;
 
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -12,12 +13,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
@@ -130,6 +133,9 @@ public class ParamProposal extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private CostModel costModel;
 
+  @Column(name = "cost_model_id", insertable = false, updatable = false)
+  Long costModelId;
+
   @Column(name = "price_mem")
   private Double priceMem;
 
@@ -175,6 +181,9 @@ public class ParamProposal extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Tx registeredTx;
 
+  @Column(name = "registered_tx_id", insertable = false, updatable = false)
+  Long registeredTxId;
+
   @Column(name = "coins_per_utxo_size")
   @Lovelace
   @Digits(integer = 20, fraction = 0)
@@ -208,7 +217,8 @@ public class ParamProposal extends BaseEntity {
         getHashCode(costModel) + getHashCode(priceMem) + getHashCode(priceStep) +
         getHashCode(maxTxExMem) + getHashCode(maxTxExSteps) + getHashCode(maxBlockExMem) +
         getHashCode(maxBlockExSteps) + getHashCode(maxValSize) + getHashCode(collateralPercent) +
-        getHashCode(maxCollateralInputs) + getHashCode(registeredTx) + getHashCode(coinsPerUtxoSize);
+        getHashCode(maxCollateralInputs) + getHashCode(registeredTx) +
+        getHashCode(coinsPerUtxoSize);
   }
 
   private int getHashCode(Object o) {
