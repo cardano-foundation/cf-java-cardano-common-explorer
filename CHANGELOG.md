@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.3](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.2...v0.1.3) (2023-05-17)
+
+
+### Features
+
+* met-305 add table for report func ([9f80508](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/9f80508439446b70945905a9843197261509eebc))
+* met-679 add column table ParamProposal ([66c6fae](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/66c6fae11b8dad1c43759f88e8645e9c1006fa30))
+* MET-689 add TxChart entity ([32900f9](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/32900f9c0ae94133ed2138a898a5fb90468ffd68))
+
 ## [0.1.2](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.1...v0.1.2) (2023-05-14)
 
 
