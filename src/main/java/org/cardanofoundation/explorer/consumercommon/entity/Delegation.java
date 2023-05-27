@@ -55,6 +55,9 @@ public class Delegation extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
+  @Column(name = "tx_id", updatable = false, insertable = false)
+  private Long txId;
+
   @Column(name = "slot_no", nullable = false)
   @Word63Type
   private Long slotNo;

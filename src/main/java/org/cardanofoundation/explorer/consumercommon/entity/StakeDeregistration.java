@@ -38,6 +38,9 @@ public class StakeDeregistration extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
 
+  @Column(name = "addr_id", updatable = false, insertable = false)
+  private Long stakeAddressId;
+
   @Column(name = "cert_index", nullable = false)
   private Integer certIndex;
 
@@ -51,11 +54,17 @@ public class StakeDeregistration extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
+  @Column(name = "tx_id", updatable = false, insertable = false)
+  private Long txId;
+
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "redeemer_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Redeemer redeemer;
+
+  @Column(name = "redeemer_id", updatable = false, insertable = false)
+  private Long redeemerId;
 
   @Override
   public boolean equals(Object o) {
