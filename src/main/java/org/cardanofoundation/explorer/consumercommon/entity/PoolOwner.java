@@ -36,9 +36,6 @@ public class PoolOwner extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress stakeAddress;
 
-  @Column(name = "addr_id", updatable = false, insertable = false)
-  private Long stakeAddressId;
-
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "pool_update_id", nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))

@@ -38,9 +38,6 @@ public class StakeRegistration extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
 
-  @Column(name = "addr_id", updatable = false, insertable = false)
-  private Long stakeAddressId;
-
   @Column(name = "cert_index", nullable = false)
   private Integer certIndex;
 
@@ -53,9 +50,6 @@ public class StakeRegistration extends BaseEntity {
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
-
-  @Column(name = "tx_id", updatable = false, insertable = false)
-  private Long txId;
 
   @Override
   public boolean equals(Object o) {

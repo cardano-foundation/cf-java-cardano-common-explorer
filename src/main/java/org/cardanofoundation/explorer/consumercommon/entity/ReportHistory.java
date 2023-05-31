@@ -44,9 +44,6 @@ public class ReportHistory extends BaseEntity {
   @Column(name = "created_at")
   private Timestamp createdAt;
 
-  @Column(name = "uploaded_at")
-  private Timestamp uploadedAt;
-
   @Column(name = "status", nullable = false)
   @Enumerated(EnumType.STRING)
   private ReportStatus status;

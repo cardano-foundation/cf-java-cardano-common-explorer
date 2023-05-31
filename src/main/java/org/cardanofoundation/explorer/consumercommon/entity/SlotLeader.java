@@ -45,9 +45,6 @@ public class SlotLeader extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private PoolHash poolHash;
 
-  @Column(name = "pool_hash_id", updatable = false, insertable = false)
-  private Long poolHashId;
-
   @Column(name = "description", nullable = false, length = 65535)
   private String description;
 
