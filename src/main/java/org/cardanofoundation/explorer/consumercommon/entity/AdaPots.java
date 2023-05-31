@@ -78,9 +78,6 @@ public class AdaPots extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Block block;
 
-  @Column(name = "block_id", updatable = false, insertable = false)
-  private Long blockId;
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {

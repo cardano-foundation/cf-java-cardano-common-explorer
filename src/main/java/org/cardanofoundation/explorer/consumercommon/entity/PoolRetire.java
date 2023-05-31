@@ -38,7 +38,6 @@ public class PoolRetire extends BaseEntity {
   @Column(name = "hash_id", updatable = false, insertable = false)
   private Long poolHashId;
 
-
   @Column(name = "cert_index", nullable = false)
   private Integer certIndex;
 
