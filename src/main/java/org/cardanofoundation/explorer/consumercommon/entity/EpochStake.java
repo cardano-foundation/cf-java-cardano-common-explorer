@@ -40,17 +40,11 @@ public class EpochStake extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
 
-  @Column(name = "addr_id", updatable = false, insertable = false)
-  private Long stakeAddressId;
-
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "pool_id", nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private PoolHash pool;
-
-  @Column(name = "pool_id", updatable = false, insertable = false)
-  private Long poolId;
 
   @Column(name = "amount", nullable = false, precision = 20)
   @Lovelace
