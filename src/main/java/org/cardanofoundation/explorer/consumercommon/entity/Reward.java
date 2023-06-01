@@ -23,7 +23,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "reward3", uniqueConstraints = {
+@Table(name = "reward", uniqueConstraints = {
     @UniqueConstraint(name = "unique_reward",
         columnNames = {"addr_id", "type", "earned_epoch", "pool_id"})
 })
