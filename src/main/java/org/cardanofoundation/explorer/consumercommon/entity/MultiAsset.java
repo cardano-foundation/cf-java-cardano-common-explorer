@@ -43,6 +43,9 @@ public class MultiAsset extends BaseEntity {
   @Convert(converter = ByteConverter.class)
   private String name;
 
+  @Column(name = "name_view", length = 64)
+  private String nameView;
+
   @Column(name = "fingerprint", nullable = false)
   private String fingerprint;
 
