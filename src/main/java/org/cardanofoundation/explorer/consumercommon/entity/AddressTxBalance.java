@@ -1,9 +1,9 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -13,12 +13,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 import org.hibernate.Hibernate;
 
 @Entity
@@ -47,6 +50,11 @@ public class AddressTxBalance extends BaseEntity {
 
   @Column(name = "tx_id", updatable = false, insertable = false)
   private Long txId;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "stake_address_id",
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
+  private StakeAddress stakeAddress;
 
   @Column(name = "balance", nullable = false, precision = 39)
   @Word128Type
