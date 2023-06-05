@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.1.4](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.3...v0.1.4) (2023-06-01)
+
+
+### Features
+
+* add entity for report func ([049469f](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/049469f624375f4694a968ffe58aa1507b90f20e))
+* add entity for reward fetching func ([420028f](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/420028f9ac131eaef761fcb873aae2e746bdd6e3))
+* add pool-history checkpoint entity ([f107552](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/f1075524aac6817dd6ed5fba0b1fde956b43bc3d))
+* add pool-info checkpoint entity ([7632890](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/7632890a59afda03f12bce9d7ac3ff0a15df98e9))
+* add pool-info checkpoint entity ([aa1b296](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/aa1b296ae1e05f0a3635b8bae6014aee6de4896b))
+* build snap-shot pom demo v2 ([0b92333](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/0b92333971fbe2ebb5925fedf5f2d179d5fad808))
+* met-1112 add check-point entity for reward fetching function ([616d5bc](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/616d5bce0294b79e8e60aec14b354dab8be5b09d))
+* MET-1112 add entity for checkpoint table of reward fetching func ([dde802e](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/dde802e677d838c392c17720eaeeb58ec50a34e4))
+* met-1112 add pool history check-point entity ([1ac06ee](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/1ac06ee4fc44de119245765df0553b180f856961))
+* MET-1122 mapping entity to fk field ([5253d64](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/5253d641c9d5ea2b1e1892627a717ac285113696))
+* MET-1122 mapping entity to fk field ([6df0bf2](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/6df0bf2efb4772cb9e9c126fe0b159ae1ef6c6e2))
+* MET-753 add column verified_contract for Address table ([5ec9008](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/5ec9008a755321b0bb3ee0d4ae1bf2a105d27abc))
+* MET-777 add column uploaded-at for report func ([c939048](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/c939048d83814d0efb7e984128675b1ed84f7618))
+
 ## [0.1.3](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.2...v0.1.3) (2023-05-17)
 
 
