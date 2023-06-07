@@ -55,6 +55,9 @@ public class Withdrawal extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
+  @Column(name = "tx_id", updatable = false, insertable = false)
+  private Long txId;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
