@@ -32,8 +32,8 @@ public class PoolHistoryCheckpoint extends BaseEntity {
   @Column(name = "epoch_checkpoint", nullable = false)
   private Integer epochCheckpoint;
 
-  @Column(name = "earned_reward")
-  private Boolean earnedReward;
+  @Column(name = "is_spendable_reward")
+  private Boolean isSpendableReward;
 
   @Override
   public boolean equals(Object o) {
