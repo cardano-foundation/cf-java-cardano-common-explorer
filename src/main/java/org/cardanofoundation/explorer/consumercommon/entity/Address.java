@@ -50,7 +50,7 @@ public class Address extends BaseEntity {
   @Column(name = "stake_address_id", updatable = false, insertable = false)
   private Long stakeAddressId;
 
-  @Column(name = "verified_contract", nullable = false)
+  @Column(name = "verified_contract")
   private Boolean verifiedContract;
 
   @Override
