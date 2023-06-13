@@ -1,18 +1,27 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
+import java.math.BigInteger;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.Digits;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
 import org.hibernate.Hibernate;
 
 
@@ -28,14 +37,28 @@ import org.hibernate.Hibernate;
 @SuperBuilder(toBuilder = true)
 public class PoolInfo extends BaseEntity {
 
-  @Column(name = "pool_id", nullable = false)
-  private String poolId;
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "pool_id", nullable = false,
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
+  @EqualsAndHashCode.Exclude
+  private PoolHash pool;
+
+  @Column(name = "pool_id", updatable = false, insertable = false)
+  private Long poolId;
+
   @Column(name = "fetched_at_epoch", nullable = false)
   private Integer fetchedAtEpoch;
-  @Column(name = "active_stake", nullable = false)
-  private String activeStake;
-  @Column(name = "live_stake", nullable = false)
-  private String liveStake;
+
+  @Column(name = "active_stake", nullable = false, precision = 20)
+  @Lovelace
+  @Digits(integer = 20, fraction = 0)
+  private BigInteger activeStake;
+
+  @Column(name = "live_stake", nullable = false, precision = 20)
+  @Lovelace
+  @Digits(integer = 20, fraction = 0)
+  private BigInteger liveStake;
+
   @Column(name = "live_saturation", nullable = false)
   private Double liveSaturation;
 

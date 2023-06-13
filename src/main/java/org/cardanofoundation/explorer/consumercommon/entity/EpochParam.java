@@ -4,8 +4,10 @@ import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
 import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
+
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -16,12 +18,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
 @Entity
@@ -181,11 +185,21 @@ public class EpochParam extends BaseEntity {
       return false;
     }
     EpochParam that = (EpochParam) o;
+
+    if (Objects.isNull(id)) {
+      return this.hashCode() == that.hashCode();
+    }
     return id != null && Objects.equals(id, that.id);
   }
 
   @Override
   public int hashCode() {
-    return getClass().hashCode();
+    return Objects.hash(epochNo, minFeeA, minFeeB, maxBlockSize, maxTxSize,
+        maxBhSize, keyDeposit, poolDeposit, maxEpoch, optimalPoolCount, influence,
+        monetaryExpandRate,
+        treasuryGrowthRate, decentralisation, extraEntropy, protocolMajor, protocolMinor,
+        minUtxoValue, minPoolCost, nonce, coinsPerUtxoSize, costModel, priceMem, priceStep,
+        maxTxExMem, maxTxExSteps, maxBlockExMem, maxBlockExSteps, maxValSize, collateralPercent,
+        maxCollateralInputs, block);
   }
 }
