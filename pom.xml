@@ -4,7 +4,7 @@
 
     <groupId>org.cardanofoundation.explorer</groupId>
     <artifactId>consumer-common</artifactId>
-    <version>0.1.5</version>
+    <version>0.1.6-SNAPSHOT</version>
     <description>Cardano shared functions for explorer specific LedgerSync crawler and api module</description>
 
     <scm>
