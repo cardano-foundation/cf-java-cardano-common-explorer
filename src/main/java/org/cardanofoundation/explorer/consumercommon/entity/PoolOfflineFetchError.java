@@ -1,8 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Word63Type;
 import java.sql.Timestamp;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -12,12 +12,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
 import org.hibernate.Hibernate;
 
 @Entity
@@ -50,8 +53,8 @@ public class PoolOfflineFetchError extends BaseEntity {
   @Column(name = "fetch_error", nullable = false, length = 65535)
   private String fetchError;
 
+  @Word31Type
   @Column(name = "retry_count", nullable = false)
-  @Word63Type
   private Integer retryCount;
 
   @Override

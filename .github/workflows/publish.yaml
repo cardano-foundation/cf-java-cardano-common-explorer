@@ -4,6 +4,7 @@ on:
   push:
     branches: 
       - main
+      - develop
   pull_request:
     types: [ opened, synchronize ]
   workflow_dispatch:
@@ -66,6 +67,14 @@ jobs:
 
       - name: Publish
         run: |
+          # Do not push if pom.xml for develop branch doesn't include SNAPSHOT suffix (avoids official releases overwrite)
+          BRANCH=${GITHUB_REF##*/}
+          CURRENT_VERSION=$(xq -r .project.version pom.xml)
+          if [[ "${BRANCH}" == "develop" ]] && ! [[ "${CURRENT_VERSION}" =~ .*-SNAPSHOT$ ]]
+          then
+            exit 0
+          fi
+
           xq \
             --arg REPOSITORY_ID private-registry \
             --arg REPOSITORY_NAME "${GITHUB_REPOSITORY}" \
