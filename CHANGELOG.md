@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.5](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.4...v0.1.5) (2023-06-22)
+
+
+### Features
+
+* [met-1112] add earned_reward column in pool history checkpoint table ([4e29994](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/4e299945f97b781575f7bcefd78b15da32c8d090))
+* [met-1112] update tables of pool history and pool info ([6c3c844](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/6c3c84444dba8c2a23d23dbe697bf64b7bf706fc))
+* MET-1150 add stakeAddress field in AddressTokenBalance entity ([cde3360](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/cde33601873fcfd1cc59e1a1c2a5de5eb4ad50fc))
+* MET-1150 add stakeAddress field in AddressTxBalance entity ([9bdaea6](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/9bdaea6c98a73f6d32f593adaef539ec1ae7d533))
+* met-1241 make minUtxoValue in EpochParam nullable ([273658d](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/273658d657545a1ed2de8d3cb07822fed7df895b))
+* met-1246 make verifiedContract in Address nullable ([4f57584](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/4f5758423ac8dbaa2b12d09cb817179736f6c035))
+* MET-691 add name_view column in MultiAsset entity ([aa17e34](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/aa17e3497ddca86c92c2289bd44f2961888d2ef4))
+* MET-753 add field verify smart contract for address ([ee411e5](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/ee411e53a72b16d4fd8095977ac776fe7ae6f974))
+
 ## [0.1.4](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.3...v0.1.4) (2023-06-01)
 
 
