@@ -58,6 +58,12 @@ public class PoolOfflineData extends BaseEntity {
   @Column(name = "pool_id", insertable = false, updatable = false)
   private Long poolId;
 
+  @Column(name = "logo_url", length = 2000)
+  private String logoUrl;
+
+  @Column(name = "icon_url", length = 2000)
+  private String iconUrl;
+
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "pmr_id", nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
