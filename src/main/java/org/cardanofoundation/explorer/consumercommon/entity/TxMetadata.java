@@ -1,5 +1,6 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
 import java.math.BigInteger;
 import java.util.Objects;
@@ -44,6 +45,9 @@ public class TxMetadata extends BaseEntity {
 
   @Column(name = "bytes")
   private byte[] bytes;
+
+  @Column(name = "hash", nullable = false, length = 64)
+  private String hash;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "tx_id", nullable = false,
