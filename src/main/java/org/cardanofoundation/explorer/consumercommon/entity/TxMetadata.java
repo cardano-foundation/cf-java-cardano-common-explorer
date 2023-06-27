@@ -1,9 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -14,12 +13,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
 import org.hibernate.Hibernate;
 
 @Entity
@@ -46,14 +48,17 @@ public class TxMetadata extends BaseEntity {
   @Column(name = "bytes")
   private byte[] bytes;
 
-  @Column(name = "hash", nullable = false, length = 64)
-  private String hash;
-
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "tx_id", nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
+
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  @JoinColumn(name = "tx_metadata_hash_id", nullable = false,
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
+  @EqualsAndHashCode.Exclude
+  private TxMetadataHash txMetadataHash;
 
   @Override
   public boolean equals(Object o) {
