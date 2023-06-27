@@ -1,10 +1,5 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
-import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
-
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +12,7 @@ import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
@@ -28,6 +24,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
+import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
 import org.hibernate.Hibernate;
 
 @Entity
@@ -100,6 +100,12 @@ public class Tx extends BaseEntity {
 
   @OneToMany(mappedBy = "tx")
   private List<AddressToken> addressTokens;
+
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "tx_metadata_hash_id",
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
+  @EqualsAndHashCode.Exclude
+  private TxMetadataHash txMetadataHash;
 
   @Override
   public boolean equals(Object o) {

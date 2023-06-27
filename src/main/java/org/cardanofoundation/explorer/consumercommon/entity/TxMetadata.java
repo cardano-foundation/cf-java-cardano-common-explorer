@@ -54,12 +54,6 @@ public class TxMetadata extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_metadata_hash_id", nullable = false,
-      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
-  @EqualsAndHashCode.Exclude
-  private TxMetadataHash txMetadataHash;
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
