@@ -1,5 +1,6 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -32,6 +33,9 @@ public class PoolInfoCheckpoint extends BaseEntity {
 
   @Column(name = "epoch_checkpoint", nullable = false)
   private Integer epochCheckpoint;
+
+  @Column(name = "last_fetch_time")
+  private LocalDateTime lastFetchTime;
 
   @Override
   public boolean equals(Object o) {
