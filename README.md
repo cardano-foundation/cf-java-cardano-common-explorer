@@ -7,77 +7,28 @@
 <a href="https://conventionalcommits.org"><img alt="conventionalcommits" src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits" /></a>
 </p>
 
-### Authenticating To GitHub Packages
+## Getting Started
 
-You need to create access token to create, publish etc with different scope depending on your needs.
-
-To authenticate to gitHub Packages registry within a GitHub Actions workflow, you can use:
-
-* GITHUB_TOKEN to publish packages associated with the workflow repository.
-* A personal access token (classic) with packages:read to install packages, packages:write to deploy packages.
-
-Create file settings.xml in your ~/.m2
+To make use of this project, you need to add the following lines to the pom.xml file.
 
 ```
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-				  http://maven.apache.org/xsd/settings-1.0.0.xsd">
-	<activeProfiles>
-	  <activeProfile>github</activeProfile>
-	</activeProfiles>
-
-	<profiles>
-	  <profile>
-		<id>cardano-common-explorer</id>
-		<repositories>
-		  <repository>
-			<id>central</id>
-			<url>https://repo1.maven.org/maven2</url>
-		  </repository>
-		  <repository>
-			<id>cardano-common-explorer</id>
-			<url>https://maven.pkg.github.com/sotatek-dev/cardano-common-explorer</url>
-			<snapshots>
-			  <enabled>true</enabled>
-			</snapshots>
-		  </repository>
-		</repositories>
-	  </profile>
-	</profiles>
-
-	<servers>
-	  <server>
-		<id>cardano-common-explorer</id>
-		<username>${username}</username>
-		<password>${token}</password>
-	  </server>
-	</servers>
-</settings>
-```
-
-In pom.xml
-```
-  <distributionManagement>
+<repositories>
+    ...
     <repository>
-      <id>${github}</id>
-      <name>GitHub sotatek-tiendo Apache Maven Packages</name>
-      <url>https://maven.pkg.github.com/sotatek-dev/cardano-common-explorer</url>
+        <id>gitlab-private-registry</id>
+        <url>https://pro.gitlab.metadata.dev.cf-deployments.org/api/v4/projects/2/packages/maven</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
     </repository>
-  </distributionManagement>
+</repositories>
 ```
 
-If you want to deploy package run:
-```
-mvn clean deploy
-```
-
-On the consumer side add dependency element to your project pom.xml file.
 ```
 <dependency>
-      <groupId>com.sotatek.cardano</groupId>
-      <artifactId>cardano-common-explorer</artifactId>
-      <version>1.0-SNAPSHOT</version>
+    <groupId>org.cardanofoundation.explorer</groupId>
+    <artifactId>consumer-common</artifactId>
+    <version>0.1.7</version>
 </dependency>
 ```
 
