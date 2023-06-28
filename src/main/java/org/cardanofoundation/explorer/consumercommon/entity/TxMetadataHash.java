@@ -1,5 +1,7 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -15,6 +17,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import org.hibernate.Hibernate;
 
 @Entity
 @Getter
@@ -33,4 +37,23 @@ public class TxMetadataHash extends BaseEntity {
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+
+    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
+      return false;
+    }
+
+    TxMetadataHash that = (TxMetadataHash) o;
+    if (Objects.isNull(id)) {
+      return this.getHash().equals(that.getHash()) &&
+          this.getTx().getHash().equals(that.getTx().getHash());
+    }
+
+    return Objects.equals(id, that.id);
+  }
 }
