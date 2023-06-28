@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.5...v0.1.6) (2023-06-28)
+
+
+### Features
+
+* met-1346 pool offline data add logo, icon ([c5ca744](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/c5ca744261a604523ad0551dd44c77d4b19dbfe7))
+
 ## [0.1.5](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.4...v0.1.5) (2023-06-22)
 
 
