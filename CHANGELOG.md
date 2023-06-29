@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.7](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.6...v0.1.7) (2023-06-28)
+
+
+### Bug Fixes
+
+* update README.md build new version ([3f221e4](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/3f221e4a31e5f3ccba78747fc373a88524b5861d))
+
 ## [0.1.6](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.5...v0.1.6) (2023-06-28)
 
 
