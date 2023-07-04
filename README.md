@@ -1,11 +1,23 @@
-# Cardano Common Library
+# Cardano Consumer Common Library
 
 <p align="left">
-<img alt="Tests" src="https://github.com/cardano-foundation/cf-java-cardano-common-explorer/actions/workflows/tests.yaml/badge.svg" />
+<img alt="Tests" src="https://github.com/cardano-foundation/cf-java-cardano-common-explorer/actions/workflows/tests.yaml/badge.svg?branch=main" />
 <img alt="Release" src="https://github.com/cardano-foundation/cf-java-cardano-common-explorer/actions/workflows/release.yaml/badge.svg?branch=main" />
 <img alt="Publish" src="https://github.com/cardano-foundation/cf-java-cardano-common-explorer/actions/workflows/publish.yaml/badge.svg?branch=main" />
 <a href="https://conventionalcommits.org"><img alt="conventionalcommits" src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits" /></a>
 </p>
+
+This repository contains shared classes and modules for the Iris and LedgerSync projects, facilitating code reuse and consistency across the projects.
+
+👉 Check the [Iris repository](https://github.com/cardano-foundation/cf-explorer) to understand how the microservices work together
+
+## 🧪 Test Reports
+
+To ensure the stability and reliability of this project, unit and mutation tests have been implemented. By clicking on the links below, you can access the detailed test reports and review the outcomes of the tests performed.
+
+📊 [Coverage Report](https://cardano-foundation.github.io/cf-java-cardano-common-explorer/html-report/reporthtml.html)
+
+📊 [Mutation Report](https://cardano-foundation.github.io/cf-java-cardano-common-explorer/mutation-report/)
 
 ## Getting Started
 
