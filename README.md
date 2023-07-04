@@ -1,4 +1,4 @@
-# Cardano Consumer Common Library
+# Iris Consumer Common Library
 
 <p align="left">
 <img alt="Tests" src="https://github.com/cardano-foundation/cf-java-cardano-common-explorer/actions/workflows/tests.yaml/badge.svg?branch=main" />
