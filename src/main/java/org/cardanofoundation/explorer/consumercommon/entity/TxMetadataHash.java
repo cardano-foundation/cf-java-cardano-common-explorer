@@ -32,11 +32,6 @@ public class TxMetadataHash extends BaseEntity {
   @Column(name = "hash", nullable = false, length = 64)
   private String hash;
 
-  @OneToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_id", nullable = false,
-      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
-  @EqualsAndHashCode.Exclude
-  private Tx tx;
 
   @Override
   public boolean equals(Object o) {
@@ -50,8 +45,7 @@ public class TxMetadataHash extends BaseEntity {
 
     TxMetadataHash that = (TxMetadataHash) o;
     if (Objects.isNull(id)) {
-      return this.getHash().equals(that.getHash()) &&
-          this.getTx().getHash().equals(that.getTx().getHash());
+      return this.getHash().equals(that.getHash());
     }
 
     return Objects.equals(id, that.id);
