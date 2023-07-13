@@ -20,7 +20,7 @@ public class Int65TypeValidator implements ConstraintValidator<Int65Type, BigInt
    */
   @Override
   public boolean isValid(BigInteger number, ConstraintValidatorContext constraintValidatorContext) {
-    return number.compareTo(MIN_64_BYTES) >= BigInteger.ONE.intValue()
-        && number.compareTo(MAX_64_BYTES) <= BigInteger.ONE.intValue();
+    return number.compareTo(MIN_64_BYTES) >= BigInteger.ZERO.intValue()
+        && number.compareTo(MAX_64_BYTES) < BigInteger.ZERO.intValue();
   }
 }
