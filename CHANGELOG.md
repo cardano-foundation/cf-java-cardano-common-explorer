@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.8](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.7...v0.1.8) (2023-07-18)
+
+
+### Features
+
+* met-1144 add tx metadata hash ([3f839cd](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/3f839cd6d43781beac82229205cfc1bec8048e1e))
+
 ## [0.1.7](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.6...v0.1.7) (2023-06-28)
 
 
