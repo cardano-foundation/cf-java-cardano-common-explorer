@@ -7,7 +7,7 @@ import jakarta.validation.ConstraintValidatorContext;
 public class Word63TypeValidator implements ConstraintValidator<Word63Type, Long> {
 
   /**
-   * Checking if input number greater than 0
+   * Checking if input number greater or equal to 0
    * if not return true else false
    * @param aLong                      number
    * @param constraintValidatorContext
@@ -15,6 +15,6 @@ public class Word63TypeValidator implements ConstraintValidator<Word63Type, Long
    */
   @Override
   public boolean isValid(Long aLong, ConstraintValidatorContext constraintValidatorContext) {
-    return aLong >= BigInteger.ONE.intValue();
+    return aLong >= BigInteger.ZERO.longValue();
   }
 }
