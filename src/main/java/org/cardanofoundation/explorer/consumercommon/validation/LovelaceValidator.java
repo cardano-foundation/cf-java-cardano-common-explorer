@@ -7,7 +7,7 @@ import jakarta.validation.ConstraintValidatorContext;
 
 public class LovelaceValidator implements ConstraintValidator<Lovelace, BigInteger> {
 
-  private static final BigInteger MAX_64_BYTES = ValidationConstant.getMaxLoveLace();
+  public static final BigInteger MAX_64_BYTES = ValidationConstant.getMaxLoveLace();
 
   /**
    * Checking if input lovelace is out of range 2^64 or not
@@ -19,7 +19,7 @@ public class LovelaceValidator implements ConstraintValidator<Lovelace, BigInteg
   @Override
   public boolean isValid(BigInteger number, ConstraintValidatorContext constraintValidatorContext) {
     return number.compareTo(BigInteger.valueOf(BigInteger.ZERO.longValue()))
-        >= BigInteger.ZERO.longValue()
-        && number.compareTo(MAX_64_BYTES) <= BigInteger.ZERO.longValue();
+        >= BigInteger.ZERO.intValue()
+        && number.compareTo(MAX_64_BYTES) <= BigInteger.ZERO.intValue();
   }
 }

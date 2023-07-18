@@ -7,7 +7,7 @@ import jakarta.validation.ConstraintValidatorContext;
 public class Word31TypeValidator implements ConstraintValidator<Word31Type, Integer> {
 
   /**
-   * Checking if input number greater than 0 if not return true else false
+   * Checking if input number greater or equal to 0 if not return true else false
    *
    * @param integer                    number
    * @param constraintValidatorContext
@@ -15,6 +15,6 @@ public class Word31TypeValidator implements ConstraintValidator<Word31Type, Inte
    */
   @Override
   public boolean isValid(Integer integer, ConstraintValidatorContext constraintValidatorContext) {
-    return integer >= BigInteger.ONE.intValue();
+    return integer >= BigInteger.ZERO.intValue();
   }
 }

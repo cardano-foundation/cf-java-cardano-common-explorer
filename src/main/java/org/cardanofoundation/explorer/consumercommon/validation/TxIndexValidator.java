@@ -8,6 +8,6 @@ public class TxIndexValidator implements ConstraintValidator<TxIndex, Short> {
 
   @Override
   public boolean isValid(Short aShort, ConstraintValidatorContext constraintValidatorContext) {
-    return aShort >= BigInteger.ONE.intValue();
+    return aShort >= BigInteger.ZERO.shortValue();
   }
 }
