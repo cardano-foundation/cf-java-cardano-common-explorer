@@ -44,6 +44,9 @@ public class AssetMetadata extends BaseEntity {
   @Column(name = "decimals", nullable = false)
   private Integer decimals;
 
+  @Column(name = "logo_hash", nullable = false)
+  private String logoHash;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
