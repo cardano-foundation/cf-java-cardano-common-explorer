@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.9](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.8...v0.1.9) (2023-07-27)
+
+
+### Features
+
+* met-1448 add column logo_hash asset_metadata table ([8acd448](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/8acd448bb01d680fe1396182ccdc583dfd652f5e))
+
 ## [0.1.8](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.7...v0.1.8) (2023-07-18)
 
 
