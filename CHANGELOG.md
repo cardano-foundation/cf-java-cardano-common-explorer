@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.10](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.9...v0.1.10) (2023-08-25)
+
+
+### Features
+
+* MET-1507 add redeemer reference to UnconsumeTxIn entity ([6650c54](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/6650c54fe07be94996f25f362e265c0361d554f5))
+
 ## [0.1.9](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.8...v0.1.9) (2023-07-27)
 
 
