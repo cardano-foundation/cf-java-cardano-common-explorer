@@ -12,7 +12,6 @@ import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -23,10 +22,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "reward", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_reward",
-        columnNames = {"addr_id", "type", "earned_epoch", "pool_id"})
-})
+@Table(name = "reward")
 @Getter
 @Setter
 @NoArgsConstructor
