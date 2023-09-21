@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.11](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.10...v0.1.11) (2023-09-21)
+
+
+### Bug Fixes
+
+* MET-1528 add getter setter for aggregate tables ([23462ab](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/23462abd1e84a1b0dec7f5157d3518dd4bfc208d))
+
 ## [0.1.10](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.9...v0.1.10) (2023-08-25)
 
 
