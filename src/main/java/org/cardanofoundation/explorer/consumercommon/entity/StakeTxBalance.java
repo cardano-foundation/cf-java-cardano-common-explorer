@@ -50,7 +50,7 @@ public class StakeTxBalance extends BaseEntity {
   @Column(name = "stake_address_id", updatable = false, insertable = false)
   private Long stakeAddressId;
 
-  @Column(name = "balance", nullable = false, precision = 39)
+  @Column(name = "balance_change", nullable = false, precision = 39)
   @Word128Type
   @Digits(integer = 39, fraction = 0)
   private BigInteger balanceChange;
