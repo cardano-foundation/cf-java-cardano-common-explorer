@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.12](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.11...v0.1.12) (2023-09-26)
+
+
+### Features
+
+* MET-1528 add entity StakeTxBalance ([51c9333](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/51c93336a25b233a6941574a0c1c31c7dd221c75))
+* MET-1528 add entity StakeTxBalance ([635cbda](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/635cbda36d38aefe06060eb7451ba27d2cbd497d))
+* MET-1528 add entity StakeTxBalance ([4740afa](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/4740afa4fd3d331e702ae20c3712d4497ca599ec))
+
 ## [0.1.11](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.10...v0.1.11) (2023-09-21)
 
 
