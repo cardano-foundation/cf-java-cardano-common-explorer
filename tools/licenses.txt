@@ -1,8 +1,20 @@
 MIT
 Apache 2.0
 BSD
+EDL 1.0
 MPL 2.0
 EPL 2.0
-EDL 1.0
+New BSD
 Eclipse Public License v2.0
+Eclipse Public License - v 2.0
 BSD License 3
+Bouncy Castle Licence
+CC0 1.0 Universal
+Eclipse Public License 1.0,
+GPL2 w/ CPE
+GNU Library General Public License v2.1 or later
+Eclipse Distribution License - v 1.0
+Eclipse Distribution License v. 1.0
+Eclipse Public License v. 2.0
+GNU Lesser General Public License
+Eclipse Public License 1.0
