@@ -43,13 +43,13 @@ public class AggregatePoolInfo extends BaseEntity {
   private Long poolId;
 
   @Column(name = "delegator_cnt")
-  private Long delegatorCount;
+  private Integer delegatorCount;
 
   @Column(name = "block_life_time")
-  private Long blockLifeTime;
+  private Integer blockLifeTime;
 
   @Column(name = "block_in_epoch")
-  private Long blockInEpoch;
+  private Integer blockInEpoch;
 
   @Column(name = "block_check_point")
   private Long blockCheckPoint;
