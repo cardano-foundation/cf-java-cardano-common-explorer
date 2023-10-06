@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.13](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.12...v0.1.13) (2023-10-06)
+
+
+### Features
+
+* MET-1700 add entities for storing aggregated data of token ([642d2be](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/642d2befc6e7c02f8cfbc892d2598b8e9f87ed93))
+
 ## [0.1.12](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.11...v0.1.12) (2023-09-26)
 
 
