@@ -15,7 +15,8 @@ public enum EraType {
   ALLEGRA(3),
   MARY(4),
   ALONZO(5),
-  BABBAGE(6);
+  BABBAGE(6),
+  CONWAY(7);
 
   int value;
 
