@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.1.13](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.12...v0.1.13) (2023-10-06)
+
+
+### Features
+
+* MET-1700 add entities for storing aggregated data of token ([642d2be](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/642d2befc6e7c02f8cfbc892d2598b8e9f87ed93))
+
+## [0.1.12](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.11...v0.1.12) (2023-09-26)
+
+
+### Features
+
+* MET-1528 add entity StakeTxBalance ([51c9333](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/51c93336a25b233a6941574a0c1c31c7dd221c75))
+* MET-1528 add entity StakeTxBalance ([635cbda](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/635cbda36d38aefe06060eb7451ba27d2cbd497d))
+* MET-1528 add entity StakeTxBalance ([4740afa](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/4740afa4fd3d331e702ae20c3712d4497ca599ec))
+
+## [0.1.11](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.10...v0.1.11) (2023-09-21)
+
+
+### Bug Fixes
+
+* MET-1528 add getter setter for aggregate tables ([23462ab](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/23462abd1e84a1b0dec7f5157d3518dd4bfc208d))
+
 ## [0.1.10](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.9...v0.1.10) (2023-08-25)
 
 
