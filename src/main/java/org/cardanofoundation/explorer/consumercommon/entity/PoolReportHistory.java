@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.consumercommon.analytics.entity;
+package org.cardanofoundation.explorer.consumercommon.entity;
 
 
 import java.util.Objects;
@@ -20,8 +20,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "pool_report_history")
