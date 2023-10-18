@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.consumercommon.analytics.entity;
+package org.cardanofoundation.explorer.consumercommon.entity;
 
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 import org.cardanofoundation.explorer.consumercommon.enumeration.ReportStatus;
 import org.cardanofoundation.explorer.consumercommon.enumeration.ReportType;
 import org.hibernate.Hibernate;
