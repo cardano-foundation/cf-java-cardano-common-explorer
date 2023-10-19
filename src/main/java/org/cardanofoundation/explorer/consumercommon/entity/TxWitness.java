@@ -23,13 +23,13 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Table(name = "tx_vkey_witnesses")
+@Table(name = "tx_witnesses")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class TxVkeyWitness extends BaseEntity {
+public class TxWitness extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(name = "tx_id", nullable = false,
@@ -61,7 +61,7 @@ public class TxVkeyWitness extends BaseEntity {
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
       return false;
     }
-    TxVkeyWitness txOut = (TxVkeyWitness) o;
+    TxWitness txOut = (TxWitness) o;
     return id != null && Objects.equals(id, txOut.id);
   }
 
