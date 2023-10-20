@@ -1,6 +1,6 @@
-package org.cardanofoundation.explorer.consumercommon.entity;
+package org.cardanofoundation.explorer.consumercommon.explorer.entity;
 
-
+import java.sql.Timestamp;
 import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
@@ -20,24 +20,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "pool_report_history")
+@Table(name = "stake_key_report_history")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class PoolReportHistory extends BaseEntity {
+public class StakeKeyReportHistory extends BaseEntity {
 
-  @Column(name = "pool_id", nullable = false)
-  private String poolView;
+  @Column(name = "stake_key", nullable = false)
+  private String stakeKey;
 
-  @Column(name = "is_pool_size", nullable = false)
-  private Boolean isPoolSize;
+  @Column(name = "from_date", nullable = false)
+  private Timestamp fromDate;
+
+  @Column(name = "to_date", nullable = false)
+  private Timestamp toDate;
+
+  @Column(name = "is_ada_transfer", nullable = false)
+  private Boolean isADATransfer;
 
   @Column(name = "is_fees_paid", nullable = false)
   private Boolean isFeesPaid;
@@ -45,20 +50,17 @@ public class PoolReportHistory extends BaseEntity {
   @Column(name = "event_registration", nullable = false)
   private Boolean eventRegistration;
 
+  @Column(name = "event_delegation", nullable = false)
+  private Boolean eventDelegation;
+
+  @Column(name = "event_rewards", nullable = false)
+  private Boolean eventRewards;
+
+  @Column(name = "event_withdrawal", nullable = false)
+  private Boolean eventWithdrawal;
+
   @Column(name = "event_deregistration", nullable = false)
   private Boolean eventDeregistration;
-
-  @Column(name = "event_reward", nullable = false)
-  private Boolean eventReward;
-
-  @Column(name = "event_pool_update", nullable = false)
-  private Boolean eventPoolUpdate;
-
-  @Column(name = "begin_epoch", nullable = false)
-  private Integer beginEpoch;
-
-  @Column(name = "end_epoch", nullable = false)
-  private Integer endEpoch;
 
   @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   @JoinColumn(name = "report_id",foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
@@ -73,8 +75,8 @@ public class PoolReportHistory extends BaseEntity {
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
       return false;
     }
-    PoolReportHistory poolReportHistory = (PoolReportHistory) o;
-    return id != null && Objects.equals(id, poolReportHistory.id);
+    StakeKeyReportHistory stakeKeyReportHistory = (StakeKeyReportHistory) o;
+    return id != null && Objects.equals(id, stakeKeyReportHistory.id);
   }
 
   @Override
