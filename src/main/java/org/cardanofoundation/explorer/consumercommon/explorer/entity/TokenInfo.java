@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.consumercommon.entity;
+package org.cardanofoundation.explorer.consumercommon.explorer.entity;
 
 import java.math.BigInteger;
 import java.sql.Timestamp;
@@ -8,6 +8,9 @@ import jakarta.validation.constraints.Digits;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+
+import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
+import org.cardanofoundation.explorer.consumercommon.entity.MultiAsset;
 
 @Entity
 @Table(name = "token_info", uniqueConstraints = {
@@ -19,13 +22,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 public class TokenInfo extends BaseEntity {
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "ident", nullable = false,
-          foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
-  @EqualsAndHashCode.Exclude
-  private MultiAsset multiAsset;
-
-  @Column(name = "ident", updatable = false, insertable = false)
+  @Column(name = "ident", nullable = false)
   private Long multiAssetId;
 
   @Column(name = "number_of_holders")
