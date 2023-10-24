@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.consumercommon.entity;
+package org.cardanofoundation.explorer.consumercommon.explorer.entity;
 
 import java.math.BigInteger;
 import java.sql.Timestamp;
@@ -8,6 +8,9 @@ import jakarta.validation.constraints.Digits;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+
+import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
+import org.cardanofoundation.explorer.consumercommon.entity.MultiAsset;
 
 @Entity
 @Table(name = "token_info", uniqueConstraints = {
