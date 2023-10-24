@@ -22,13 +22,7 @@ import org.cardanofoundation.explorer.consumercommon.entity.MultiAsset;
 @SuperBuilder(toBuilder = true)
 public class TokenInfo extends BaseEntity {
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "ident", nullable = false,
-          foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
-  @EqualsAndHashCode.Exclude
-  private MultiAsset multiAsset;
-
-  @Column(name = "ident", updatable = false, insertable = false)
+  @Column(name = "ident", nullable = false)
   private Long multiAssetId;
 
   @Column(name = "number_of_holders")
