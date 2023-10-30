@@ -4,7 +4,7 @@
 
     <groupId>org.cardanofoundation.explorer</groupId>
     <artifactId>consumer-common</artifactId>
-    <version>0.1.13</version>
+    <version>0.1.14-SNAPSHOT</version>
     <description>Cardano shared functions for explorer specific LedgerSync crawler and api module</description>
 
     <scm>
@@ -50,6 +50,7 @@
         <version.bloxbean>0.4.3</version.bloxbean>
         <version.lombok>1.18.26</version.lombok>
         <version.hibernate-orm>6.1.7.Final</version.hibernate-orm>
+        <version.hibernate-types>2.21.1</version.hibernate-types>
     </properties>
 
     <dependencyManagement>
@@ -93,6 +94,11 @@
             <groupId>com.bloxbean.cardano</groupId>
             <artifactId>cardano-client-lib</artifactId>
             <version>${version.bloxbean}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-60</artifactId>
+            <version>${version.hibernate-types}</version>
         </dependency>
     </dependencies>
 
