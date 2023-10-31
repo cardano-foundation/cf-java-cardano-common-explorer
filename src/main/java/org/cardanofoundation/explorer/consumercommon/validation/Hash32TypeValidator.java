@@ -5,6 +5,8 @@ import static org.cardanofoundation.explorer.consumercommon.constants.Validation
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+import java.util.Objects;
+
 public class Hash32TypeValidator implements ConstraintValidator<Hash32Type, String> {
 
   /**
@@ -16,6 +18,6 @@ public class Hash32TypeValidator implements ConstraintValidator<Hash32Type, Stri
    */
   @Override
   public boolean isValid(String string, ConstraintValidatorContext constraintValidatorContext) {
-    return string.length() == HASH_32;
+    return Objects.isNull(string) || string.length() == HASH_32;
   }
 }

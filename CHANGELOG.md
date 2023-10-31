@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.14](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.13...v0.1.14) (2023-10-30)
+
+
+### Features
+
+* add TxBootstrapWitnesses entity ([64dcba4](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/64dcba4f15f687ab00a02d4fb425a4a8b66cb6b3))
+* add TxVkeyWitness entity ([a91b42f](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/a91b42faa659f1bd28f4b998c5bf34b78cbcb869))
+
+
+### Bug Fixes
+
+* rename entity ([1e18550](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/1e185502ad99c264c6f4caaa2d4ece9af4870b4a))
+
 ## [0.1.13](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.12...v0.1.13) (2023-10-06)
 
 

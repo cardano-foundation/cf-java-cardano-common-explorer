@@ -55,6 +55,9 @@ public class Script extends BaseEntity {
   @Word31Type
   private Integer serialisedSize;
 
+  @Column(name = "verified_contract")
+  private Boolean verifiedContract;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {

@@ -1,6 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.validation;
 
 import java.math.BigInteger;
+import java.util.Objects;
+
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
@@ -15,6 +17,6 @@ public class Word31TypeValidator implements ConstraintValidator<Word31Type, Inte
    */
   @Override
   public boolean isValid(Integer integer, ConstraintValidatorContext constraintValidatorContext) {
-    return integer >= BigInteger.ZERO.intValue();
+    return Objects.isNull(integer) || integer >= BigInteger.ZERO.intValue();
   }
 }
