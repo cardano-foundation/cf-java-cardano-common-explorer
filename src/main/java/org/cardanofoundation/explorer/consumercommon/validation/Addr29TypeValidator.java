@@ -5,10 +5,12 @@ import static org.cardanofoundation.explorer.consumercommon.constants.Validation
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+import java.util.Objects;
+
 public class Addr29TypeValidator implements ConstraintValidator<Addr29Type, String> {
 
   @Override
   public boolean isValid(String bytes, ConstraintValidatorContext constraintValidatorContext) {
-    return bytes.length() == ADDRESS_MAX_BYTES;
+    return Objects.isNull(bytes) || bytes.length() == ADDRESS_MAX_BYTES;
   }
 }
