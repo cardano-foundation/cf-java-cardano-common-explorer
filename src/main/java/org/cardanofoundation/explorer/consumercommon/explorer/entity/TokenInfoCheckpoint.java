@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.consumercommon.entity;
+package org.cardanofoundation.explorer.consumercommon.explorer.entity;
 
 import java.sql.Timestamp;
 
@@ -11,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 
 @Entity
 @Table(name = "token_info_checkpoint")

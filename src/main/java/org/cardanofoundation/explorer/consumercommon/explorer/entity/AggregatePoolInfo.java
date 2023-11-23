@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.consumercommon.entity.aggregation;
+package org.cardanofoundation.explorer.consumercommon.explorer.entity;
 
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -21,7 +20,6 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
-import org.cardanofoundation.explorer.consumercommon.entity.PoolHash;
 import org.hibernate.Hibernate;
 
 @Entity
@@ -33,13 +31,7 @@ import org.hibernate.Hibernate;
 @SuperBuilder(toBuilder = true)
 public class AggregatePoolInfo extends BaseEntity {
 
-  @OneToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "pool_id", nullable = false,
-      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
-  @EqualsAndHashCode.Exclude
-  private PoolHash poolHash;
-
-  @Column(name = "pool_id", insertable = false, updatable = false)
+  @Column(name = "pool_id", nullable = false)
   private Long poolId;
 
   @Column(name = "delegator_cnt")

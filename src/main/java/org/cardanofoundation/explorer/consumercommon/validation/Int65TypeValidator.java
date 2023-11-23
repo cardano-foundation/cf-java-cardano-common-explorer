@@ -2,6 +2,8 @@ package org.cardanofoundation.explorer.consumercommon.validation;
 
 import org.cardanofoundation.explorer.consumercommon.constants.ValidationConstant;
 import java.math.BigInteger;
+import java.util.Objects;
+
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
@@ -20,7 +22,7 @@ public class Int65TypeValidator implements ConstraintValidator<Int65Type, BigInt
    */
   @Override
   public boolean isValid(BigInteger number, ConstraintValidatorContext constraintValidatorContext) {
-    return number.compareTo(MIN_64_BYTES) >= BigInteger.ZERO.intValue()
-        && number.compareTo(MAX_64_BYTES) < BigInteger.ZERO.intValue();
+    return Objects.isNull(number) || (number.compareTo(MIN_64_BYTES) >= BigInteger.ZERO.intValue()
+        && number.compareTo(MAX_64_BYTES) < BigInteger.ZERO.intValue());
   }
 }
