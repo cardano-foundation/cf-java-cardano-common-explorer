@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.15](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.14...v0.1.15) (2023-11-23)
+
+
+### Features
+
+* add payment_cred column in address entity ([d9b6870](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/d9b68704d0c03134472e6ab7c0c12d6b736a0e38))
+* MET-1742 add verified_contract field to contract and remove it in address ([5a5f40c](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/5a5f40c6259fedea7b0195afe74a59751ce0338c))
+
+
+### Bug Fixes
+
+* add null condition to constrain checking ([a49513b](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/a49513ba9dbf3e6878aa8c811fe3d72855d283cb))
+* rename verified in script ([fb0f11f](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/fb0f11f529564bada47c00d7cccf6a636198d5be))
+
 ## [0.1.14](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.13...v0.1.14) (2023-10-30)
 
 
