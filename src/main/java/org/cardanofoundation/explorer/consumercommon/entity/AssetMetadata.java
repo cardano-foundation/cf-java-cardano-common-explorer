@@ -47,6 +47,8 @@ public class AssetMetadata extends BaseEntity {
   @Column(name = "logo_hash", nullable = false)
   private String logoHash;
 
+  @Column(name = "fingerprint")
+  private String fingerprint;
   @Override
   public boolean equals(Object o) {
     if (this == o) {
