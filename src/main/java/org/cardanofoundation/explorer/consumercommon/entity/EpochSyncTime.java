@@ -1,24 +1,31 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.enumeration.SyncStateType;
-import org.cardanofoundation.explorer.consumercommon.validation.Word63Type;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.enumeration.SyncStateType;
+import org.cardanofoundation.explorer.consumercommon.validation.Word63Type;
+
 @Entity
-@Table(name = "epoch_sync_time", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_epoch_sync_time",
-        columnNames = {"no"})
-})
+@Table(
+    name = "epoch_sync_time",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_epoch_sync_time",
+          columnNames = {"no"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor

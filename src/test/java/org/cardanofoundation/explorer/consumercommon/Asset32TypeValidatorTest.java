@@ -1,11 +1,11 @@
 package org.cardanofoundation.explorer.consumercommon;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Asset32TypeValidator;
-
 import static org.cardanofoundation.explorer.consumercommon.constants.ValidationConstant.ASSET_MAX_BYTES;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Asset32TypeValidator;
 
 class Asset32TypeValidatorTest {
 

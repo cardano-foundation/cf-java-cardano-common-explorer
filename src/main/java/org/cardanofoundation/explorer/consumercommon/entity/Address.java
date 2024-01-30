@@ -1,9 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -13,12 +12,17 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 
 @Entity
 @Table(name = "address")
@@ -44,7 +48,8 @@ public class Address extends BaseEntity {
   private Boolean addressHasScript;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "stake_address_id",
+  @JoinColumn(
+      name = "stake_address_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   private StakeAddress stakeAddress;
 

@@ -1,14 +1,14 @@
 package org.cardanofoundation.explorer.consumercommon;
 
-import java.math.BigInteger;
-
-import org.cardanofoundation.explorer.consumercommon.validation.Int65TypeValidator;
-
 import static org.cardanofoundation.explorer.consumercommon.validation.Int65TypeValidator.MAX_64_BYTES;
 import static org.cardanofoundation.explorer.consumercommon.validation.Int65TypeValidator.MIN_64_BYTES;
 
+import java.math.BigInteger;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Int65TypeValidator;
 
 class Int65TypeValidatorTest {
 

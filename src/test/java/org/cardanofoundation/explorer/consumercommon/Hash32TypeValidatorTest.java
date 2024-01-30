@@ -1,11 +1,11 @@
 package org.cardanofoundation.explorer.consumercommon;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash32TypeValidator;
-
 import static org.cardanofoundation.explorer.consumercommon.constants.ValidationConstant.HASH_32;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Hash32TypeValidator;
 
 class Hash32TypeValidatorTest {
 

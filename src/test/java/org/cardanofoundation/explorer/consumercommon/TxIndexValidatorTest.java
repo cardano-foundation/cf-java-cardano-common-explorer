@@ -2,10 +2,10 @@ package org.cardanofoundation.explorer.consumercommon;
 
 import java.math.BigInteger;
 
-import org.cardanofoundation.explorer.consumercommon.validation.TxIndexValidator;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import org.cardanofoundation.explorer.consumercommon.validation.TxIndexValidator;
 
 class TxIndexValidatorTest {
 

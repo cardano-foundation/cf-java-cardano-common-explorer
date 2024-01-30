@@ -11,7 +11,7 @@ public class Word31TypeValidator implements ConstraintValidator<Word31Type, Inte
   /**
    * Checking if input number greater or equal to 0 if not return true else false
    *
-   * @param integer                    number
+   * @param integer number
    * @param constraintValidatorContext
    * @return boolean
    */

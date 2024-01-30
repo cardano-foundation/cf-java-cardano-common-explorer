@@ -21,15 +21,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
+
 @Entity
-@Table(name = "tx_metadata", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_tx_metadata",
-        columnNames = {"key", "tx_id"}
-    )
-})
+@Table(
+    name = "tx_metadata",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_tx_metadata",
+          columnNames = {"key", "tx_id"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -49,7 +52,9 @@ public class TxMetadata extends BaseEntity {
   private byte[] bytes;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_id", nullable = false,
+  @JoinColumn(
+      name = "tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;

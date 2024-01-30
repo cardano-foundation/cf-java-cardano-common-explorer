@@ -2,24 +2,30 @@ package org.cardanofoundation.explorer.consumercommon.entity;
 
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "pool_stake", uniqueConstraints = {
-    @UniqueConstraint(name = "uni_pool_id",
-        columnNames = {"pool_id"})
-})
+@Table(
+    name = "pool_stake",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "uni_pool_id",
+          columnNames = {"pool_id"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor

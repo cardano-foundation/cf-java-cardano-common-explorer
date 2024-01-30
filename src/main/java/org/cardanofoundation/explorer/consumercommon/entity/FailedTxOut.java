@@ -1,11 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
-import org.cardanofoundation.explorer.consumercommon.validation.TxIndex;
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -16,19 +13,29 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
+import org.cardanofoundation.explorer.consumercommon.validation.TxIndex;
+
 @Entity
-@Table(name = "failed_tx_out", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_col_failed_txout",
-        columnNames = {"tx_id", "index"})
-})
+@Table(
+    name = "failed_tx_out",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_col_failed_txout",
+          columnNames = {"tx_id", "index"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,7 +44,9 @@ import org.hibernate.Hibernate;
 public class FailedTxOut extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_id", nullable = false,
+  @JoinColumn(
+      name = "tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
@@ -60,7 +69,8 @@ public class FailedTxOut extends BaseEntity {
   private String paymentCred;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "stake_address_id",
+  @JoinColumn(
+      name = "stake_address_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private StakeAddress stakeAddress;
@@ -78,13 +88,15 @@ public class FailedTxOut extends BaseEntity {
   private String multiAssetsDescr;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "inline_datum_id",
+  @JoinColumn(
+      name = "inline_datum_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Datum inlineDatum;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "reference_script_id",
+  @JoinColumn(
+      name = "reference_script_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Script referenceScript;

@@ -16,8 +16,13 @@ import org.cardanofoundation.explorer.consumercommon.enumeration.ScriptType;
 import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
 
 @Entity
-@Table(name = "smart_contract_info", uniqueConstraints = {
-    @UniqueConstraint(name = "smart_contract_info", columnNames = {"script_hash"})})
+@Table(
+    name = "smart_contract_info",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "smart_contract_info",
+          columnNames = {"script_hash"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor

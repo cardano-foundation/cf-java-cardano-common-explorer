@@ -32,7 +32,9 @@ import org.hibernate.annotations.Type;
 public class TxWitness extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_id", nullable = false,
+  @JoinColumn(
+      name = "tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
@@ -69,5 +71,4 @@ public class TxWitness extends BaseEntity {
   public int hashCode() {
     return getClass().hashCode();
   }
-
 }

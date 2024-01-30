@@ -1,10 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
-import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Word63Type;
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -15,18 +13,28 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
+import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Word63Type;
+
 @Entity
-@Table(name = "ada_pots", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_ada_pots", columnNames = {"block_id"})
-})
+@Table(
+    name = "ada_pots",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_ada_pots",
+          columnNames = {"block_id"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -73,7 +81,10 @@ public class AdaPots extends BaseEntity {
   private BigInteger fees;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "block_id", nullable = false, unique = true,
+  @JoinColumn(
+      name = "block_id",
+      nullable = false,
+      unique = true,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Block block;

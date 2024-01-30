@@ -21,16 +21,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
 
 @Entity
-@Table(name = "pool_history", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_pool_history",
-        columnNames = {"pool_id", "epoch_no"}
-    )
-})
+@Table(
+    name = "pool_history",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_pool_history",
+          columnNames = {"pool_id", "epoch_no"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -39,7 +41,9 @@ import org.hibernate.Hibernate;
 public class PoolHistory extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "pool_id", nullable = false,
+  @JoinColumn(
+      name = "pool_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private PoolHash pool;

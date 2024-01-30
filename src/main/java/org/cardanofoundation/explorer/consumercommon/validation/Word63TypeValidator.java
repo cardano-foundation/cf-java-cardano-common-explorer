@@ -9,9 +9,9 @@ import jakarta.validation.ConstraintValidatorContext;
 public class Word63TypeValidator implements ConstraintValidator<Word63Type, Long> {
 
   /**
-   * Checking if input number greater or equal to 0
-   * if not return true else false
-   * @param aLong                      number
+   * Checking if input number greater or equal to 0 if not return true else false
+   *
+   * @param aLong number
    * @param constraintValidatorContext
    * @return boolean
    */

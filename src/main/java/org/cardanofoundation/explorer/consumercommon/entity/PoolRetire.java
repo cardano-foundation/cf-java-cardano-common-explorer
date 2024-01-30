@@ -1,7 +1,7 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -11,18 +11,25 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
+
 @Entity
-@Table(name = "pool_retire", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_pool_retiring",
-        columnNames = {"announced_tx_id", "cert_index"})
-})
+@Table(
+    name = "pool_retire",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_pool_retiring",
+          columnNames = {"announced_tx_id", "cert_index"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -31,7 +38,9 @@ import org.hibernate.Hibernate;
 public class PoolRetire extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "hash_id", nullable = false,
+  @JoinColumn(
+      name = "hash_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   private PoolHash poolHash;
 
@@ -42,7 +51,9 @@ public class PoolRetire extends BaseEntity {
   private Integer certIndex;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "announced_tx_id", nullable = false,
+  @JoinColumn(
+      name = "announced_tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   private Tx announcedTx;
 

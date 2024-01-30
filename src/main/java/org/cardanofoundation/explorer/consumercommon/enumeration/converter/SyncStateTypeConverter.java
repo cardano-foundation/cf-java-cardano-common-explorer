@@ -1,8 +1,9 @@
 package org.cardanofoundation.explorer.consumercommon.enumeration.converter;
 
-import org.cardanofoundation.explorer.consumercommon.enumeration.SyncStateType;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
+
+import org.cardanofoundation.explorer.consumercommon.enumeration.SyncStateType;
 
 @Converter(autoApply = true)
 public class SyncStateTypeConverter implements AttributeConverter<SyncStateType, String> {

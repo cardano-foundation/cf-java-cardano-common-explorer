@@ -16,10 +16,13 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "reward_checkpoint", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_stake_address_checkpoint",
-        columnNames = {"view"})
-})
+@Table(
+    name = "reward_checkpoint",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_stake_address_checkpoint",
+          columnNames = {"view"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor

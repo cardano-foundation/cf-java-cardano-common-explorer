@@ -1,9 +1,9 @@
 package org.cardanofoundation.explorer.consumercommon.enumeration.converter;
 
-
-import org.cardanofoundation.explorer.consumercommon.enumeration.ScriptPurposeType;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
+
+import org.cardanofoundation.explorer.consumercommon.enumeration.ScriptPurposeType;
 
 @Converter(autoApply = true)
 public class ScriptPurposeTypeConverter implements AttributeConverter<ScriptPurposeType, String> {

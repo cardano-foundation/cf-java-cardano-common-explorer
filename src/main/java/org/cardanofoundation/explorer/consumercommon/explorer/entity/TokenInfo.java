@@ -10,11 +10,15 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
-import org.cardanofoundation.explorer.consumercommon.entity.MultiAsset;
 
 @Entity
-@Table(name = "token_info", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_token_info", columnNames = {"ident"})})
+@Table(
+    name = "token_info",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_token_info",
+          columnNames = {"ident"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor

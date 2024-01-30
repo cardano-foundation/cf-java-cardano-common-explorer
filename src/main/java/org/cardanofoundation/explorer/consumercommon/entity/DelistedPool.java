@@ -1,23 +1,30 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
+
 @Entity
-@Table(name = "delisted_pool", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_delisted_pool",
-        columnNames = {"hash_raw"})
-})
+@Table(
+    name = "delisted_pool",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_delisted_pool",
+          columnNames = {"hash_raw"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor

@@ -2,6 +2,7 @@ package org.cardanofoundation.explorer.consumercommon.enumeration;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ public enum TokenType {
 
   static {
     for (TokenType type : TokenType.values()) {
-      tokenTypeMap.put(type.value,type);
+      tokenTypeMap.put(type.value, type);
     }
   }
 

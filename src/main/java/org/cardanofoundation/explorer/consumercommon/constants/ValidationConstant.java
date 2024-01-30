@@ -4,9 +4,7 @@ import java.math.BigInteger;
 
 public class ValidationConstant {
 
-  private ValidationConstant() {
-
-  }
+  private ValidationConstant() {}
 
   public static final long MINUS_ONE = -1L;
   public static final double TWO = 2D;

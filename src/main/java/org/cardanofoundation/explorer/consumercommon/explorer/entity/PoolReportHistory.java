@@ -1,6 +1,5 @@
 package org.cardanofoundation.explorer.consumercommon.explorer.entity;
 
-
 import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
@@ -20,8 +19,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 import org.hibernate.Hibernate;
+
+import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 
 @Entity
 @Table(name = "pool_report_history")
@@ -60,7 +60,9 @@ public class PoolReportHistory extends BaseEntity {
   private Integer endEpoch;
 
   @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JoinColumn(name = "report_id",foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
+  @JoinColumn(
+      name = "report_id",
+      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private ReportHistory reportHistory;
 

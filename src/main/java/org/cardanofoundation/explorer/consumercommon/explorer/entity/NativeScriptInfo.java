@@ -4,18 +4,25 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 import org.cardanofoundation.explorer.consumercommon.enumeration.ScriptType;
 import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
 
 @Entity
-@Table(name = "native_script_info", uniqueConstraints = {
-    @UniqueConstraint(name = "native_script_info", columnNames = {"script_hash"})})
+@Table(
+    name = "native_script_info",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "native_script_info",
+          columnNames = {"script_hash"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor

@@ -29,17 +29,22 @@ import org.hibernate.Hibernate;
 @SuperBuilder(toBuilder = true)
 public class TxBootstrapWitnesses extends BaseEntity {
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_id", nullable = false,
+  @JoinColumn(
+      name = "tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
   @Column(name = "public_key", nullable = false)
   private String publicKey;
+
   @Column(name = "signature", nullable = false)
   private String signature;
+
   @Column(name = "chain_code", nullable = false)
   private String chainCode;
+
   @Column(name = "attributes", nullable = false)
   private String attributes;
 

@@ -1,8 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -12,13 +12,17 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 
 @Entity
 @Table(name = "address_token")
@@ -30,19 +34,25 @@ import org.hibernate.Hibernate;
 public class AddressToken extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "address_id", nullable = false,
+  @JoinColumn(
+      name = "address_id",
+      nullable = false,
       foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
   @EqualsAndHashCode.Exclude
   private Address address;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_id", nullable = false,
+  @JoinColumn(
+      name = "tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
   @EqualsAndHashCode.Exclude
   private Tx tx;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "ident", nullable = false,
+  @JoinColumn(
+      name = "ident",
+      nullable = false,
       foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
   @EqualsAndHashCode.Exclude
   private MultiAsset multiAsset;

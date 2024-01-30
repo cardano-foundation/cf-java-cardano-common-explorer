@@ -1,9 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.enumeration.RewardType;
-import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -14,19 +13,27 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.enumeration.RewardType;
+import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
+
 @Entity
-@Table(name = "reward", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_reward",
-        columnNames = {"addr_id", "type", "earned_epoch", "pool_id"})
-})
+@Table(
+    name = "reward",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_reward",
+          columnNames = {"addr_id", "type", "earned_epoch", "pool_id"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -35,7 +42,9 @@ import org.hibernate.Hibernate;
 public class Reward extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "addr_id", nullable = false,
+  @JoinColumn(
+      name = "addr_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
@@ -58,7 +67,8 @@ public class Reward extends BaseEntity {
   private Integer spendableEpoch;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "pool_id",
+  @JoinColumn(
+      name = "pool_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private PoolHash pool;
