@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.7.0](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.15...v0.7.0) (2024-01-31)
+
+
+### Features
+
+* add fingerprint column for assetmetadata entity ([203f21c](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/203f21c9b29eda7bc126ce062261857e16a5871a))
+* add SC info entity ([a7b12e7](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/a7b12e79374e2eaa9114346deb59f108adfce472))
+* create entity native script info ([2085cb7](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/2085cb70b6f3ca9e13b8cf756073a316e0357f14))
+* MET-1761 moving logic verify native script to the explorer database ([3b461d4](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/3b461d485f931ac264d9ba6b23055a8f79895e33))
+
 ## [0.1.15](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.14...v0.1.15) (2023-11-23)
 
 
