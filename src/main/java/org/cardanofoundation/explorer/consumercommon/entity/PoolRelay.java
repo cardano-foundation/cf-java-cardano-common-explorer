@@ -1,6 +1,7 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -10,19 +11,24 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "pool_relay", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_pool_relay",
-        columnNames = {"update_id", "ipv4", "ipv6", "dns_name"})
-})
+@Table(
+    name = "pool_relay",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_pool_relay",
+          columnNames = {"update_id", "ipv4", "ipv6", "dns_name"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -31,7 +37,9 @@ import org.hibernate.Hibernate;
 public class PoolRelay extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "update_id", nullable = false,
+  @JoinColumn(
+      name = "update_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private PoolUpdate poolUpdate;

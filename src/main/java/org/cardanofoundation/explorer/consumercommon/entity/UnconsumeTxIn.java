@@ -19,14 +19,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.consumercommon.validation.TxIndex;
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.TxIndex;
+
 @Entity
-@Table(name = "unconsume_tx_in", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_col_txin",
-        columnNames = {"tx_in_id", "tx_out_id", "tx_out_index"})
-})
+@Table(
+    name = "unconsume_tx_in",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_col_txin",
+          columnNames = {"tx_in_id", "tx_out_id", "tx_out_index"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -35,13 +39,17 @@ import org.hibernate.Hibernate;
 public class UnconsumeTxIn extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_in_id", nullable = false,
+  @JoinColumn(
+      name = "tx_in_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx txIn;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_out_id", nullable = false,
+  @JoinColumn(
+      name = "tx_out_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx txOut;
@@ -51,7 +59,8 @@ public class UnconsumeTxIn extends BaseEntity {
   private Short txOutIndex;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "redeemer_id",
+  @JoinColumn(
+      name = "redeemer_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Redeemer redeemer;

@@ -4,23 +4,18 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 import org.hibernate.Hibernate;
+
+import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 
 @Entity
 @Table(name = "agg_pool_info")

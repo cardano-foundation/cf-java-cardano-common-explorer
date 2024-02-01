@@ -16,16 +16,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import org.hibernate.Hibernate;
+
 import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 import org.cardanofoundation.explorer.consumercommon.enumeration.ReportStatus;
 import org.cardanofoundation.explorer.consumercommon.enumeration.ReportType;
-import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "report_history", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_storage_key",
-        columnNames = {"storage_key"})
-})
+@Table(
+    name = "report_history",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_storage_key",
+          columnNames = {"storage_key"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor

@@ -1,6 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
 import java.util.Objects;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -9,20 +11,24 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-import jakarta.persistence.Column;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "pool_owner", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_pool_owner",
-        columnNames = {"addr_id", "pool_update_id"})
-})
+@Table(
+    name = "pool_owner",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_pool_owner",
+          columnNames = {"addr_id", "pool_update_id"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -31,7 +37,9 @@ import org.hibernate.Hibernate;
 public class PoolOwner extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "addr_id", nullable = false,
+  @JoinColumn(
+      name = "addr_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private StakeAddress stakeAddress;
@@ -40,7 +48,9 @@ public class PoolOwner extends BaseEntity {
   private Long stakeAddressId;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "pool_update_id", nullable = false,
+  @JoinColumn(
+      name = "pool_update_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private PoolUpdate poolUpdate;

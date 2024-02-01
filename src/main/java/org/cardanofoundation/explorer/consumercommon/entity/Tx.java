@@ -24,18 +24,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import org.hibernate.Hibernate;
+
 import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
 import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
-import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "tx", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_tx",
-        columnNames = {"hash"}
-    )
-})
+@Table(
+    name = "tx",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_tx",
+          columnNames = {"hash"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -49,7 +52,8 @@ public class Tx extends BaseEntity {
   private String hash;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(nullable = false,
+  @JoinColumn(
+      nullable = false,
       foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
   @EqualsAndHashCode.Exclude
   private Block block;
@@ -102,7 +106,8 @@ public class Tx extends BaseEntity {
   private List<AddressToken> addressTokens;
 
   @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "tx_metadata_hash_id",
+  @JoinColumn(
+      name = "tx_metadata_hash_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private TxMetadataHash txMetadataHash;
@@ -130,5 +135,4 @@ public class Tx extends BaseEntity {
     }
     this.size += size;
   }
-
 }

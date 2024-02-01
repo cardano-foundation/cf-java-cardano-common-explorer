@@ -2,11 +2,11 @@ package org.cardanofoundation.explorer.consumercommon;
 
 import java.math.BigInteger;
 
-import org.cardanofoundation.explorer.consumercommon.constants.ValidationConstant;
-import org.cardanofoundation.explorer.consumercommon.validation.Word64TypeValidator;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import org.cardanofoundation.explorer.consumercommon.constants.ValidationConstant;
+import org.cardanofoundation.explorer.consumercommon.validation.Word64TypeValidator;
 
 class Word128TypeValidatorTest {
 

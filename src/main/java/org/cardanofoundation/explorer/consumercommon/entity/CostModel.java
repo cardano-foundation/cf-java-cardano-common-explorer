@@ -1,23 +1,30 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
+
 @Entity
-@Table(name = "cost_model", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_cost_model",
-        columnNames = {"hash"})
-})
+@Table(
+    name = "cost_model",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_cost_model",
+          columnNames = {"hash"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,7 +34,6 @@ public class CostModel extends BaseEntity {
 
   @Column(name = "costs", nullable = false, length = 65535)
   private String costs;
-
 
   @Column(name = "hash", nullable = false, length = 64)
   @Hash32Type
@@ -43,7 +49,7 @@ public class CostModel extends BaseEntity {
     }
     CostModel costModel = (CostModel) o;
 
-    if(Objects.isNull(id) && Objects.nonNull(hash)){
+    if (Objects.isNull(id) && Objects.nonNull(hash)) {
       return hash.equals(costModel.getHash());
     }
 

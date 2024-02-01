@@ -1,7 +1,7 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -11,19 +11,26 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
+
 @Entity
-@Table(name = "datum", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_datum",
-        columnNames = {"hash"})
-})
+@Table(
+    name = "datum",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_datum",
+          columnNames = {"hash"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -36,7 +43,9 @@ public class Datum extends BaseEntity {
   private String hash;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_id", nullable = false,
+  @JoinColumn(
+      name = "tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;

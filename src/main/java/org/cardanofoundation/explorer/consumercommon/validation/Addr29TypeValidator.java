@@ -2,10 +2,10 @@ package org.cardanofoundation.explorer.consumercommon.validation;
 
 import static org.cardanofoundation.explorer.consumercommon.constants.ValidationConstant.ADDRESS_MAX_BYTES;
 
+import java.util.Objects;
+
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-
-import java.util.Objects;
 
 public class Addr29TypeValidator implements ConstraintValidator<Addr29Type, String> {
 

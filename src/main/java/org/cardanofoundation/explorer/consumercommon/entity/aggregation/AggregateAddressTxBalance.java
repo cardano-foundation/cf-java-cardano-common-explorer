@@ -1,18 +1,20 @@
 package org.cardanofoundation.explorer.consumercommon.entity.aggregation;
 
+import java.math.BigInteger;
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import org.cardanofoundation.explorer.consumercommon.entity.BaseEntity;
 import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
-
-import java.math.BigInteger;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "agg_address_tx_balance")
@@ -34,5 +36,4 @@ public class AggregateAddressTxBalance extends BaseEntity {
 
   @Column(name = "day")
   private LocalDate day;
-
 }

@@ -8,9 +8,9 @@ import jakarta.validation.ConstraintValidatorContext;
 public class Asset32TypeValidator implements ConstraintValidator<Asset32Type, byte[]> {
 
   /**
-   * Checking if input bytes length equal to 58 or not . if equal return true  else false
+   * Checking if input bytes length equal to 58 or not . if equal return true else false
    *
-   * @param data                       byte array
+   * @param data byte array
    * @param constraintValidatorContext
    * @return boolean
    */

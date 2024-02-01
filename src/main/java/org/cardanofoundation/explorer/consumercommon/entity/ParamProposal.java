@@ -21,18 +21,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import org.hibernate.Hibernate;
+
 import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
 import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
 import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
-import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "param_proposal", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_param_proposal",
-        columnNames = {"key", "registered_tx_id"})
-})
+@Table(
+    name = "param_proposal",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_param_proposal",
+          columnNames = {"key", "registered_tx_id"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -128,7 +132,8 @@ public class ParamProposal extends BaseEntity {
   private BigInteger minPoolCost;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "cost_model_id",
+  @JoinColumn(
+      name = "cost_model_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private CostModel costModel;
@@ -176,7 +181,9 @@ public class ParamProposal extends BaseEntity {
   private Integer maxCollateralInputs;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "registered_tx_id", nullable = false,
+  @JoinColumn(
+      name = "registered_tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx registeredTx;
@@ -208,17 +215,36 @@ public class ParamProposal extends BaseEntity {
 
   @Override
   public int hashCode() {
-    return getHashCode(minFeeA) + getHashCode(minFeeB) + getHashCode(maxBlockSize) +
-        getHashCode(maxTxSize) + getHashCode(maxBhSize) + getHashCode(keyDeposit) +
-        getHashCode(poolDeposit) + getHashCode(maxEpoch) + getHashCode(optimalPoolCount) +
-        getHashCode(influence) + getHashCode(monetaryExpandRate) + getHashCode(treasuryGrowthRate) +
-        getHashCode(decentralisation) + getHashCode(entropy) + getHashCode(protocolMajor) +
-        getHashCode(protocolMinor) + getHashCode(minUtxoValue) + getHashCode(minPoolCost) +
-        getHashCode(costModel) + getHashCode(priceMem) + getHashCode(priceStep) +
-        getHashCode(maxTxExMem) + getHashCode(maxTxExSteps) + getHashCode(maxBlockExMem) +
-        getHashCode(maxBlockExSteps) + getHashCode(maxValSize) + getHashCode(collateralPercent) +
-        getHashCode(maxCollateralInputs) + getHashCode(registeredTx) +
-        getHashCode(coinsPerUtxoSize);
+    return getHashCode(minFeeA)
+        + getHashCode(minFeeB)
+        + getHashCode(maxBlockSize)
+        + getHashCode(maxTxSize)
+        + getHashCode(maxBhSize)
+        + getHashCode(keyDeposit)
+        + getHashCode(poolDeposit)
+        + getHashCode(maxEpoch)
+        + getHashCode(optimalPoolCount)
+        + getHashCode(influence)
+        + getHashCode(monetaryExpandRate)
+        + getHashCode(treasuryGrowthRate)
+        + getHashCode(decentralisation)
+        + getHashCode(entropy)
+        + getHashCode(protocolMajor)
+        + getHashCode(protocolMinor)
+        + getHashCode(minUtxoValue)
+        + getHashCode(minPoolCost)
+        + getHashCode(costModel)
+        + getHashCode(priceMem)
+        + getHashCode(priceStep)
+        + getHashCode(maxTxExMem)
+        + getHashCode(maxTxExSteps)
+        + getHashCode(maxBlockExMem)
+        + getHashCode(maxBlockExSteps)
+        + getHashCode(maxValSize)
+        + getHashCode(collateralPercent)
+        + getHashCode(maxCollateralInputs)
+        + getHashCode(registeredTx)
+        + getHashCode(coinsPerUtxoSize);
   }
 
   private int getHashCode(Object o) {
@@ -228,5 +254,4 @@ public class ParamProposal extends BaseEntity {
 
     return o.hashCode();
   }
-
 }

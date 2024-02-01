@@ -1,10 +1,5 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
-import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
-
 import java.math.BigInteger;
 import java.util.Objects;
 
@@ -28,11 +23,19 @@ import lombok.experimental.SuperBuilder;
 
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
+import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Word64Type;
+
 @Entity
-@Table(name = "epoch_param", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_epoch_param",
-        columnNames = {"epoch_no", "block_id"})
-})
+@Table(
+    name = "epoch_param",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_epoch_param",
+          columnNames = {"epoch_no", "block_id"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -126,7 +129,8 @@ public class EpochParam extends BaseEntity {
   private BigInteger coinsPerUtxoSize;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "cost_model_id",
+  @JoinColumn(
+      name = "cost_model_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private CostModel costModel;
@@ -171,7 +175,9 @@ public class EpochParam extends BaseEntity {
   private Integer maxCollateralInputs;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "block_id", nullable = false,
+  @JoinColumn(
+      name = "block_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Block block;
@@ -194,12 +200,38 @@ public class EpochParam extends BaseEntity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(epochNo, minFeeA, minFeeB, maxBlockSize, maxTxSize,
-        maxBhSize, keyDeposit, poolDeposit, maxEpoch, optimalPoolCount, influence,
+    return Objects.hash(
+        epochNo,
+        minFeeA,
+        minFeeB,
+        maxBlockSize,
+        maxTxSize,
+        maxBhSize,
+        keyDeposit,
+        poolDeposit,
+        maxEpoch,
+        optimalPoolCount,
+        influence,
         monetaryExpandRate,
-        treasuryGrowthRate, decentralisation, extraEntropy, protocolMajor, protocolMinor,
-        minUtxoValue, minPoolCost, nonce, coinsPerUtxoSize, costModel, priceMem, priceStep,
-        maxTxExMem, maxTxExSteps, maxBlockExMem, maxBlockExSteps, maxValSize, collateralPercent,
-        maxCollateralInputs, block);
+        treasuryGrowthRate,
+        decentralisation,
+        extraEntropy,
+        protocolMajor,
+        protocolMinor,
+        minUtxoValue,
+        minPoolCost,
+        nonce,
+        coinsPerUtxoSize,
+        costModel,
+        priceMem,
+        priceStep,
+        maxTxExMem,
+        maxTxExSteps,
+        maxBlockExMem,
+        maxBlockExSteps,
+        maxValSize,
+        collateralPercent,
+        maxCollateralInputs,
+        block);
   }
 }

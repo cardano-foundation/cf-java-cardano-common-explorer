@@ -21,8 +21,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 import org.hibernate.Hibernate;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
 
 @Entity
 @Table(name = "address_tx_balance")
@@ -34,7 +35,9 @@ import org.hibernate.Hibernate;
 public class AddressTxBalance extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "address_id", nullable = false,
+  @JoinColumn(
+      name = "address_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Address address;
@@ -43,7 +46,9 @@ public class AddressTxBalance extends BaseEntity {
   private Long addressId;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_id", nullable = false,
+  @JoinColumn(
+      name = "tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;
@@ -52,7 +57,8 @@ public class AddressTxBalance extends BaseEntity {
   private Long txId;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "stake_address_id",
+  @JoinColumn(
+      name = "stake_address_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   private StakeAddress stakeAddress;
 

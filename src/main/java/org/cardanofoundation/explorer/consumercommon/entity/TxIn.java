@@ -1,7 +1,7 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.TxIndex;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -11,20 +11,26 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.TxIndex;
+
 @Entity
-@Table(name = "tx_in", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_txin",
-        columnNames = {"tx_out_id", "tx_out_index"}
-    )
-})
+@Table(
+    name = "tx_in",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_txin",
+          columnNames = {"tx_out_id", "tx_out_index"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -33,13 +39,17 @@ import org.hibernate.Hibernate;
 public class TxIn extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_in_id", nullable = false,
+  @JoinColumn(
+      name = "tx_in_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx txInput;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_out_id", nullable = false,
+  @JoinColumn(
+      name = "tx_out_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx txOut;
@@ -55,7 +65,8 @@ public class TxIn extends BaseEntity {
   private Short txOutIndex;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "redeemer_id",
+  @JoinColumn(
+      name = "redeemer_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Redeemer redeemer;

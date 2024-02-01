@@ -1,9 +1,9 @@
 package org.cardanofoundation.explorer.consumercommon.enumeration.converter;
 
-
-import com.bloxbean.cardano.client.util.HexUtil;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
+
+import com.bloxbean.cardano.client.util.HexUtil;
 
 @Converter
 public class ByteConverter implements AttributeConverter<String, byte[]> {

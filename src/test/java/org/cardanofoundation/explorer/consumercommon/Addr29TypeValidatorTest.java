@@ -1,11 +1,11 @@
 package org.cardanofoundation.explorer.consumercommon;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Addr29TypeValidator;
-
 import static org.cardanofoundation.explorer.consumercommon.constants.ValidationConstant.ADDRESS_MAX_BYTES;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import org.cardanofoundation.explorer.consumercommon.validation.Addr29TypeValidator;
 
 class Addr29TypeValidatorTest {
 

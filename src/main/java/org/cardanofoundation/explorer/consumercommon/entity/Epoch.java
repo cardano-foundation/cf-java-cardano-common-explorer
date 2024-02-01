@@ -1,30 +1,37 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.enumeration.EraType;
-import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
-import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.DynamicUpdate;
 
+import org.cardanofoundation.explorer.consumercommon.enumeration.EraType;
+import org.cardanofoundation.explorer.consumercommon.validation.Lovelace;
+import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
+
 @Entity
-@Table(name = "epoch", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_epoch",
-        columnNames = {"no"})
-})
+@Table(
+    name = "epoch",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_epoch",
+          columnNames = {"no"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -72,7 +79,7 @@ public class Epoch extends BaseEntity {
   @Lovelace
   private BigInteger rewardsDistributed;
 
-/*  @OneToMany(fetch = FetchType.LAZY)
+  /*  @OneToMany(fetch = FetchType.LAZY)
   @JoinColumn(name = "epoch_no" ,insertable =false, updatable = false)
   private Set<Block> blocks;*/
 
@@ -89,16 +96,16 @@ public class Epoch extends BaseEntity {
 
     if (Objects.nonNull(id)) {
       if (Objects.equals(id, epoch.id)) {
-        return Objects.equals(outSum, epoch.getOutSum()) &&
-            Objects.equals(fees, epoch.getFees()) &&
-            Objects.equals(txCount, epoch.getTxCount()) &&
-            Objects.equals(blkCount, epoch.getBlkCount()) &&
-            Objects.equals(no, epoch.getNo()) &&
-            Objects.equals(startTime, epoch.getStartTime()) &&
-            Objects.equals(endTime, epoch.getEndTime()) &&
-            Objects.equals(maxSlot, epoch.getMaxSlot()) &&
-            Objects.equals(era, epoch.getEra()) &&
-            Objects.equals(rewardsDistributed, epoch.getRewardsDistributed());
+        return Objects.equals(outSum, epoch.getOutSum())
+            && Objects.equals(fees, epoch.getFees())
+            && Objects.equals(txCount, epoch.getTxCount())
+            && Objects.equals(blkCount, epoch.getBlkCount())
+            && Objects.equals(no, epoch.getNo())
+            && Objects.equals(startTime, epoch.getStartTime())
+            && Objects.equals(endTime, epoch.getEndTime())
+            && Objects.equals(maxSlot, epoch.getMaxSlot())
+            && Objects.equals(era, epoch.getEra())
+            && Objects.equals(rewardsDistributed, epoch.getRewardsDistributed());
       }
       return Boolean.FALSE;
     }

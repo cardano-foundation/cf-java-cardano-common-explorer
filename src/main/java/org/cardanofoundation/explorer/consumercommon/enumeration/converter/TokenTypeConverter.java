@@ -1,11 +1,12 @@
 package org.cardanofoundation.explorer.consumercommon.enumeration.converter;
 
-import org.cardanofoundation.explorer.consumercommon.enumeration.TokenType;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
+import org.cardanofoundation.explorer.consumercommon.enumeration.TokenType;
+
 @Converter(autoApply = true)
-public class TokenTypeConverter implements AttributeConverter<TokenType,Integer> {
+public class TokenTypeConverter implements AttributeConverter<TokenType, Integer> {
 
   @Override
   public Integer convertToDatabaseColumn(TokenType tokenType) {

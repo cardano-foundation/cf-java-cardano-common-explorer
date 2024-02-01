@@ -20,14 +20,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Word31Type;
+
 @Entity
-@Table(name = "pool_offline_fetch_error", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_pool_offline_fetch_error",
-        columnNames = {"pool_id", "fetch_time", "retry_count"})
-})
+@Table(
+    name = "pool_offline_fetch_error",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_pool_offline_fetch_error",
+          columnNames = {"pool_id", "fetch_time", "retry_count"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -36,7 +40,9 @@ import org.hibernate.Hibernate;
 public class PoolOfflineFetchError extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "pool_id", nullable = false,
+  @JoinColumn(
+      name = "pool_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private PoolHash poolHash;
@@ -45,7 +51,9 @@ public class PoolOfflineFetchError extends BaseEntity {
   private Timestamp fetchTime;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "pmr_id", nullable = false,
+  @JoinColumn(
+      name = "pmr_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private PoolMetadataRef poolMetadataRef;

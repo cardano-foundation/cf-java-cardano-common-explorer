@@ -3,6 +3,7 @@ package org.cardanofoundation.explorer.consumercommon.entity;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -14,6 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,15 +27,19 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.Hibernate;
 
 @Entity
-@Table(name = "block", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_block", columnNames = {"hash"})})
+@Table(
+    name = "block",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_block",
+          columnNames = {"hash"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
 public class Block extends BaseEntity {
-
 
   @Column(name = "hash", nullable = false, length = 64)
   private String hash;
@@ -51,13 +57,15 @@ public class Block extends BaseEntity {
   private Long blockNo;
 
   @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "previous_id",
+  @JoinColumn(
+      name = "previous_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Block previous;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "slot_leader_id",
+  @JoinColumn(
+      name = "slot_leader_id",
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private SlotLeader slotLeader;
@@ -89,7 +97,6 @@ public class Block extends BaseEntity {
 
   @Column(name = "op_cert_counter")
   private Long opCertCounter;
-
 
   @OneToMany(mappedBy = "block")
   private List<Tx> txList;

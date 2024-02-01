@@ -1,11 +1,9 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Addr29Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
-
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,20 +11,27 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Addr29Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Word128Type;
+
 @Entity
-@Table(name = "stake_address", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_stake_address",
-        columnNames = {"hash_raw"}
-    )
-})
+@Table(
+    name = "stake_address",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_stake_address",
+          columnNames = {"hash_raw"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -56,7 +61,7 @@ public class StakeAddress extends BaseEntity {
   private BigInteger availableReward;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "stakeAddress")
-   private List<Address> addresses;
+  private List<Address> addresses;
 
   @Override
   public boolean equals(Object o) {

@@ -1,8 +1,8 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Int65Type;
 import java.math.BigInteger;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -13,20 +13,26 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Int65Type;
+
 @Entity
-@Table(name = "treasury", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_treasury",
-        columnNames = {"addr_id", "tx_id", "cert_index"}
-    )
-})
+@Table(
+    name = "treasury",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_treasury",
+          columnNames = {"addr_id", "tx_id", "cert_index"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -35,7 +41,9 @@ import org.hibernate.Hibernate;
 public class Treasury extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "addr_id", nullable = false,
+  @JoinColumn(
+      name = "addr_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private StakeAddress addr;
@@ -49,7 +57,9 @@ public class Treasury extends BaseEntity {
   private BigInteger amount;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "tx_id", nullable = false,
+  @JoinColumn(
+      name = "tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx tx;

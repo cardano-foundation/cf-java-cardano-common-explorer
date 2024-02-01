@@ -2,6 +2,7 @@ package org.cardanofoundation.explorer.consumercommon.enumeration;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

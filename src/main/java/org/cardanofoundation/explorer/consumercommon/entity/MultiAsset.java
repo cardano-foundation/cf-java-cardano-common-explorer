@@ -1,12 +1,10 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.enumeration.converter.ByteConverter;
-import org.cardanofoundation.explorer.consumercommon.validation.Asset32Type;
-import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -15,18 +13,27 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.enumeration.converter.ByteConverter;
+import org.cardanofoundation.explorer.consumercommon.validation.Asset32Type;
+import org.cardanofoundation.explorer.consumercommon.validation.Hash28Type;
+
 @Entity
-@Table(name = "multi_asset", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_multi_asset",
-        columnNames = {"policy", "name"})
-})
+@Table(
+    name = "multi_asset",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_multi_asset",
+          columnNames = {"policy", "name"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -65,7 +72,6 @@ public class MultiAsset extends BaseEntity {
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "multiAsset")
   private List<AddressToken> addressToken;
-
 
   @Override
   public boolean equals(Object o) {

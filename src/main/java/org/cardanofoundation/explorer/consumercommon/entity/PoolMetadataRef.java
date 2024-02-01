@@ -1,7 +1,7 @@
 package org.cardanofoundation.explorer.consumercommon.entity;
 
-import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
 import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
@@ -11,19 +11,26 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.Hibernate;
 
+import org.cardanofoundation.explorer.consumercommon.validation.Hash32Type;
+
 @Entity
-@Table(name = "pool_metadata_ref", uniqueConstraints = {
-    @UniqueConstraint(name = "unique_pool_metadata_ref",
-        columnNames = {"pool_id", "url", "hash"})
-})
+@Table(
+    name = "pool_metadata_ref",
+    uniqueConstraints = {
+      @UniqueConstraint(
+          name = "unique_pool_metadata_ref",
+          columnNames = {"pool_id", "url", "hash"})
+    })
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,7 +39,9 @@ import org.hibernate.Hibernate;
 public class PoolMetadataRef extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "pool_id", nullable = false,
+  @JoinColumn(
+      name = "pool_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private PoolHash poolHash;
@@ -45,7 +54,9 @@ public class PoolMetadataRef extends BaseEntity {
   private String hash;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "registered_tx_id", nullable = false,
+  @JoinColumn(
+      name = "registered_tx_id",
+      nullable = false,
       foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
   @EqualsAndHashCode.Exclude
   private Tx registeredTx;
