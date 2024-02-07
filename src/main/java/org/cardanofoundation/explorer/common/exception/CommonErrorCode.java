@@ -29,6 +29,6 @@ public enum CommonErrorCode implements ErrorCode {
 
   @Override
   public String getServicePrefix() {
-    return "EXPLORER_COMMON_ERROR";
+    return "CC";
   }
 }
