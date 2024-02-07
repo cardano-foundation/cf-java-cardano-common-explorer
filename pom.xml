@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.cardanofoundation.explorer</groupId>
-    <artifactId>consumer-common</artifactId>
+    <artifactId>common</artifactId>
     <version>0.1.16-SNAPSHOT</version>
     <description>Cardano shared functions for explorer specific LedgerSync crawler and api module</description>
 
@@ -53,6 +53,13 @@
         <version.hibernate-types>2.21.1</version.hibernate-types>
         <version.spotless-maven-plugin>2.36.0</version.spotless-maven-plugin>
         <version.google-java-format>1.15.0</version.google-java-format>
+        <version.google-gson>2.10.1</version.google-gson>
+        <version.commons-io>2.11.0</version.commons-io>
+        <version.commons-codec>1.15</version.commons-codec>
+        <version.bouncycastle>1.70</version.bouncycastle>
+        <version.jsonwebtoken>0.11.5</version.jsonwebtoken>
+        <version.spotless-maven-plugin>2.36.0</version.spotless-maven-plugin>
+        <version.google-java-format>1.15.0</version.google-java-format>
     </properties>
 
     <dependencyManagement>
@@ -98,9 +105,50 @@
             <version>${version.bloxbean}</version>
         </dependency>
         <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${version.google-gson}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${version.commons-io}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${version.commons-codec}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>${version.bouncycastle}</version>
+        </dependency>
+        <dependency>
             <groupId>com.vladmihalcea</groupId>
             <artifactId>hibernate-types-60</artifactId>
             <version>${version.hibernate-types}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${version.jsonwebtoken}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${version.jsonwebtoken}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${version.jsonwebtoken}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 
@@ -139,6 +187,39 @@
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
                 <version>${version.github-maven-site-plugin}</version>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${version.spotless-maven-plugin}</version>
+                <configuration>
+                    <java>
+                        <excludes>
+                            <exclude>build/**/*.java</exclude>
+                        </excludes>
+                        <removeUnusedImports/>
+                        <replaceRegex>
+                            <name>Remove wildcard imports</name>
+                            <searchRegex>import\\s+[^\\*\\s]+\\*;(\\r\\n|\\r|\\n)</searchRegex>
+                            <replacement>$1</replacement>
+                        </replaceRegex>
+                        <googleJavaFormat>
+                            <version>${version.google-java-format}</version>
+                            <style>GOOGLE</style>
+                        </googleJavaFormat>
+                        <importOrder>
+                            <order>
+                                java,jakarta,javax,lombok,org.springframework,,\\#,org.junit,\\#org.junit,org.cardanofoundation,\\#org.cardanofoundation
+                            </order>
+                        </importOrder>
+                        <indent>
+                            <spaces>true</spaces>
+                            <spacesPerTab>2</spacesPerTab>
+                        </indent>
+                        <trimTrailingWhitespace/>
+                        <endWithNewline/>
+                    </java>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
