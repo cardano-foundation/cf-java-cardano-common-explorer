@@ -9,7 +9,7 @@
 
 This repository contains shared classes and modules for the Explorer and LedgerSync projects, facilitating code reuse and consistency across the projects.
 
-👉 Check the [Iris repository](https://github.com/cardano-foundation/cf-explorer) to understand how the microservices work together
+👉 Check the [explorer umbrella repository](https://github.com/cardano-foundation/cf-explorer) to understand how the microservices work together
 
 ## 🧪 Test Reports
 
