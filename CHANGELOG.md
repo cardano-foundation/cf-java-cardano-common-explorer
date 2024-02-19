@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.7.0...v0.9.0) (2024-02-19)
+
+
+### Bug Fixes
+
+* resolve type force version ([f6329f1](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/commit/f6329f1d94e6cf2d277912a355451e5e531e4c69))
+
 ## [0.7.0](https://github.com/cardano-foundation/cf-java-cardano-common-explorer/compare/v0.1.15...v0.7.0) (2024-01-31)
 
 
