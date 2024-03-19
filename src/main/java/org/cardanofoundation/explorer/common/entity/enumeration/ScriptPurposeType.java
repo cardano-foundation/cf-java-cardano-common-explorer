@@ -16,8 +16,8 @@ public enum ScriptPurposeType {
   MINT("mint"),
   CERT("cert"),
   REWARD("reward"),
-  VOTE("vote"),
-  PROPOSE("propose");
+  VOTING("voting"),
+  PROPOSING("proposing");
 
   String value;
 
