@@ -1,11 +1,11 @@
 package org.cardanofoundation.explorer.common.entity.explorer;
 
-
 import java.math.BigInteger;
-import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import org.cardanofoundation.explorer.common.entity.enumeration.DRepStatus;
 import org.cardanofoundation.explorer.common.entity.ledgersync.BaseEntity;
 
 @Entity
@@ -48,4 +49,8 @@ public class DRepInfo extends BaseEntity {
 
   @Column(name = "created_at")
   private Long createdAt;
+
+  @Column(name = "status", nullable = false)
+  @Enumerated(EnumType.STRING)
+  private DRepStatus status;
 }
