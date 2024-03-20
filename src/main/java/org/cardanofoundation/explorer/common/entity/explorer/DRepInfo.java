@@ -1,8 +1,6 @@
 package org.cardanofoundation.explorer.common.entity.explorer;
 
-
 import java.math.BigInteger;
-import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
