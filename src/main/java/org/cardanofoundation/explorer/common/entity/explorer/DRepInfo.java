@@ -15,6 +15,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import org.cardanofoundation.explorer.common.entity.enumeration.DRepStatus;
+import org.cardanofoundation.explorer.common.entity.enumeration.DRepType;
 import org.cardanofoundation.explorer.common.entity.ledgersync.BaseEntity;
 
 @Entity
@@ -53,4 +54,8 @@ public class DRepInfo extends BaseEntity {
   @Column(name = "status", nullable = false)
   @Enumerated(EnumType.STRING)
   private DRepStatus status;
+
+  @Column(name = "type", nullable = false)
+  @Enumerated(EnumType.STRING)
+  private DRepType type;
 }
