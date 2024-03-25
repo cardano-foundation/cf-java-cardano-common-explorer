@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import org.cardanofoundation.explorer.common.entity.ledgersync.base.BlockAwareEntity;
-import org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey.VotingProcedureId;
+import org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey.LatestVotingProcedureId;
 import org.cardanofoundation.explorer.common.entity.ledgersync.enumeration.Vote;
 import org.cardanofoundation.explorer.common.entity.ledgersync.enumeration.VoterType;
 
@@ -28,9 +28,9 @@ import org.cardanofoundation.explorer.common.entity.ledgersync.enumeration.Voter
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "voting_procedure")
-@IdClass(VotingProcedureId.class)
-public class VotingProcedure extends BlockAwareEntity {
+@Table(name = "latest_voting_procedure")
+@IdClass(LatestVotingProcedureId.class)
+public class LatestVotingProcedure extends BlockAwareEntity {
   @Column(name = "id", updatable = false, nullable = false)
   private UUID id;
 
@@ -44,9 +44,6 @@ public class VotingProcedure extends BlockAwareEntity {
   @Embedded
   @AttributeOverrides({
     @AttributeOverride(
-        name = "tx_hash",
-        column = @Column(name = "tx_hash", insertable = false, updatable = false)),
-    @AttributeOverride(
         name = "voter_hash",
         column = @Column(name = "voter_hash", insertable = false, updatable = false)),
     @AttributeOverride(
@@ -56,7 +53,7 @@ public class VotingProcedure extends BlockAwareEntity {
         name = "gov_action_index",
         column = @Column(name = "gov_action_index", insertable = false, updatable = false))
   })
-  private VotingProcedureId votingProcedureId;
+  private LatestVotingProcedureId votingProcedureId;
 
   @Column(name = "slot")
   private Long slot;
@@ -89,4 +86,7 @@ public class VotingProcedure extends BlockAwareEntity {
 
   @Column(name = "epoch")
   private Integer epoch;
+
+  @Column(name = "repeat_vote")
+  private Boolean repeatVote;
 }

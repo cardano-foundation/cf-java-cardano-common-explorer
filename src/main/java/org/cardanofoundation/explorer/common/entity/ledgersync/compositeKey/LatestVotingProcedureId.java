@@ -13,10 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class VotingProcedureId implements Serializable {
-  @Column(name = "tx_hash", insertable = false, updatable = false)
-  private String txHash;
-
+public class LatestVotingProcedureId implements Serializable {
   @Column(name = "voter_hash", insertable = false, updatable = false)
   private String voterHash;
 
