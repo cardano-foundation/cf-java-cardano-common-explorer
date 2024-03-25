@@ -20,7 +20,6 @@ import lombok.experimental.SuperBuilder;
 
 import org.cardanofoundation.explorer.common.entity.ledgersync.base.BlockAwareEntity;
 import org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey.LatestVotingProcedureId;
-import org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey.VotingProcedureId;
 import org.cardanofoundation.explorer.common.entity.ledgersync.enumeration.Vote;
 import org.cardanofoundation.explorer.common.entity.ledgersync.enumeration.VoterType;
 
