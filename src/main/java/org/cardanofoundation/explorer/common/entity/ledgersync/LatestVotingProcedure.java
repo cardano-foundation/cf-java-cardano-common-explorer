@@ -28,9 +28,9 @@ import org.cardanofoundation.explorer.common.entity.ledgersync.enumeration.Voter
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "voting_procedure")
+@Table(name = "latest_voting_procedure")
 @IdClass(VotingProcedureId.class)
-public class VotingProcedure extends BlockAwareEntity {
+public class LatestVotingProcedure extends BlockAwareEntity {
   @Column(name = "id", updatable = false, nullable = false)
   private UUID id;
 
@@ -89,4 +89,7 @@ public class VotingProcedure extends BlockAwareEntity {
 
   @Column(name = "epoch")
   private Integer epoch;
+
+  @Column(name = "repeat_vote")
+  private Boolean repeatVote;
 }

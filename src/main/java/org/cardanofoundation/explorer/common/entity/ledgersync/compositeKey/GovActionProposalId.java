@@ -4,13 +4,19 @@ import java.io.Serializable;
 
 import jakarta.persistence.Column;
 
-import lombok.EqualsAndHashCode;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@EqualsAndHashCode
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class GovActionProposalId implements Serializable {
-  @Column(name = "tx_hash")
+  @Column(name = "tx_hash", insertable = false, updatable = false)
   private String txHash;
 
-  @Column(name = "idx")
+  @Column(name = "idx", insertable = false, updatable = false)
   private long index;
 }
