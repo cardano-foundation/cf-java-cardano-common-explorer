@@ -25,7 +25,7 @@ import org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey.Comm
 @Entity
 @Table(name = "committee_registration")
 @IdClass(CommitteeRegistrationId.class)
-class CommitteeRegistration extends BlockAwareEntity {
+public class CommitteeRegistration extends BlockAwareEntity {
   @Id
   @Column(name = "tx_hash")
   private String txHash;

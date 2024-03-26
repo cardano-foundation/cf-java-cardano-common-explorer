@@ -7,6 +7,8 @@ import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
@@ -47,10 +49,11 @@ public class GovActionProposalInfo {
   })
   private GovActionProposalId id;
 
-  @Column(name = "expiredEpoch")
+  @Column(name = "expired_epoch")
   private Integer expiredEpoch;
 
   @Column(name = "status")
+  @Enumerated(EnumType.STRING)
   GovActionStatus status;
 
   @Column(name = "voting_power")
