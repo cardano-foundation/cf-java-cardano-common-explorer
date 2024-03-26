@@ -25,10 +25,10 @@ import org.cardanofoundation.explorer.common.entity.validation.Word31Type;
 
 @Entity
 @Table(
-    name = "stake_deregistration",
+    name = "ls_stake_registration",
     uniqueConstraints = {
       @UniqueConstraint(
-          name = "unique_stake_deregistration",
+          name = "unique_stake_registration",
           columnNames = {"tx_id", "cert_index"})
     })
 @Getter
@@ -36,7 +36,7 @@ import org.cardanofoundation.explorer.common.entity.validation.Word31Type;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class StakeDeregistration extends BaseEntity {
+public class LsStakeRegistration extends BaseEntity {
 
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   @JoinColumn(
@@ -67,16 +67,6 @@ public class StakeDeregistration extends BaseEntity {
   @Column(name = "tx_id", updatable = false, insertable = false)
   private Long txId;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(
-      name = "redeemer_id",
-      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
-  @EqualsAndHashCode.Exclude
-  private Redeemer redeemer;
-
-  @Column(name = "redeemer_id", updatable = false, insertable = false)
-  private Long redeemerId;
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -85,7 +75,7 @@ public class StakeDeregistration extends BaseEntity {
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
       return false;
     }
-    StakeDeregistration that = (StakeDeregistration) o;
+    LsStakeRegistration that = (LsStakeRegistration) o;
     return id != null && Objects.equals(id, that.id);
   }
 
