@@ -1,86 +1,66 @@
 package org.cardanofoundation.explorer.common.entity.ledgersync;
 
-import java.util.Objects;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ConstraintMode;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import org.hibernate.Hibernate;
+import com.bloxbean.cardano.client.transaction.spec.cert.CertificateType;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import org.cardanofoundation.explorer.common.entity.validation.Word31Type;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
 @Entity
 @Table(
     name = "stake_registration",
     uniqueConstraints = {
       @UniqueConstraint(
           name = "unique_stake_registration",
-          columnNames = {"tx_id", "cert_index"})
+          columnNames = {"tx_hash", "cert_index"})
     })
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@SuperBuilder(toBuilder = true)
-public class StakeRegistration extends BaseEntity {
+@IdClass(StakeRegistrationId.class)
+public class StakeRegistration {
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(
-      name = "addr_id",
-      nullable = false,
-      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
-  @EqualsAndHashCode.Exclude
-  private StakeAddress addr;
+  @Id
+  @Column(name = "tx_hash")
+  private String txHash;
 
-  @Column(name = "addr_id", updatable = false, insertable = false)
-  private Long stakeAddressId;
+  @Id
+  @Column(name = "cert_index")
+  private long certIndex;
 
-  @Column(name = "cert_index", nullable = false)
-  private Integer certIndex;
+  @Column(name = "credential")
+  private String credential;
 
-  @Column(name = "epoch_no", nullable = false)
-  @Word31Type
-  private Integer epochNo;
+  @Column(name = "type")
+  @Enumerated(EnumType.STRING)
+  private CertificateType type;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(
-      name = "tx_id",
-      nullable = false,
-      foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
-  @EqualsAndHashCode.Exclude
-  private Tx tx;
+  @Column(name = "address")
+  private String address;
 
-  @Column(name = "tx_id", updatable = false, insertable = false)
-  private Long txId;
+  @Column(name = "epoch")
+  private Integer epoch;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) {
-      return false;
-    }
-    StakeRegistration that = (StakeRegistration) o;
-    return id != null && Objects.equals(id, that.id);
-  }
+  @Column(name = "slot")
+  private Long slot;
 
-  @Override
-  public int hashCode() {
-    return getClass().hashCode();
-  }
+  @Column(name = "block_hash")
+  private String blockHash;
+
+  @Column(name = "block")
+  private Long blockNumber;
+
+  @Column(name = "block_time")
+  private Long blockTime;
+
+  @UpdateTimestamp
+  @Column(name = "update_datetime")
+  private LocalDateTime updateDateTime;
 }
