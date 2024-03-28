@@ -48,7 +48,7 @@ public class AggregatePoolInfo extends BaseEntity {
   private Integer votingPower;
 
   @Column(name = "governance_participation_rate")
-  private Integer governanceParticipationRate;
+  private Double governanceParticipationRate;
 
   @Override
   public boolean equals(Object o) {
