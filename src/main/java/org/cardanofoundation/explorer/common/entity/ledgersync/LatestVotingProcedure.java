@@ -75,7 +75,6 @@ public class LatestVotingProcedure extends BlockAwareEntity {
   private Integer govActionIndex;
 
   @Column(name = "vote")
-  @Enumerated(EnumType.STRING)
   private Vote vote;
 
   @Column(name = "anchor_url")
