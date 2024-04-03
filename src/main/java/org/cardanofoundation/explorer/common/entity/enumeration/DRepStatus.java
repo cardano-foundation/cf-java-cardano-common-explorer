@@ -13,7 +13,8 @@ import lombok.experimental.FieldDefaults;
 @Getter
 public enum DRepStatus {
   ACTIVE("active"),
-  INACTIVE("inactive");
+  INACTIVE("inactive"),
+  RETIRED("retired");
 
   String value;
 
