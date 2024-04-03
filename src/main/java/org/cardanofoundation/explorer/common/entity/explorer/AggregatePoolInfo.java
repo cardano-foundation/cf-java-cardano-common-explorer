@@ -44,6 +44,12 @@ public class AggregatePoolInfo extends BaseEntity {
   @Column(name = "update_time")
   private Timestamp updateTime;
 
+  @Column(name = "voting_power")
+  private Double votingPower;
+
+  @Column(name = "governance_participation_rate")
+  private Double governanceParticipationRate;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
