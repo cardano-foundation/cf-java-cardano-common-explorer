@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync.base;
+package org.cardanofoundation.explorer.common.entity.ledgersync;
 
 import java.time.LocalDateTime;
 

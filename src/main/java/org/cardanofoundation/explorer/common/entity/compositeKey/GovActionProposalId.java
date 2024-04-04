@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey;
+package org.cardanofoundation.explorer.common.entity.compositeKey;
 
 import java.io.Serializable;
 
