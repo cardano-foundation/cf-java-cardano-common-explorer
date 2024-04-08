@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.explorer;
+package org.cardanofoundation.explorer.common.entity.ledgersync;
 
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -14,8 +14,6 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import org.hibernate.Hibernate;
-
-import org.cardanofoundation.explorer.common.entity.ledgersync.BaseEntity;
 
 @Entity
 @Table(name = "agg_pool_info")

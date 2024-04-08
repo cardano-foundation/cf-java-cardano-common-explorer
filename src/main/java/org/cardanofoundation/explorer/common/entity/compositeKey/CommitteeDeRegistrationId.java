@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey;
+package org.cardanofoundation.explorer.common.entity.compositeKey;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import jakarta.persistence.Column;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode
-public class DelegationVoteId implements Serializable {
+public class CommitteeDeRegistrationId implements Serializable {
   @Column(name = "tx_hash")
   private String txHash;
 

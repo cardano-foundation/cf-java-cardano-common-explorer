@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync.enumeration;
+package org.cardanofoundation.explorer.common.entity.enumeration;
 
 import java.util.HashMap;
 import java.util.Map;

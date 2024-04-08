@@ -15,8 +15,7 @@ import lombok.experimental.SuperBuilder;
 
 import com.bloxbean.cardano.client.transaction.spec.cert.StakeCredType;
 
-import org.cardanofoundation.explorer.common.entity.ledgersync.base.BlockAwareEntity;
-import org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey.DelegationVoteId;
+import org.cardanofoundation.explorer.common.entity.compositeKey.DelegationVoteId;
 
 @Data
 @NoArgsConstructor

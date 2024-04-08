@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public enum GovActionStatus {
+  ANY("ANY"),
   OPEN_BALLOT("OPEN_BALLOT"),
   RATIFIED("RATIFIED"),
   ENACTED("ENACTED"),

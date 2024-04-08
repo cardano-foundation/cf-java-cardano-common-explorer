@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey;
+package org.cardanofoundation.explorer.common.entity.compositeKey;
 
 import java.io.Serializable;
 
@@ -13,7 +13,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LatestVotingProcedureId implements Serializable {
+public class VotingProcedureId implements Serializable {
+  @Column(name = "tx_hash", insertable = false, updatable = false)
+  private String txHash;
+
   @Column(name = "voter_hash", insertable = false, updatable = false)
   private String voterHash;
 

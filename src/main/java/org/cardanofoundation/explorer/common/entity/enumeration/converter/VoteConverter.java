@@ -1,9 +1,9 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync.converter;
+package org.cardanofoundation.explorer.common.entity.enumeration.converter;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
-import org.cardanofoundation.explorer.common.entity.ledgersync.enumeration.Vote;
+import org.cardanofoundation.explorer.common.entity.enumeration.Vote;
 
 @Converter(autoApply = true)
 public class VoteConverter implements AttributeConverter<Vote, String> {

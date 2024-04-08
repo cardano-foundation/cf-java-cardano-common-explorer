@@ -18,8 +18,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import org.cardanofoundation.explorer.common.entity.compositeKey.GovActionProposalId;
 import org.cardanofoundation.explorer.common.entity.enumeration.GovActionStatus;
-import org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey.GovActionProposalId;
 
 @Data
 @NoArgsConstructor

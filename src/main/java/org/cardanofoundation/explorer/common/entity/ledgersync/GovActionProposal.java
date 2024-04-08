@@ -22,9 +22,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.vladmihalcea.hibernate.type.json.JsonType;
 import org.hibernate.annotations.Type;
 
-import org.cardanofoundation.explorer.common.entity.ledgersync.base.BlockAwareEntity;
-import org.cardanofoundation.explorer.common.entity.ledgersync.compositeKey.GovActionProposalId;
-import org.cardanofoundation.explorer.common.entity.ledgersync.enumeration.GovActionType;
+import org.cardanofoundation.explorer.common.entity.compositeKey.GovActionProposalId;
+import org.cardanofoundation.explorer.common.entity.enumeration.GovActionType;
 
 @Data
 @NoArgsConstructor
