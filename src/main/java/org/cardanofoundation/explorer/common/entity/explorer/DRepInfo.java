@@ -51,6 +51,12 @@ public class DRepInfo extends BaseEntity {
   @Column(name = "created_at")
   private Long createdAt;
 
+  @Column(name = "updated_at")
+  private Long updatedAt;
+
+  @Column(name = "voting_power")
+  private Double votingPower;
+
   @Column(name = "status", nullable = false)
   @Enumerated(EnumType.STRING)
   private DRepStatus status;
