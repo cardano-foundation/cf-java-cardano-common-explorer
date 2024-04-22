@@ -12,6 +12,6 @@ import org.cardanofoundation.explorer.common.entity.explorer.ReportHistory;
 public class ReportMessage {
 
   private ReportHistory reportHistory;
-  private long zoneOffset;
+  private Long zoneOffset;
   private String timePattern;
 }
