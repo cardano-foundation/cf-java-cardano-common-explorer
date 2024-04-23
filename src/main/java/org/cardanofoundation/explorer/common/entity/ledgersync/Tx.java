@@ -1,7 +1,6 @@
 package org.cardanofoundation.explorer.common.entity.ledgersync;
 
 import java.math.BigInteger;
-import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -11,7 +10,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
@@ -98,12 +96,6 @@ public class Tx extends BaseEntity {
   @Column(name = "script_size")
   @Word31Type
   private Integer scriptSize;
-
-  @OneToMany(mappedBy = "tx")
-  private List<AddressTxBalance> addressTxBalances;
-
-  @OneToMany(mappedBy = "tx")
-  private List<AddressToken> addressTokens;
 
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(
