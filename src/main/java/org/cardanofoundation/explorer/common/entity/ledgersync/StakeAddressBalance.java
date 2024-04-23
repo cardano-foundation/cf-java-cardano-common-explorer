@@ -16,7 +16,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.common.entity.compositeKey.AddressBalanceId;
 import org.hibernate.annotations.DynamicUpdate;
 
 import org.cardanofoundation.explorer.common.entity.compositeKey.StakeAddressBalanceId;
