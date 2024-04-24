@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Builder
 public class AddressTxAmountId implements Serializable {
-  @Column(name = "address")
+  @Column(name = "address", insertable = false, updatable = false)
   private String address;
 
-  @Column(name = "unit")
+  @Column(name = "unit", insertable = false, updatable = false)
   private String unit;
 
-  @Column(name = "tx_hash")
+  @Column(name = "tx_hash", insertable = false, updatable = false)
   private String txHash;
 }

@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Builder
 public class StakeAddressBalanceId implements Serializable {
-  @Column(name = "address")
+  @Column(name = "address", insertable = false, updatable = false)
   private String address;
 
-  @Column(name = "slot")
+  @Column(name = "slot", insertable = false, updatable = false)
   private Long slot;
 }

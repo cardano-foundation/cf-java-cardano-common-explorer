@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Builder
 public class AddressBalanceId implements Serializable {
-  @Column(name = "address")
+  @Column(name = "address", insertable = false, updatable = false)
   private String address;
 
-  @Column(name = "unit")
+  @Column(name = "unit", insertable = false, updatable = false)
   private String unit;
 
-  @Column(name = "slot")
+  @Column(name = "slot", insertable = false, updatable = false)
   private Long slot;
 }
