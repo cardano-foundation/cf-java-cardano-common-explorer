@@ -21,4 +21,6 @@ public class ReportMessage {
   private Long zoneOffset;
   private String timePattern;
   private String dateFormat;
+  private String poolId;
+  private String stakeAddress;
 }
