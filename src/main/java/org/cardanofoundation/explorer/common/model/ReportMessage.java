@@ -20,4 +20,5 @@ public class ReportMessage {
   private ReportHistory reportHistory;
   private Long zoneOffset;
   private String timePattern;
+  private String dateFormat;
 }
