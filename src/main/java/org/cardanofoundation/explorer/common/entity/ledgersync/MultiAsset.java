@@ -67,6 +67,9 @@ public class MultiAsset extends BaseEntity {
   @Column(name = "time")
   private Timestamp time;
 
+  @Column(name = "unit")
+  private String unit;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
