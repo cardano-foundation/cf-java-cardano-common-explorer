@@ -53,16 +53,9 @@ public class MultiAsset extends BaseEntity {
   @Column(name = "fingerprint", nullable = false)
   private String fingerprint;
 
-  @Column(name = "tx_count")
-  private Long txCount;
-
   @Column(name = "supply", precision = 23)
   @Digits(integer = 23, fraction = 0)
   private BigInteger supply;
-
-  @Column(name = "total_volume", precision = 40)
-  @Digits(integer = 40, fraction = 0)
-  private BigInteger totalVolume;
 
   @Column(name = "time")
   private Timestamp time;
