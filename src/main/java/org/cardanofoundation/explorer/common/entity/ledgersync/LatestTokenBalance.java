@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import org.cardanofoundation.explorer.common.entity.compositeKey.AddressBalanceId;
-import org.hibernate.annotations.DynamicUpdate;
 
 @Data
 @NoArgsConstructor
@@ -42,15 +41,15 @@ public class LatestTokenBalance {
 
   @Embedded
   @AttributeOverrides({
-      @AttributeOverride(
-          name = "address",
-          column = @Column(name = "address", insertable = false, updatable = false)),
-      @AttributeOverride(
-          name = "unit",
-          column = @Column(name = "unit", insertable = false, updatable = false)),
-      @AttributeOverride(
-          name = "slot",
-          column = @Column(name = "slot", insertable = false, updatable = false))
+    @AttributeOverride(
+        name = "address",
+        column = @Column(name = "address", insertable = false, updatable = false)),
+    @AttributeOverride(
+        name = "unit",
+        column = @Column(name = "unit", insertable = false, updatable = false)),
+    @AttributeOverride(
+        name = "slot",
+        column = @Column(name = "slot", insertable = false, updatable = false))
   })
   private AddressBalanceId id;
 

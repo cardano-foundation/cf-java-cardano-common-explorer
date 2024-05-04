@@ -1,13 +1,10 @@
 package org.cardanofoundation.explorer.common.entity.ledgersync;
 
 import java.math.BigInteger;
-import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
@@ -60,8 +57,8 @@ public class StakeAddress extends BaseEntity {
   @Digits(integer = 39, fraction = 0)
   private BigInteger availableReward;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "stakeAddress")
-  private List<Address> addresses;
+  //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "stakeAddress")
+  //  private List<Address> addresses;
 
   @Override
   public boolean equals(Object o) {
