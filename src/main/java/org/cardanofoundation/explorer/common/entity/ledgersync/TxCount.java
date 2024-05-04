@@ -19,12 +19,14 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class TxCount extends BaseEntity{
+public class TxCount extends BaseEntity {
 
   @Column(name = "address", nullable = false)
   String address;
+
   @Column(name = "count", nullable = false)
   Long count;
+
   @Column(name = "lastUpdated", nullable = false)
   Timestamp lastUpdated;
 }
