@@ -55,4 +55,7 @@ public class LatestTokenBalance {
 
   @Column(name = "quantity")
   private BigInteger quantity;
+
+  @Column(name = "block_time")
+  private Long blockTime;
 }
