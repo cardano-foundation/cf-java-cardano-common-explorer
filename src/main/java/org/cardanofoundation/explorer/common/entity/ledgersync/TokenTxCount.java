@@ -12,16 +12,16 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "address_tx_count")
+@Table(name = "token_tx_count")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class AddressTxCount {
+public class TokenTxCount {
   @Id
-  @Column(name = "address", nullable = false)
-  String address;
+  @Column(name = "ident", nullable = false)
+  Long ident;
 
   @Column(name = "tx_count")
   Long txCount;
