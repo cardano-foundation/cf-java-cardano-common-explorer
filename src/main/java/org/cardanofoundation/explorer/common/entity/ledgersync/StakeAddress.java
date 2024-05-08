@@ -47,18 +47,10 @@ public class StakeAddress extends BaseEntity {
   @Hash28Type
   private String scriptHash;
 
-  @Column(name = "balance", nullable = false, precision = 39)
-  @Word128Type
-  @Digits(integer = 39, fraction = 0)
-  private BigInteger balance;
-
   @Column(name = "available_reward", nullable = false, precision = 39)
   @Word128Type
   @Digits(integer = 39, fraction = 0)
   private BigInteger availableReward;
-
-  //  @OneToMany(fetch = FetchType.LAZY, mappedBy = "stakeAddress")
-  //  private List<Address> addresses;
 
   @Override
   public boolean equals(Object o) {
