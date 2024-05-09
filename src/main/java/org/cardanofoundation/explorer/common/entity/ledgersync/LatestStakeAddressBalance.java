@@ -23,7 +23,7 @@ import org.cardanofoundation.explorer.common.entity.compositeKey.StakeAddressBal
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "latest_address_balance")
+@Table(name = "latest_stake_address_balance")
 @IdClass(StakeAddressBalanceId.class)
 public class LatestStakeAddressBalance {
 
