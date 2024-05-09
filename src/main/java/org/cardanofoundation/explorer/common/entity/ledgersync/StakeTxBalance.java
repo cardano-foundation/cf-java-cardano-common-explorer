@@ -60,7 +60,7 @@ public class StakeTxBalance extends BaseEntity {
   private BigInteger balanceChange;
 
   @Column(name = "time")
-  private Timestamp time;
+  private Long time;
 
   @Override
   public boolean equals(Object o) {
