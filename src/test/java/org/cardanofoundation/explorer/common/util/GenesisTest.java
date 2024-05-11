@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import org.cardanofoundation.explorer.common.model.ByronGenesis;
+import org.cardanofoundation.explorer.common.model.ConwayGenesis;
 import org.cardanofoundation.explorer.common.model.ShelleyGenesis;
 import org.cardanofoundation.explorer.common.utils.FileUtils;
 import org.cardanofoundation.explorer.common.utils.GenesisUtils;
@@ -146,5 +147,47 @@ class GenesisTest {
     String byronPath = "./target/test-classes/genesis/byron-not-found.json";
     ByronGenesis byron = GenesisUtils.fillContentFileToByron(byronPath);
     Assertions.assertNull(byron);
+  }
+
+  @Test
+  void when_fillContentFileToConway_success() {
+    String conwayPath = "./target/test-classes/genesis/conway.json";
+    ConwayGenesis conway = GenesisUtils.fillContentFileToConway(conwayPath);
+    Assertions.assertNotNull(conway);
+    Assertions.assertEquals(7, conway.getCommitteeMinSize());
+    Assertions.assertEquals(50000000000L, conway.getGovActionDeposit());
+    Assertions.assertEquals(20, conway.getDRepActivity());
+    Assertions.assertNotNull(conway.getPoolVotingThresholds());
+    Assertions.assertNotNull(conway.getCommittee());
+  }
+
+  @Test
+  void when_fillContentFileToConway_fileNotFound_returnNull() {
+    String conwayPath = "./target/test-classes/genesis/conway-not-found.json";
+    ConwayGenesis conway = GenesisUtils.fillContentFileToConway(conwayPath);
+    Assertions.assertNull(conway);
+  }
+
+  @Test
+  void when_fillContentUrlToConway_success() {
+    String conwayUrl =
+        "https://book.world.dev.cardano.org/environments/sanchonet/conway-genesis.json";
+    ConwayGenesis conway = GenesisUtils.fillContentUrlToConway(conwayUrl);
+    Assertions.assertNotNull(conway);
+    Assertions.assertEquals(7, conway.getCommitteeMinSize());
+    Assertions.assertEquals(44, conway.getMinFeeRefScriptCostPerByte());
+  }
+
+  @Test
+  void when_fillContentUrlToConway_fileNotFound_throwException() {
+    String notFoundUrl =
+        "https://book.world.dev.cardano.org/environments/sanchonet/file-not-found.json";
+    IllegalStateException exception =
+        Assertions.assertThrows(
+            IllegalStateException.class,
+            () -> {
+              GenesisUtils.fillContentUrlToConway(notFoundUrl);
+            });
+    Assertions.assertNotNull(exception.getMessage());
   }
 }
