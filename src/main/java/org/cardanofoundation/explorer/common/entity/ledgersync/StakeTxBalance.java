@@ -1,7 +1,6 @@
 package org.cardanofoundation.explorer.common.entity.ledgersync;
 
 import java.math.BigInteger;
-import java.sql.Timestamp;
 import java.util.Objects;
 
 import jakarta.persistence.Column;

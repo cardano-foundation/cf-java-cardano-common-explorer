@@ -37,12 +37,12 @@ public class LatestStakeAddressBalance {
 
   @Embedded
   @AttributeOverrides({
-      @AttributeOverride(
-          name = "address",
-          column = @Column(name = "address", insertable = false, updatable = false)),
-      @AttributeOverride(
-          name = "slot",
-          column = @Column(name = "slot", insertable = false, updatable = false))
+    @AttributeOverride(
+        name = "address",
+        column = @Column(name = "address", insertable = false, updatable = false)),
+    @AttributeOverride(
+        name = "slot",
+        column = @Column(name = "slot", insertable = false, updatable = false))
   })
   private StakeAddressBalanceId id;
 
