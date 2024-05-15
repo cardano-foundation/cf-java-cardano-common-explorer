@@ -47,7 +47,7 @@
         <version.maven-site-plugin>3.12.1</version.maven-site-plugin>
         <version.github-maven-site-plugin>0.12</version.github-maven-site-plugin>
         <version.spring-boot>3.0.5</version.spring-boot>
-        <version.bloxbean>0.5.1</version.bloxbean>
+        <version.bloxbean>0.5.2-preview</version.bloxbean>
         <version.lombok>1.18.26</version.lombok>
         <version.hibernate-orm>6.1.7.Final</version.hibernate-orm>
         <version.hibernate-types>2.21.1</version.hibernate-types>

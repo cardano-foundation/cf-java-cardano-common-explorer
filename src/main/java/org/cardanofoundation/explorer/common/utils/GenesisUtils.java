@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
 
 import org.cardanofoundation.explorer.common.model.ByronGenesis;
+import org.cardanofoundation.explorer.common.model.ConwayGenesis;
 import org.cardanofoundation.explorer.common.model.ShelleyGenesis;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -76,6 +77,29 @@ public class GenesisUtils {
       Gson gson = new Gson();
       String byronJson = FileUtils.readFile(url);
       return gson.fromJson(byronJson, ByronGenesis.class);
+    } catch (Exception e) {
+      log.error("exception {} with url {}", e.getMessage(), url);
+      throw new IllegalStateException("can't load file " + url);
+    }
+  }
+
+  public static ConwayGenesis fillContentFileToConway(String url) {
+    try {
+      Gson gson = new Gson();
+      String conwayJson = FileUtils.readFile(url);
+      return gson.fromJson(conwayJson, ConwayGenesis.class);
+    } catch (Exception e) {
+      log.error("exception {} with url {}", e.getMessage(), url);
+      throw new IllegalStateException("can't load file " + url);
+    }
+  }
+
+  public static ConwayGenesis fillContentUrlToConway(String url) {
+    try {
+      Gson gson = new Gson();
+      URL fileUrl = new URL(url);
+      String conwayJson = IOUtils.toString(fileUrl, StandardCharsets.UTF_8);
+      return gson.fromJson(conwayJson, ConwayGenesis.class);
     } catch (Exception e) {
       log.error("exception {} with url {}", e.getMessage(), url);
       throw new IllegalStateException("can't load file " + url);
