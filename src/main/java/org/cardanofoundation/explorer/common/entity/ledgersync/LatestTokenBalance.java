@@ -34,6 +34,9 @@ public class LatestTokenBalance {
   @Column(name = "stake_address")
   private String stakeAddress;
 
+  @Column(name = "policy")
+  private String policy;
+
   @Id
   @Column(name = "unit")
   private String unit;
