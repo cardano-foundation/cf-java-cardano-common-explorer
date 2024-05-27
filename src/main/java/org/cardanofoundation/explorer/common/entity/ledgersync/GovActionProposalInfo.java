@@ -20,6 +20,7 @@ import lombok.experimental.SuperBuilder;
 
 import org.cardanofoundation.explorer.common.entity.compositeKey.GovActionProposalId;
 import org.cardanofoundation.explorer.common.entity.enumeration.GovActionStatus;
+import org.cardanofoundation.explorer.common.entity.enumeration.GovActionType;
 
 @Data
 @NoArgsConstructor
@@ -58,4 +59,17 @@ public class GovActionProposalInfo {
 
   @Column(name = "voting_power")
   BigInteger votingPower;
+
+  @Column(name = "index_type")
+  private BigInteger indexType;
+
+  @Column(name = "type")
+  @Enumerated(EnumType.STRING)
+  private GovActionType type;
+
+  @Column(name = "block_time")
+  private Long blockTime;
+
+  @Column(name = "spo_allowed_vote")
+  private Boolean spoAllowedVote;
 }
