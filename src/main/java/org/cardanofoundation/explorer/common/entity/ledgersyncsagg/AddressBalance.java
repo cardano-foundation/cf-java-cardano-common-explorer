@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync;
+package org.cardanofoundation.explorer.common.entity.ledgersyncsagg;
 
 import java.math.BigInteger;
 
@@ -19,6 +19,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicUpdate;
 
 import org.cardanofoundation.explorer.common.entity.compositeKey.AddressBalanceId;
+import org.cardanofoundation.explorer.common.entity.ledgersync.BlockAwareEntity;
 
 @Data
 @NoArgsConstructor

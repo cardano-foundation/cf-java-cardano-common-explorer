@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync;
+package org.cardanofoundation.explorer.common.entity.ledgersyncsagg;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import org.hibernate.annotations.UpdateTimestamp;
+
+import org.cardanofoundation.explorer.common.entity.ledgersync.BaseEntity;
 
 @Data
 @NoArgsConstructor

@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Builder
 public class AggAddressTxBalanceId {
-  @Column(name = "address_id", insertable = false, updatable = false)
-  protected Long addressId;
+  @Column(name = "address", insertable = false, updatable = false)
+  protected String address;
 
   @Column(name = "day", insertable = false, updatable = false)
   private LocalDate day;

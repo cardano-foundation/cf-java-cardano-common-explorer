@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync;
+package org.cardanofoundation.explorer.common.entity.ledgersyncsagg;
 
 import java.math.BigInteger;
 
@@ -12,38 +12,35 @@ import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.common.entity.compositeKey.AddressBalanceId;
+import org.hibernate.annotations.DynamicUpdate;
+
+import org.cardanofoundation.explorer.common.entity.compositeKey.AddressTxAmountId;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
+@Builder
 @Entity
-@Table(name = "latest_token_balance")
-@IdClass(AddressBalanceId.class)
-public class LatestTokenBalance {
+@Table(name = "address_tx_amount")
+@IdClass(AddressTxAmountId.class)
+@DynamicUpdate
+public class AddressTxAmount {
 
   @Id
   @Column(name = "address")
   private String address;
-
-  @Column(name = "stake_address")
-  private String stakeAddress;
-
-  @Column(name = "policy")
-  private String policy;
 
   @Id
   @Column(name = "unit")
   private String unit;
 
   @Id
-  @Column(name = "slot")
-  private Long slot;
+  @Column(name = "tx_hash")
+  private String txHash;
 
   @Embedded
   @AttributeOverrides({
@@ -54,13 +51,29 @@ public class LatestTokenBalance {
         name = "unit",
         column = @Column(name = "unit", insertable = false, updatable = false)),
     @AttributeOverride(
-        name = "slot",
-        column = @Column(name = "slot", insertable = false, updatable = false))
+        name = "tx_hash",
+        column = @Column(name = "tx_hash", insertable = false, updatable = false))
   })
-  private AddressBalanceId id;
+  private AddressTxAmountId id;
+
+  @Column(name = "slot")
+  private Long slot;
 
   @Column(name = "quantity")
   private BigInteger quantity;
+
+  // Only set if address doesn't fit in ownerAddr field. Required for few Byron Era addr
+  @Column(name = "addr_full")
+  private String addrFull;
+
+  @Column(name = "stake_address")
+  private String stakeAddress;
+
+  @Column(name = "epoch")
+  private Integer epoch;
+
+  @Column(name = "block")
+  private Long blockNumber;
 
   @Column(name = "block_time")
   private Long blockTime;

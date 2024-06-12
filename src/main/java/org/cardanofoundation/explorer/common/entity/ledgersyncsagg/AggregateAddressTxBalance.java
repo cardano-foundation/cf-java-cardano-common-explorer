@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync.aggregation;
+package org.cardanofoundation.explorer.common.entity.ledgersyncsagg;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -30,12 +30,12 @@ import org.cardanofoundation.explorer.common.entity.validation.Word128Type;
 @IdClass(AggAddressTxBalanceId.class)
 public class AggregateAddressTxBalance {
 
-  @Column(name = "stake_address_id")
-  protected Long stakeAddressId;
+  @Column(name = "stake_address")
+  protected String stakeAddress;
 
   @Id
-  @Column(name = "address_id")
-  protected Long addressId;
+  @Column(name = "address")
+  protected String address;
 
   @Id
   @Column(name = "day")
@@ -48,7 +48,7 @@ public class AggregateAddressTxBalance {
   @Embedded
   @AttributeOverrides({
     @AttributeOverride(
-        name = "address_id",
+        name = "address",
         column = @Column(name = "address_id", insertable = false, updatable = false)),
     @AttributeOverride(
         name = "day",

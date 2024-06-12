@@ -20,8 +20,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 public class TokenTxCount {
   @Id
-  @Column(name = "ident", nullable = false)
-  Long ident;
+  @Column(name = "unit", nullable = false)
+  String unit;
 
   @Column(name = "tx_count")
   Long txCount;
