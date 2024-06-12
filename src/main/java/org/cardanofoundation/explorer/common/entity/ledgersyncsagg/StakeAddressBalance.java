@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync;
+package org.cardanofoundation.explorer.common.entity.ledgersyncsagg;
 
 import java.math.BigInteger;
 
@@ -16,24 +16,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import org.cardanofoundation.explorer.common.entity.compositeKey.AddressBalanceId;
+import org.hibernate.annotations.DynamicUpdate;
+
+import org.cardanofoundation.explorer.common.entity.compositeKey.StakeAddressBalanceId;
+import org.cardanofoundation.explorer.common.entity.ledgersync.BlockAwareEntity;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "latest_address_balance")
-@IdClass(AddressBalanceId.class)
-public class LatestAddressBalance {
-
+@Table(name = "stake_address_balance")
+@IdClass(StakeAddressBalanceId.class)
+@DynamicUpdate
+public class StakeAddressBalance extends BlockAwareEntity {
   @Id
   @Column(name = "address")
   private String address;
-
-  @Id
-  @Column(name = "unit")
-  private String unit;
 
   @Id
   @Column(name = "slot")
@@ -45,14 +44,14 @@ public class LatestAddressBalance {
         name = "address",
         column = @Column(name = "address", insertable = false, updatable = false)),
     @AttributeOverride(
-        name = "unit",
-        column = @Column(name = "unit", insertable = false, updatable = false)),
-    @AttributeOverride(
         name = "slot",
         column = @Column(name = "slot", insertable = false, updatable = false))
   })
-  private AddressBalanceId id;
+  private StakeAddressBalanceId id;
 
   @Column(name = "quantity")
   private BigInteger quantity;
+
+  @Column(name = "epoch")
+  private Integer epoch;
 }

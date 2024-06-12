@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync;
+package org.cardanofoundation.explorer.common.entity.ledgersyncsagg;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,16 +12,16 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "address_tx_count")
+@Table(name = "stake_address_tx_count")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class AddressTxCount {
+public class StakeAddressTxCount {
   @Id
-  @Column(name = "address", nullable = false)
-  String address;
+  @Column(name = "stake_address", nullable = false)
+  String stakeAddress;
 
   @Column(name = "tx_count")
   Long txCount;

@@ -1,4 +1,4 @@
-package org.cardanofoundation.explorer.common.entity.ledgersync.aggregation;
+package org.cardanofoundation.explorer.common.entity.ledgersyncsagg;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -33,8 +33,8 @@ import org.cardanofoundation.explorer.common.entity.validation.Word128Type;
 public class AggregateAddressToken {
 
   @Id
-  @Column(name = "ident")
-  protected Long ident;
+  @Column(name = "unit")
+  protected String unit;
 
   @Column(name = "balance", nullable = false, precision = 39)
   @Word128Type
@@ -47,8 +47,8 @@ public class AggregateAddressToken {
   @Embedded
   @AttributeOverrides({
     @AttributeOverride(
-        name = "ident",
-        column = @Column(name = "ident", insertable = false, updatable = false)),
+        name = "unit",
+        column = @Column(name = "unit", insertable = false, updatable = false)),
     @AttributeOverride(
         name = "day",
         column = @Column(name = "day", insertable = false, updatable = false)),

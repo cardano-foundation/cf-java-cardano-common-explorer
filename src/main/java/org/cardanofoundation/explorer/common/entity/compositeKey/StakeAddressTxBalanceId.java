@@ -15,9 +15,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Builder
-public class AggAddressTokenId {
-  @Column(name = "unit", insertable = false, updatable = false)
-  protected String unit;
+public class StakeAddressTxBalanceId {
+  @Column(name = "tx_hash", insertable = false, updatable = false)
+  private String txHash;
+
+  @Column(name = "stake_address", insertable = false, updatable = false)
+  private String stakeAddress;
 
   @Column(name = "day", insertable = false, updatable = false)
   private LocalDate day;
