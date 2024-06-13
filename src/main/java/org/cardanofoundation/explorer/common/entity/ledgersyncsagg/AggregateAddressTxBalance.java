@@ -49,7 +49,7 @@ public class AggregateAddressTxBalance {
   @AttributeOverrides({
     @AttributeOverride(
         name = "address",
-        column = @Column(name = "address_id", insertable = false, updatable = false)),
+        column = @Column(name = "address", insertable = false, updatable = false)),
     @AttributeOverride(
         name = "day",
         column = @Column(name = "day", insertable = false, updatable = false)),
