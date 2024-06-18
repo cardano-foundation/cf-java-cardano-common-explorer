@@ -277,6 +277,9 @@ public class ParamProposal extends BaseEntity {
   @Digits(integer = 20, fraction = 0)
   private BigInteger minFeeRefScriptCostPerByte;
 
+  @Column(name = "cc_threshold")
+  private Double ccThreshold;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
