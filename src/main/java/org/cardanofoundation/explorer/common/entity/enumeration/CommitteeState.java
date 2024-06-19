@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @RequiredArgsConstructor
 @Getter
 public enum CommitteeState {
-  NORMAL("NORMAL"),
+  CONFIDENCE("CONFIDENCE"),
   NO_CONFIDENCE("NO_CONFIDENCE"),
   ;
   String value;
