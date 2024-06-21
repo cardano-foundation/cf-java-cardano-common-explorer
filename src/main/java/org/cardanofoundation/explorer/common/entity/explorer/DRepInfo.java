@@ -64,4 +64,7 @@ public class DRepInfo extends BaseEntity {
   @Column(name = "type", nullable = false)
   @Enumerated(EnumType.STRING)
   private DRepType type;
+
+  @Column(name = "gov_participation_rate", nullable = false)
+  private Double govParticipationRate;
 }
