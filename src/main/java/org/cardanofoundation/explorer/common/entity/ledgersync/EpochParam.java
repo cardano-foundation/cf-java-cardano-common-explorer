@@ -182,6 +182,90 @@ public class EpochParam extends BaseEntity {
   @EqualsAndHashCode.Exclude
   private Block block;
 
+  // Conway era params
+  @Column(name = "pvt_motion_no_confidence")
+  private Double pvtMotionNoConfidence;
+
+  @Column(name = "pvt_commit_normal")
+  private Double pvtCommitteeNormal;
+
+  @Column(name = "pvt_committee_no_confidence")
+  private Double pvtCommitteeNoConfidence;
+
+  @Column(name = "pvt_hard_fork_initiation")
+  private Double pvtHardForkInitiation;
+
+  @Column(name = "pvt_p_p_security_group")
+  private Double pvtPPSecurityGroup;
+
+  @Column(name = "dvt_motion_no_confidence")
+  private Double dvtMotionNoConfidence;
+
+  @Column(name = "dvt_commitee_normal")
+  private Double dvtCommitteeNormal;
+
+  @Column(name = "dvt_committee_no_confidence")
+  private Double dvtCommitteeNoConfidence;
+
+  @Column(name = "dvt_update_to_constitution")
+  private Double dvtUpdateToConstitution;
+
+  @Column(name = "dvt_hard_fork_initiation")
+  private Double dvtHardForkInitiation;
+
+  @Column(name = "dvt_p_p_network_group")
+  private Double dvtPPNetworkGroup;
+
+  @Column(name = "dvt_p_p_economic_group")
+  private Double dvtPPEconomicGroup;
+
+  @Column(name = "dvt_p_p_technical_group")
+  private Double dvtPPTechnicalGroup;
+
+  @Column(name = "dvt_p_p_gov_group")
+  private Double dvtPPGovGroup;
+
+  @Column(name = "dvt_treasury_withdrawal")
+  private Double dvtTreasuryWithdrawal;
+
+  @Column(name = "committee_min_size")
+  @Word64Type
+  @Digits(integer = 20, fraction = 0)
+  private BigInteger committeeMinSize;
+
+  @Column(name = "committee_max_term_length")
+  @Word64Type
+  @Digits(integer = 20, fraction = 0)
+  private BigInteger committeeMaxTermLength;
+
+  @Column(name = "gov_action_lifetime")
+  @Word64Type
+  @Digits(integer = 20, fraction = 0)
+  private BigInteger govActionLifetime;
+
+  @Column(name = "gov_action_deposit")
+  @Word64Type
+  @Digits(integer = 20, fraction = 0)
+  private BigInteger govActionDeposit;
+
+  @Column(name = "drep_deposit")
+  @Word64Type
+  @Digits(integer = 20, fraction = 0)
+  private BigInteger drepDeposit;
+
+  @Column(name = "drep_activity")
+  @Word64Type
+  @Digits(integer = 20, fraction = 0)
+  private BigInteger drepActivity;
+
+  @Column(name = "min_fee_ref_script_cost_per_byte")
+  @Word64Type
+  @Digits(integer = 20, fraction = 0)
+  private BigInteger minFeeRefScriptCostPerByte;
+
+  @Column(name = "cc_threshold")
+  private Double ccThreshold;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -232,6 +316,27 @@ public class EpochParam extends BaseEntity {
         maxValSize,
         collateralPercent,
         maxCollateralInputs,
-        block);
+        pvtMotionNoConfidence,
+        pvtCommitteeNormal,
+        pvtCommitteeNoConfidence,
+        pvtHardForkInitiation,
+        pvtPPSecurityGroup,
+        dvtMotionNoConfidence,
+        dvtCommitteeNormal,
+        dvtCommitteeNoConfidence,
+        dvtUpdateToConstitution,
+        dvtHardForkInitiation,
+        dvtPPNetworkGroup,
+        dvtPPEconomicGroup,
+        dvtPPTechnicalGroup,
+        dvtPPGovGroup,
+        dvtTreasuryWithdrawal,
+        committeeMinSize,
+        committeeMaxTermLength,
+        govActionLifetime,
+        govActionDeposit,
+        drepDeposit,
+        drepActivity,
+        minFeeRefScriptCostPerByte);
   }
 }
