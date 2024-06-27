@@ -2,14 +2,11 @@ package org.cardanofoundation.explorer.common.entity.ledgersync;
 
 import java.math.BigInteger;
 import java.sql.Timestamp;
-import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Digits;
@@ -56,22 +53,15 @@ public class MultiAsset extends BaseEntity {
   @Column(name = "fingerprint", nullable = false)
   private String fingerprint;
 
-  @Column(name = "tx_count")
-  private Long txCount;
-
   @Column(name = "supply", precision = 23)
   @Digits(integer = 23, fraction = 0)
   private BigInteger supply;
 
-  @Column(name = "total_volume", precision = 40)
-  @Digits(integer = 40, fraction = 0)
-  private BigInteger totalVolume;
-
   @Column(name = "time")
   private Timestamp time;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "multiAsset")
-  private List<AddressToken> addressToken;
+  @Column(name = "unit")
+  private String unit;
 
   @Override
   public boolean equals(Object o) {

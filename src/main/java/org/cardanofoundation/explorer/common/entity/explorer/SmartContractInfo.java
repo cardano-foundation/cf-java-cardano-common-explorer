@@ -51,4 +51,10 @@ public class SmartContractInfo extends BaseEntity {
 
   @Column(name = "is_script_mint")
   private Boolean isScriptMint;
+
+  @Column(name = "is_script_vote")
+  private Boolean isScriptVote;
+
+  @Column(name = "is_script_propose")
+  private Boolean isScriptPropose;
 }
