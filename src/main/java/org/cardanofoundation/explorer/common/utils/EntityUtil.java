@@ -13,9 +13,9 @@ public class EntityUtil {
 
   private final String schema;
 
-  private final Class<? extends BaseEntity> entityClass;
+  private final Class<?> entityClass;
 
-  public EntityUtil(String schema, Class<? extends BaseEntity> entityClass) {
+  public EntityUtil(String schema, Class<?> entityClass) {
     this.schema = schema;
     this.entityClass = entityClass;
   }
