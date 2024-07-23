@@ -1,9 +1,7 @@
 package org.cardanofoundation.explorer.common.entity.explorer;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -15,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.cardanofoundation.explorer.common.entity.ledgersync.BaseEntity;
@@ -36,6 +35,7 @@ public class BlockStatisticsPerEpoch extends BaseEntity {
   @Column(name = "epoch_no", nullable = false)
   @JsonProperty("epoch_no")
   private Integer epochNo;
+
   @Column(name = "time", nullable = false)
   @JsonProperty("time")
   @JsonFormat(pattern = "yyyy-MM-dd")
