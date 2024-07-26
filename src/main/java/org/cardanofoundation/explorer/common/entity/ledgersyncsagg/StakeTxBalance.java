@@ -47,6 +47,6 @@ public class StakeTxBalance {
   @Digits(integer = 39, fraction = 0)
   private BigInteger balanceChange;
 
-  @Column(name = "time")
-  private Long time;
+  @Column(name = "slot")
+  private Long slot;
 }
