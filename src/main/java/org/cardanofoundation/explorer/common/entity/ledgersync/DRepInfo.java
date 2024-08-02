@@ -1,12 +1,8 @@
-package org.cardanofoundation.explorer.common.entity.explorer;
+package org.cardanofoundation.explorer.common.entity.ledgersync;
 
 import java.math.BigInteger;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +12,6 @@ import lombok.experimental.SuperBuilder;
 
 import org.cardanofoundation.explorer.common.entity.enumeration.DRepStatus;
 import org.cardanofoundation.explorer.common.entity.enumeration.DRepType;
-import org.cardanofoundation.explorer.common.entity.ledgersync.BaseEntity;
 
 @Entity
 @Table(name = "drep_info")
