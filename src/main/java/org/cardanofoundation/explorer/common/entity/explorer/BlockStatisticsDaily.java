@@ -38,83 +38,83 @@ public class BlockStatisticsDaily extends BaseEntity {
   @JsonProperty("epoch_no")
   private Integer epochNo;
 
-  @Column(name = "no_reporting_nodes", nullable = false)
+  @Column(name = "no_reporting_nodes")
   @JsonProperty("no_reporting_nodes")
   private Integer noReportingNodes;
 
-  @Column(name = "no_unique_peers", nullable = false)
+  @Column(name = "no_unique_peers")
   @JsonProperty("no_unique_peers")
   private Integer noUniquePeers;
 
-  @Column(name = "no_countries", nullable = false)
+  @Column(name = "no_countries")
   @JsonProperty("no_countries")
   private Integer noCountries;
 
-  @Column(name = "no_continents", nullable = false)
+  @Column(name = "no_continents")
   @JsonProperty("no_continents")
   private Integer noContinents;
 
-  @Column(name = "block_prop_mean", nullable = false)
+  @Column(name = "block_prop_mean")
   @JsonProperty("block_prop_mean")
   private Integer blockPropMean;
 
-  @Column(name = "block_prop_median", nullable = false)
+  @Column(name = "block_prop_median")
   @JsonProperty("block_prop_median")
   private Integer blockPropMedian;
 
-  @Column(name = "block_prop_p90", nullable = false)
+  @Column(name = "block_prop_p90")
   @JsonProperty("block_prop_p90")
   private Integer blockPropP90;
 
-  @Column(name = "block_prop_p95", nullable = false)
+  @Column(name = "block_prop_p95")
   @JsonProperty("block_prop_p95")
   private Integer blockPropP95;
 
-  @Column(name = "block_adopt_mean", nullable = false)
+  @Column(name = "block_adopt_mean")
   @JsonProperty("block_adopt_mean")
   private Integer blockAdoptMean;
 
-  @Column(name = "block_adopt_median", nullable = false)
+  @Column(name = "block_adopt_median")
   @JsonProperty("block_adopt_median")
   private Integer blockAdoptMedian;
 
-  @Column(name = "block_adopt_p90", nullable = false)
+  @Column(name = "block_adopt_p90")
   @JsonProperty("block_adopt_p90")
   private Integer blockAdoptP90;
 
-  @Column(name = "block_adopt_p95", nullable = false)
+  @Column(name = "block_adopt_p95")
   @JsonProperty("block_adopt_p95")
   private Integer blockAdoptP95;
 
-  @Column(name = "txs", nullable = false)
+  @Column(name = "txs")
   @JsonProperty("txs")
   private Long txs;
 
-  @Column(name = "mean_size_load", nullable = false)
+  @Column(name = "mean_size_load")
   @JsonProperty("mean_size_load")
   private Double meanSizeLoad;
 
-  @Column(name = "mean_steps_load", nullable = false)
+  @Column(name = "mean_steps_load")
   @JsonProperty("mean_steps_load")
   private Double meanStepsLoad;
 
-  @Column(name = "mean_mem_load", nullable = false)
+  @Column(name = "mean_mem_load")
   @JsonProperty("mean_mem_load")
   private Double meanMemLoad;
 
-  @Column(name = "slot_battles", nullable = false)
+  @Column(name = "slot_battles")
   @JsonProperty("slot_battles")
   private Integer slotBattles;
 
-  @Column(name = "height_battles", nullable = false)
+  @Column(name = "height_battles")
   @JsonProperty("height_battles")
   private Integer heightBattles;
 
-  @Column(name = "cdf3", nullable = false)
+  @Column(name = "cdf3")
   @JsonProperty("cdf3")
   private Double cdf3;
 
-  @Column(name = "cdf5", nullable = false)
+  @Column(name = "cdf5")
   @JsonProperty("cdf5")
   private Double cdf5;
 }
