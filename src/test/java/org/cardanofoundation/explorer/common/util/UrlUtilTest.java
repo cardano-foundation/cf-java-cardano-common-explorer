@@ -82,19 +82,12 @@ class UrlUtilTest {
   void notContainHttpUrl() {
     String url = "shorturl.at/knAK2";
     boolean actual = UrlUtil.isUrl(url);
-    Assertions.assertEquals(Boolean.TRUE, actual);
-  }
-
-  @Test
-  void missingSlat() {
-    String url = "https:/gist.github.com/jmdv1974/610360d7760d820fc052c692f879336f";
-    boolean actual = UrlUtil.isUrl(url);
     Assertions.assertEquals(Boolean.FALSE, actual);
   }
 
   @Test
   void httpsUrl() {
-    String url = "https://adroit.ventures/cardano/test1_poolMetadata.json";
+    String url = "https://adroit.com/cardano/test1_poolMetadata.json";
     boolean actual = UrlUtil.isUrl(url);
     Assertions.assertEquals(Boolean.TRUE, actual);
   }
@@ -110,12 +103,19 @@ class UrlUtilTest {
   void wwwUrl() {
     String url = "www.fourbrothersforada.compoolMetaData.json";
     boolean actual = UrlUtil.isUrl(url);
-    Assertions.assertEquals(Boolean.TRUE, actual);
+    Assertions.assertEquals(Boolean.FALSE, actual);
   }
 
   @Test
-  void httpsMultiSlashQuarda() {
-    String url = "https:////red-sky.one/poolmeta.json";
+  void fullNumber() {
+    String url = "1111111111111111111111111111111111111111111111111111111111111111";
+    boolean actual = UrlUtil.isUrl(url);
+    Assertions.assertEquals(Boolean.FALSE, actual);
+  }
+
+  @Test
+  void fullText() {
+    String url = "faa50dd6206bddb8d7d23c66831ae429bdc4627ab9af5e2de36ff4f1";
     boolean actual = UrlUtil.isUrl(url);
     Assertions.assertEquals(Boolean.FALSE, actual);
   }

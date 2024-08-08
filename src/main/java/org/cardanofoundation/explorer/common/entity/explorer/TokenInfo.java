@@ -32,6 +32,13 @@ public class TokenInfo extends BaseEntity {
   @Column(name = "number_of_holders")
   private Long numberOfHolders;
 
+  @Column(name = "tx_count")
+  private Long txCount;
+
+  @Column(name = "total_volume", precision = 40)
+  @Digits(integer = 40, fraction = 0)
+  private BigInteger totalVolume;
+
   @Column(name = "volume_24h", precision = 40)
   @Digits(integer = 40, fraction = 0)
   private BigInteger volume24h;
