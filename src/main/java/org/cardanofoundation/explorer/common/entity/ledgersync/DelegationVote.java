@@ -16,6 +16,7 @@ import lombok.experimental.SuperBuilder;
 import com.bloxbean.cardano.client.transaction.spec.cert.StakeCredType;
 
 import org.cardanofoundation.explorer.common.entity.compositeKey.DelegationVoteId;
+import org.cardanofoundation.explorer.common.entity.enumeration.DrepType;
 
 @Data
 @NoArgsConstructor
@@ -44,6 +45,10 @@ public class DelegationVote extends BlockAwareEntity {
 
   @Column(name = "drep_id")
   private String drepId;
+
+  @Column(name = "drep_type")
+  @Enumerated(EnumType.STRING)
+  private DrepType drepType;
 
   @Column(name = "credential")
   private String credential;
