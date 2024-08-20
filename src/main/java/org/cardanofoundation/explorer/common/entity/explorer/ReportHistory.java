@@ -60,6 +60,15 @@ public class ReportHistory extends BaseEntity {
   @Enumerated(EnumType.STRING)
   private ReportType type;
 
+  @Column(name = "zone_offset")
+  private Long zoneOffset;
+
+  @Column(name = "time_pattern")
+  private String timePattern;
+
+  @Column(name = "date_format")
+  private String dateFormat;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
