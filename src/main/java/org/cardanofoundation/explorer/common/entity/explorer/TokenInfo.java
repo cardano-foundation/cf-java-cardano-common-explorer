@@ -59,6 +59,6 @@ public class TokenInfo {
   @Column(name = "previous_slot", nullable = false)
   private Long previousSlot;
 
-  @Column(name = "incremental_mode")
-  private Boolean incrementalMode;
+  @Column(name = "is_calculated_in_incremental_mode")
+  private Boolean isCalculatedInIncrementalMode;
 }
