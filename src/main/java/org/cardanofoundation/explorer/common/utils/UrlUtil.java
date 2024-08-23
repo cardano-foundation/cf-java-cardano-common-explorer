@@ -1,9 +1,10 @@
 package org.cardanofoundation.explorer.common.utils;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public final class UrlUtil {
 
@@ -45,14 +46,13 @@ public final class UrlUtil {
    * @return boolean if url string return true else return false
    */
   public static boolean isUrl(String string) {
-    String urlRegex = "[-a-zA-Z0-9][-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
-    if (string.startsWith("http")) {
-      urlRegex =
-          "^(http(s)?:/{2}|www.)[-a-zA-Z0-9][-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+    try {
+      new URL(string).toURI();
+      return true;
+    } catch (MalformedURLException e) {
+      return false;
+    } catch (URISyntaxException e) {
+      return false;
     }
-
-    Pattern pattern = Pattern.compile(urlRegex);
-    Matcher matcher = pattern.matcher(string);
-    return matcher.matches();
   }
 }

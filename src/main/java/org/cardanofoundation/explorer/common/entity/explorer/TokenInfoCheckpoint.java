@@ -23,8 +23,8 @@ import org.cardanofoundation.explorer.common.entity.ledgersync.BaseEntity;
 @SuperBuilder(toBuilder = true)
 public class TokenInfoCheckpoint extends BaseEntity {
 
-  @Column(name = "block_no")
-  private Long blockNo;
+  @Column(name = "slot")
+  private Long slot;
 
   @Column(name = "update_time")
   private Timestamp updateTime;

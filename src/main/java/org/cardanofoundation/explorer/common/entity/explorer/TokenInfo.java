@@ -1,15 +1,11 @@
 package org.cardanofoundation.explorer.common.entity.explorer;
 
 import java.math.BigInteger;
-import java.sql.Timestamp;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
-
-import org.cardanofoundation.explorer.common.entity.ledgersync.BaseEntity;
 
 @Entity
 @Table(
@@ -17,28 +13,52 @@ import org.cardanofoundation.explorer.common.entity.ledgersync.BaseEntity;
     uniqueConstraints = {
       @UniqueConstraint(
           name = "unique_token_info",
-          columnNames = {"ident"})
+          columnNames = {"unit"})
     })
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder(toBuilder = true)
-public class TokenInfo extends BaseEntity {
-
-  @Column(name = "ident", nullable = false)
-  private Long multiAssetId;
+@Builder
+public class TokenInfo {
+  @Id
+  @Column(name = "unit", nullable = false)
+  private String unit;
 
   @Column(name = "number_of_holders")
   private Long numberOfHolders;
+
+  @Column(name = "tx_count")
+  private Long txCount;
+
+  @Column(name = "total_volume", precision = 40)
+  @Digits(integer = 40, fraction = 0)
+  private BigInteger totalVolume;
 
   @Column(name = "volume_24h", precision = 40)
   @Digits(integer = 40, fraction = 0)
   private BigInteger volume24h;
 
-  @Column(name = "block_no")
-  private Long blockNo;
+  @Column(name = "updated_slot", nullable = false)
+  private Long updatedSlot;
 
-  @Column(name = "update_time")
-  private Timestamp updateTime;
+  @Column(name = "previous_number_of_holders")
+  private Long previousNumberOfHolders;
+
+  @Column(name = "previous_tx_count")
+  private Long previousTxCount;
+
+  @Column(name = "previous_total_volume", precision = 40)
+  @Digits(integer = 40, fraction = 0)
+  private BigInteger previousTotalVolume;
+
+  @Column(name = "previous_volume_24h", precision = 40)
+  @Digits(integer = 40, fraction = 0)
+  private BigInteger previousVolume24h;
+
+  @Column(name = "previous_slot", nullable = false)
+  private Long previousSlot;
+
+  @Column(name = "is_calculated_in_incremental_mode")
+  private Boolean isCalculatedInIncrementalMode;
 }
