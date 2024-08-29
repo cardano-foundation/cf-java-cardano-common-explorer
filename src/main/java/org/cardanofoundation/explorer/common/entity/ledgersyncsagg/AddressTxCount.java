@@ -5,11 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.SuperBuilder;
+import lombok.*;
 
 @Entity
 @Table(name = "address_tx_count")
@@ -17,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder(toBuilder = true)
+@Builder
 public class AddressTxCount {
   @Id
   @Column(name = "address", nullable = false)
@@ -25,4 +21,21 @@ public class AddressTxCount {
 
   @Column(name = "tx_count")
   Long txCount;
+
+  @Column(name = "updated_slot")
+  Long updatedSlot;
+
+  @Column(name = "previous_tx_count")
+  Long previousTxCount;
+
+  @Column(name = "previous_slot")
+  Long previousSlot;
+
+  @Column(name = "is_calculated_in_incremental_mode")
+  Boolean isCalculatedInIncrementalMode;
+
+  public AddressTxCount(String address, Long txCount) {
+    this.address = address;
+    this.txCount = txCount;
+  }
 }

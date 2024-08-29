@@ -14,7 +14,8 @@ import lombok.experimental.FieldDefaults;
 public enum DataCheckpointType {
   DREP_INFO("drep_info"),
   GOV_ACTION_DATA("gov_action_data"),
-  TOKEN_TX_COUNT("token_tx_count");
+  TOKEN_TX_COUNT("token_tx_count"),
+  ADDRESS_TX_COUNT("ADDRESS_TX_COUNT");
 
   String value;
 
