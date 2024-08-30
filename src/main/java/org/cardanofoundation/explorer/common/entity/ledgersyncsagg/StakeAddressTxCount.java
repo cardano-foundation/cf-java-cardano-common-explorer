@@ -34,7 +34,7 @@ public class StakeAddressTxCount {
   @Column(name = "is_calculated_in_incremental_mode")
   Boolean isCalculatedInIncrementalMode;
 
-  public StakeAddressTxCount(String stakeAddress, Long txCount){
+  public StakeAddressTxCount(String stakeAddress, Long txCount) {
     this.stakeAddress = stakeAddress;
     this.txCount = txCount;
   }
