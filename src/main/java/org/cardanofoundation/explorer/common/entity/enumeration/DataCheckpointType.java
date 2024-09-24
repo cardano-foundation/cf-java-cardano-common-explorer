@@ -12,9 +12,9 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public enum DataCheckpointType {
-  DREP_INFO("drep_info"),
-  GOV_ACTION_DATA("gov_action_data"),
-  TOKEN_TX_COUNT("token_tx_count"),
+  DREP_INFO("DREP_INFO"),
+  GOV_ACTION_DATA("GOV_ACTION_DATA"),
+  TOKEN_TX_COUNT("TOKEN_TX_COUNT"),
   ADDRESS_TX_COUNT("ADDRESS_TX_COUNT"),
   STAKE_ADDRESS_TX_COUNT("STAKE_ADDRESS_TX_COUNT");
 
